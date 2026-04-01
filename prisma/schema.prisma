@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Unified Product Model representing both Branding/Logistics
+// This matches our polymorphic Cart logic
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  type        String   // "branding" or "logistics"
+  imageUrl    String
+  category    String
+  isFeatured  Boolean  @default(false)
+  
+  // Metadata for Logistics (optional)
+  model       String?
+  features    String[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
