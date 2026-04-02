@@ -24,7 +24,7 @@ export const AccountingHero = ({ onConsult }: AccountingHeroProps) => {
           <h2 className="text-brand-secondary font-bold font-heading text-lg lg:text-xl mb-4 italic">
             Helping You Stay Financially Secure & Compliant
           </h2>
-          <h1 className="mb-8 text-5xl font-extrabold font-heading text-brand-primary leading-[1.05] md:text-7xl">
+          <h1 className="mb-8 text-4xl font-extrabold font-heading text-brand-primary leading-[1.05] md:text-5xl lg:text-7xl">
             Accounting - Advisory - Tax - Audit
           </h1>
           <p className="mb-10 text-lg font-medium text-brand-muted leading-relaxed max-w-lg">
@@ -33,7 +33,7 @@ export const AccountingHero = ({ onConsult }: AccountingHeroProps) => {
           <Button 
             size="lg" 
             onClick={onConsult}
-            className="h-16 px-10 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-bold font-heading text-lg group shadow-xl shadow-brand-primary/10 transition-all active:scale-95"
+            className="h-12 md:h-16 px-8 md:px-10 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-bold font-heading text-sm md:text-lg group shadow-xl shadow-brand-primary/10 transition-all active:scale-95"
           >
             Book Free Consultation
             <Icons.ExternalLink className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-2" />

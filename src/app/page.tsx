@@ -56,7 +56,7 @@ export default function Home() {
             Excellence & Efficiency
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold font-heading text-brand-primary leading-[1.05] tracking-tight mb-8">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold font-heading text-brand-primary leading-[1.05] tracking-tight mb-8">
             Your Premium Partner for <br/> 
             <span className="text-brand-secondary">Strategic Solutions</span>
           </h1>
@@ -68,12 +68,12 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="#services">
-              <Button size="lg" className="h-14 px-8 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-bold font-heading group">
+              <Button size="lg" className="h-12 md:h-14 px-8 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-bold font-heading group">
                 Explore Our Services
                 <Icons.ExternalLink className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="h-14 px-8 rounded-full border-brand-primary/20 text-brand-primary font-bold font-heading hover:bg-brand-primary/5">
+            <Button variant="outline" size="lg" className="h-12 md:h-14 px-8 rounded-full border-brand-primary/20 text-brand-primary font-bold font-heading hover:bg-brand-primary/5">
               Read Our Story
             </Button>
           </div>

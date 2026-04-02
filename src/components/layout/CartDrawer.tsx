@@ -159,7 +159,7 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
 
               <Button
                 size="lg"
-                className="w-full h-16 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-extrabold font-heading text-lg group shadow-xl"
+                className="w-full h-14 md:h-16 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-extrabold font-heading text-base md:text-lg group shadow-xl"
                 onClick={handleCheckout}
               >
                 Checkout to WhatsApp

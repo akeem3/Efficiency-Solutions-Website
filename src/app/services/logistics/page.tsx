@@ -71,7 +71,7 @@ export default function LogisticsPage() {
                 <LuCar className="h-3 w-3" />
                 Elite Transportation
               </div>
-              <h1 className="mb-6 text-5xl font-extrabold font-heading leading-[1.05] md:text-7xl">
+              <h1 className="mb-6 text-4xl font-extrabold font-heading leading-[1.05] md:text-5xl lg:text-7xl">
                 Luxury Logistics <span className="text-brand-secondary">& Escort</span>
               </h1>
               <p className="mb-10 text-lg font-medium text-white/70 leading-relaxed max-w-lg">
@@ -110,6 +110,34 @@ export default function LogisticsPage() {
           <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-secondary/10 blur-[140px] pointer-events-none" />
           <div className="absolute top-0 right-0 h-full w-full pointer-events-none bg-gradient-to-l from-brand-secondary/5 to-transparent" />
         </section>
+
+        {/* Horizontal Navigation (Mobile Only) */}
+        <div className="flex lg:hidden overflow-x-auto pb-6 mb-8 no-scrollbar -mx-2 px-2 gap-3">
+          <button
+            onClick={() => setActiveCategory(undefined)}
+            className={`flex-shrink-0 px-6 py-3 rounded-full text-sm font-bold font-heading whitespace-nowrap transition-all ${
+              activeCategory === undefined
+                ? "bg-brand-primary text-white shadow-lg" 
+                : "bg-white text-brand-muted hover:bg-brand-primary/5"
+            }`}
+          >
+            All Vehicles
+          </button>
+          
+          {LOGISTICS_CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`flex-shrink-0 px-6 py-3 rounded-full text-sm font-bold font-heading whitespace-nowrap transition-all ${
+                activeCategory === cat 
+                  ? "bg-brand-primary text-white shadow-lg" 
+                  : "bg-white text-brand-muted hover:bg-brand-primary/5"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
         {/* Main Interface: Sidebar + Fleet Grid */}
         <div className="flex flex-col gap-10 lg:flex-row xl:gap-14">

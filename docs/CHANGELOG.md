@@ -4,6 +4,24 @@ All notable changes to the **Efficiency Solutions** web application will be docu
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2026-04-02
+
+### Changed
+- **Mobile-First Navigation**: Implemented horizontal category sliders for Branding and Logistics pages to provide full functionality on mobile viewports.
+- **Enriched Mobile Menu**: Transformed the static "Services" link into a dynamic, icon-rich accordion in the mobile drawer for improved service discovery.
+- **Responsive Typography & Spacing**: Optimized hero heading scales (4xl to 7xl) to ensure readability and aesthetic balance across all screen sizes.
+- **Global Button Sizing**: Adjusted large hero and checkout buttons to scale down on mobile (h-14/12), improving thumb-reach comfort and layout stability.
+
+## [1.4.0] - 2026-04-02
+
+### Added
+- **Epic 5: Accounting & Financial Intelligence Vertical**:
+  - Implemented the third major service vertical with a trust-driven, consultation-based flow.
+  - Built interactive **Accounting Sidebar** with sticky navigation for distinct advisory sub-services.
+  - Created **Process Stepper** ("How It Works") to visually guide users through the engagement lifecycle.
+  - Integrated **WhatsApp Consultation CTAs** across the hero and service detail sections with automated professional message templates.
+  - Added dedicated **WhatsApp Logo CTA** for instant consultation booking.
+
 ## [1.3.1] - 2026-04-02
 
 ### Changed

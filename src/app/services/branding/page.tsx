@@ -63,7 +63,7 @@ export default function BrandingPage() {
         <section className="relative mb-16 overflow-hidden rounded-[2rem] bg-brand-primary/5 p-8 lg:p-16">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div className="z-10">
-              <h1 className="mb-6 text-5xl font-extrabold font-heading text-brand-primary leading-[1.1] md:text-6xl">
+              <h1 className="mb-6 text-4xl font-extrabold font-heading text-brand-primary leading-[1.1] md:text-5xl lg:text-6xl">
                 Premium Branding <span className="text-brand-secondary">& Printing</span>
               </h1>
               <p className="mb-8 text-lg font-medium text-brand-muted leading-relaxed max-w-lg">
@@ -88,6 +88,34 @@ export default function BrandingPage() {
           {/* Decorative background element */}
           <div className="absolute top-0 right-0 -mr-24 -mt-24 h-96 w-96 rounded-full bg-brand-secondary/5 blur-[120px]" />
         </section>
+
+        {/* Horizontal Navigation (Mobile Only) */}
+        <div className="flex lg:hidden overflow-x-auto pb-6 mb-8 no-scrollbar -mx-2 px-2 gap-3">
+          <button
+            onClick={() => setActiveCategory(undefined)}
+            className={`flex-shrink-0 px-6 py-3 rounded-full text-sm font-bold font-heading whitespace-nowrap transition-all ${
+              activeCategory === undefined
+                ? "bg-brand-primary text-white shadow-lg" 
+                : "bg-white text-brand-muted hover:bg-brand-primary/5"
+            }`}
+          >
+            All Services
+          </button>
+          
+          {BRANDING_CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`flex-shrink-0 px-6 py-3 rounded-full text-sm font-bold font-heading whitespace-nowrap transition-all ${
+                activeCategory === cat 
+                  ? "bg-brand-primary text-white shadow-lg" 
+                  : "bg-white text-brand-muted hover:bg-brand-primary/5"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
         {/* Main Interface: Sidebar + Grid */}
         <div className="flex flex-col gap-8 lg:flex-row xl:gap-12">

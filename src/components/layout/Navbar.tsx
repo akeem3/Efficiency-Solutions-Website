@@ -261,19 +261,60 @@ export const Navbar = () => {
 
               {/* Drawer Body: Navigation Links */}
               <div className="flex-grow overflow-y-auto p-6 space-y-4">
-                    {navItems.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={cn(
-                          "flex items-center gap-4 text-2xl font-bold font-heading py-4 border-b border-brand-primary/5",
-                          pathname === item.href ? "text-brand-secondary" : "text-brand-primary"
-                        )}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                {navItems.map((item) => {
+                  if (item.name === "Services") {
+                    return (
+                      <div key={item.name} className="border-b border-brand-primary/5 py-4">
+                        <div className="text-2xl font-bold font-heading text-brand-primary mb-4">
+                          {item.name}
+                        </div>
+                        <div className="flex flex-col gap-2 pl-4 border-l-2 border-brand-primary/10">
+                          <Link href="/services/branding" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors">
+                            <div className="h-8 w-8 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center shrink-0">
+                              <Icons.Services className="h-4 w-4" />
+                            </div>
+                            <div>
+                              <div className="font-bold font-heading text-brand-primary text-[15px]">Premium Branding</div>
+                              <div className="text-[11px] text-brand-muted mt-0.5">Custom apparel & gifts</div>
+                            </div>
+                          </Link>
+                          <Link href="/services/logistics" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors">
+                            <div className="h-8 w-8 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center shrink-0">
+                              <Icons.Logistics className="h-4 w-4" />
+                            </div>
+                            <div>
+                              <div className="font-bold font-heading text-brand-primary text-[15px]">Luxury Logistics</div>
+                              <div className="text-[11px] text-brand-muted mt-0.5">Elite vehicle rentals</div>
+                            </div>
+                          </Link>
+                          <Link href="/services/accounting" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors">
+                            <div className="h-8 w-8 rounded-lg bg-emerald-600/10 text-emerald-600 flex items-center justify-center shrink-0">
+                              <Icons.Accounting className="h-4 w-4" />
+                            </div>
+                            <div>
+                              <div className="font-bold font-heading text-brand-primary text-[15px]">Accounting Services</div>
+                              <div className="text-[11px] text-brand-muted mt-0.5">Financial intelligence</div>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={cn(
+                        "flex items-center gap-4 text-2xl font-bold font-heading py-4 border-b border-brand-primary/5",
+                        pathname === item.href ? "text-brand-secondary" : "text-brand-primary"
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </div>
 
               {/* Drawer Footer: CTA */}

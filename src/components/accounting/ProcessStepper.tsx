@@ -84,7 +84,7 @@ export const ProcessStepper = ({ onStart }: ProcessStepperProps) => {
             variant="outline" 
             size="lg" 
             onClick={onStart}
-            className="h-14 px-10 rounded-full border-brand-secondary text-brand-secondary font-extrabold font-heading uppercase tracking-widest hover:bg-brand-secondary hover:text-brand-primary transition-all shadow-xl shadow-black/20"
+            className="h-12 md:h-14 px-10 rounded-full border-brand-secondary text-brand-secondary font-extrabold font-heading uppercase tracking-widest hover:bg-brand-secondary hover:text-brand-primary transition-all shadow-xl shadow-black/20"
           >
             Start Now
           </Button>
