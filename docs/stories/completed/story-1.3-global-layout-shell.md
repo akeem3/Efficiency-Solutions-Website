@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 ---
 
 # Story 1.3: Responsive Global Layout Shell
@@ -8,9 +8,9 @@ Status: TODO
 The Layout Shell provides the first impression of the Efficiency Solutions brand. It must be perfectly responsive and provide a high-end "App-like" feel. The Navbar and Footer are the primary interaction points for the entire site.
 
 ## 🎯 Deliverables
-- [ ] `Navbar` component with mobile drawer.
-- [ ] `Footer` component with structured links.
-- [ ] `FloatingWhatsApp` button with persistent positioning.
+- [x] `Navbar` component with mobile drawer.
+- [x] `Footer` component with structured links.
+- [x] `FloatingWhatsApp` button with persistent positioning.
 
 ## 🛠️ Requirements & Constraints
 - **Navbar Layout:**
@@ -30,6 +30,6 @@ The Layout Shell provides the first impression of the Efficiency Solutions brand
 4. The "Contact" button should link to `https://wa.me/[number]`.
 
 ## ✅ Acceptance Criteria
-- [ ] Mobile Check: Hamburger menu opens and closes smoothly on small screens.
-- [ ] Desktop Check: Navbar sticks to the top of the viewport (fixed) or follows scroll as per design.
-- [ ] Interactivity: Hover states on links show a subtle color shift to `brand-secondary` (`#c69b59`).
+- [x] Mobile Check: Hamburger menu opens and closes smoothly on small screens.
+- [x] Desktop Check: Navbar sticks to the top of the viewport (fixed) or follows scroll as per design.
+- [x] Interactivity: Hover states on links show a subtle color shift to `brand-secondary` (`#c69b59`).

@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 Story_ID: STR-401
 ---
 
@@ -9,9 +9,9 @@ Story_ID: STR-401
 Luxury clients often start their journey with a specific need: "I need a G-Wagon" or "Show me Armored Vehicles." The global search in the Navbar must act as a high-speed index for the Logistics vertical to fulfill these intents instantly.
 
 ## 🎯 Deliverables
-- [ ] Debounced Search Indexer logic.
-- [ ] Result filtering for `/logistics` route using query params.
-- [ ] No-Result state with "Service Alternative" recommendations.
+- [x] Debounced Search Indexer logic.
+- [x] Result filtering for `/logistics` route using query params.
+- [x] No-Result state with "Service Alternative" recommendations.
 
 ## 🛠️ Detailed Requirements & Specifications
 ### 1. The Search Handshake
@@ -27,9 +27,9 @@ Luxury clients often start their journey with a specific need: "I need a G-Wagon
 - Result clearing: Simple "Clear Search" (LuX icon) that resets the `/logistics` view.
 
 ## ✅ Acceptance Criteria
-- [ ] Entering "Lexus" filters the fleet to only Lexus vehicles.
-- [ ] The search can find vehicles based on features (e.g., "Armed" for Security Escorts).
-- [ ] The Navbar search bar doesn't lose focus during the redirect to the Logistics page.
+- [x] Entering "Lexus" filters the fleet to only Lexus vehicles.
+- [x] The search can find vehicles based on features (e.g., "Armed" for Security Escorts).
+- [x] The Navbar search bar doesn't lose focus during the redirect to the Logistics page.
 
 ## 🛡️ Edge Cases
 - **Case Sensitivity:** Search must be 100% case-insensitive.

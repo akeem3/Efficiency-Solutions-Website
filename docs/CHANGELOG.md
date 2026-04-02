@@ -4,6 +4,26 @@ All notable changes to the **Efficiency Solutions** web application will be docu
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-04-02
+
+### Changed
+- **Branding Hero Optimization**: Removed the "Luxury Quality" floating sticker to prioritize a clean, professional aesthetic.
+- **Enhanced Navigation Menu**: Transformed the "Services" link into a dynamic hover dropdown with visual icon previews for Branding, Logistics, and Accounting verticals.
+- **Cart Checkout UI**: Replaced the default icon in the "Checkout to WhatsApp" button with the official brand iconography (`whatsapp.png`).
+- **Global Notification Strategy**: Relocated `Sonner` toasts to the `bottom-left` corner and reduced display duration to 2000ms to prevent occlusion of Navbar controls and provide a snappier user experience.
+
+### Fixed
+- Improved Navbar usability by ensuring global toasts do not overlap with Cart and Contact triggers.
+
+## [1.3.0] - 2026-04-02
+
+### Added
+- **Global Documentation & State Sync**:
+  - Synchronized and finalized all project **Epics and User Stories** (1.1 through 4.4) to 100% completion status.
+  - Standardized all story files with `Status: DONE` metadata and completed acceptance criteria.
+  - Updated **Project Roadmap** to reflect the transition from "Mock-First" foundations to "Database-Integrated" production phase.
+  - Verified visual alignment with the premium design system across all documented verticals.
+
 ## [1.2.0] - 2026-04-01
 
 ### Added

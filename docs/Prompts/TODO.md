@@ -21,9 +21,24 @@
 - [x] Story 4.1: High-End Vehicle Catalog & Fleet Grid.
 - [x] Story 4.2: Logistic-Specific Metadata (Duration/Armed Escorts).
 - [x] Story 4.3: Cinematic Fleet Showcase Hero.
+- [x] Story 4.4: Breadcrumb Navigation System (SEO).
 - [x] **New**: Branding refinement (Updated SUV/Jeep iconography).
 
-## Upcoming Epics
-- **Epic 5**: Accounting & Financial Intelligence Vertical.
-- **Epic 6**: Supabase Database Integration & Admin Dashboard.
-- **Epic 7**: Advanced SEO & Open Graph (OG) Automation.
+## Epic 5: Accounting & Financial Intelligence Vertical [COMPLETE]
+- [x] Story 5.1: Accounting Service Showcase UI.
+- [x] Story 5.2: "How It Works" Stepper Component.
+- [x] Story 5.3: Consultation Conversion Flow (WhatsApp).
+
+## Epic 6: Supabase Database & Admin Dashboard [TODO]
+- [ ] Story 6.1: Prisma Schema & Local Database Setup.
+- [ ] Story 6.2: Production Seed & Inventory Migration.
+- [ ] Story 6.3: Secure Admin CRUD Panel.
+
+## Epic 7: Advanced SEO & OG Automation [TODO]
+- [ ] Story 7.1: Dynamic Metadata API Implementation.
+- [ ] Story 7.2: Automated Open Graph Previews.
+- [ ] Story 7.3: Sitemap & Robots Optimization.
+
+## Upcoming Epics (Post-V1 Launch)
+- Epic 8: Enhanced Analytics & Client Session Replays.
+- Epic 9: Automated WhatsApp Webhooks/Chatbot Integration.

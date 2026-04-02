@@ -81,11 +81,7 @@ export default function BrandingPage() {
                 className="rounded-2xl object-cover shadow-2xl"
                 priority
               />
-              <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-full border-8 border-brand-background bg-brand-secondary p-4 shadow-xl">
-                 <div className="flex h-full w-full items-center justify-center text-center text-xs font-bold font-heading text-white leading-tight uppercase tracking-tighter">
-                   Luxury <br/> Quality
-                 </div>
-              </div>
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10" />
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 Story_ID: STR-404
 ---
 
@@ -9,8 +9,8 @@ Story_ID: STR-404
 In a multi-vertical agency, breadcrumbs serve two critical functions: (1) Navigational orientation for the user and (2) **Structured Data for Google Search Console**. We use the Next.js path structure to automatically generate a SEO-friendly trail.
 
 ## 🎯 Deliverables
-- [ ] `Breadcrumb` component using Radix UI/shadcn `Breadcrumb` primitives.
-- [ ] Dynamic path mapping utility.
+- [x] `Breadcrumb` component using Radix UI/shadcn `Breadcrumb` primitives.
+- [x] Dynamic path mapping utility.
 
 ## 🛠️ Requirements & Specifications
 ### 1. Trail Logic
@@ -29,9 +29,9 @@ In a multi-vertical agency, breadcrumbs serve two critical functions: (1) Naviga
 - Component must output valid **JSON-LD Schema.org** markup into the head of the page to generate Google search "Rich Results".
 
 ## ✅ Acceptance Criteria
-- [ ] Navigating depth increases breadcrumb levels automatically.
-- [ ] Keyboard navigation (Tab) through the breadcrumbs works perfectly.
-- [ ] Mobile view collapses long breadcrumbs using ellipsis (...) if they exceed viewport width.
+- [x] Navigating depth increases breadcrumb levels automatically.
+- [x] Keyboard navigation (Tab) through the breadcrumbs works perfectly.
+- [x] Mobile view collapses long breadcrumbs using ellipsis (...) if they exceed viewport width.
 
 ## 🛡️ Edge Cases
 - **Home Route:** Do not show breadcrumbs on the homepage.

@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 Story_ID: STR-403
 ---
 
@@ -9,9 +9,9 @@ Story_ID: STR-403
 Logistics commerce is not about "quantity" but "duration" and "service intensity." We need to capture the number of rental days and optional add-ons like security escorts directly in the discovery flow.
 
 ## 🎯 Deliverables
-- [ ] Rental Duration Selector (1-30 days).
-- [ ] "Security Level" toggle for applicable vehicles.
-- [ ] Live price estimator within the card/modal.
+- [x] Rental Duration Selector (1-30 days).
+- [x] "Security Level" toggle for applicable vehicles.
+- [x] Live price estimator within the card/modal.
 
 ## 🛠️ Detailed Requirements & Specifications
 ### 1. Duration Logic
@@ -28,9 +28,9 @@ Logistics commerce is not about "quantity" but "duration" and "service intensity
 - Update the estimate in **real-time** on the UI before the user clicks "Add to Booking."
 
 ## ✅ Acceptance Criteria
-- [ ] Clicking "Add to Booking" sends the custom `days` count to the `useCart` store.
-- [ ] Toggling security fees immediately updates the visual "NairaTotal" on the card.
-- [ ] Validation prevents selecting zero days.
+- [x] Clicking "Add to Booking" sends the custom `days` count to the `useCart` store.
+- [x] Toggling security fees immediately updates the visual "NairaTotal" on the card.
+- [x] Validation prevents selecting zero days.
 
 ## 🛡️ Edge Cases
 - **Cart Merging:** If a user adds a G-Wagon for 2 days, then adds it again for 3 days, the system should ask to "Over-write" or "Append" (Default: Append/Update to new value).

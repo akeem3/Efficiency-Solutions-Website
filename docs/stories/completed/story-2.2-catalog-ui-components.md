@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 ---
 
 # Story 2.2: Branding Catalog UI Components
@@ -8,10 +8,10 @@ Status: TODO
 This story turns the mock data into a visual catalog. We are building the specific layout for the Branding page, which features a sidebar-heavy navigation structure typical of high-end e-commerce.
 
 ## 🎯 Deliverables
-- [ ] `ProductGrid` component (Responsive).
-- [ ] `ProductCard` component (Luxury variant).
-- [ ] `CategorySidebar` (Sticky).
-- [ ] `Breadcrumbs` (Dynamic).
+- [x] `ProductGrid` component (Responsive).
+- [x] `ProductCard` component (Luxury variant).
+- [x] `CategorySidebar` (Sticky).
+- [x] `Breadcrumbs` (Dynamic).
 
 ## 🛠️ Requirements & Constraints
 - **Product Card Anatomy:**
@@ -32,6 +32,6 @@ This story turns the mock data into a visual catalog. We are building the specif
 4. Implementation must be purely PRESENTATIONAL (connecting to mock data state comes in Story 2.3).
 
 ## ✅ Acceptance Criteria
-- [ ] Layout pixel-perfectly matches `docs/designs/Screenshot 2026-03-29 100023.png`.
-- [ ] Hovering a product card shows a smooth transition/elevation.
-- [ ] The catalog is fully readable on a mobile screen (1-column grid).
+- [x] Layout pixel-perfectly matches `docs/designs/Screenshot 2026-03-29 100023.png`.
+- [x] Hovering a product card shows a smooth transition/elevation.
+- [x] The catalog is fully readable on a mobile screen (1-column grid).

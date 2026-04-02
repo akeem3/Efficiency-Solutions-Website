@@ -37,7 +37,7 @@ export default function RootLayout({
         <main className="flex-grow">{children}</main>
         <Footer />
         <FloatingWhatsApp />
-        <Toaster richColors position="top-right" />
+        <Toaster richColors position="bottom-left" duration={2000} gap={8} />
       </body>
     </html>
   );

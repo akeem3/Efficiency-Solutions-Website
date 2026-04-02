@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 Story_ID: STR-402
 ---
 
@@ -9,9 +9,9 @@ Story_ID: STR-402
 The logistics vertical represents a significantly higher ticket-price than branding items. The UI must feel more cinematic and weighted. We will use large, clear imagery and a spacious grid to achieve this "High-End Showroom" feel.
 
 ## 🎯 Deliverables
-- [ ] Responsive `LogisticsGrid` in `src/components/logistics/`.
-- [ ] Cinematic `VehicleCard` matching design system.
-- [ ] Left-hand filter sidebar for service categories.
+- [x] Responsive `LogisticsGrid` in `src/components/logistics/`.
+- [x] Cinematic `VehicleCard` matching design system.
+- [x] Left-hand filter sidebar for service categories.
 
 ## 🛠️ Detailed Requirements & Specifications
 ### 1. Cinematic Card Design
@@ -30,9 +30,9 @@ The logistics vertical represents a significantly higher ticket-price than brand
 - **Blur-placeholder:** Implement a shimmer effect while high-res vehicle imagery loads.
 
 ## ✅ Acceptance Criteria
-- [ ] Card interactions (hovers) feel smooth and premium via `framer-motion`.
-- [ ] The sidebar correctly switches categories (Rental vs. Escort) using URL parameters.
-- [ ] Multi-line feature lists (AC, Wifi, Bulletproof) are formatted cleanly with bullet points.
+- [x] Card interactions (hovers) feel smooth and premium via `framer-motion`.
+- [x] The sidebar correctly switches categories (Rental vs. Escort) using URL parameters.
+- [x] Multi-line feature lists (AC, Wifi, Bulletproof) are formatted cleanly with bullet points.
 
 ## 🛡️ Edge Cases
 - **Missing Asset:** Fallback to a high-quality "Service Pattern" or placeholder if a specific vehicle image is missing.

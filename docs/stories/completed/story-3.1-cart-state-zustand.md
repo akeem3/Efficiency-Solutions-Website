@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 Story_ID: STR-301
 ---
 
@@ -9,9 +9,9 @@ Story_ID: STR-301
 The application requires a **unified ecommerce engine** that can handle items from both the *Premium Branding* (Quantity-based) and *Luxury Logistics* (Day/Duration-based) services. Using **Zustand** allows us to maintain a lean, highly-performant state without the "boilerplate" overhead of Redux or the context-rerendering issues of the native React Context API.
 
 ## 🎯 Deliverables
-- [ ] Optimized `useCart` store in `src/hooks/useCart.ts`.
-- [ ] Cross-tab sync middleware (built-in Zustand `persist`).
-- [ ] Computed state selectors for total item count and formatted subtotal.
+- [x] Optimized `useCart` store in `src/hooks/useCart.ts`.
+- [x] Cross-tab sync middleware (built-in Zustand `persist`).
+- [x] Computed state selectors for total item count and formatted subtotal.
 
 ## 🛠️ Detailed Requirements & Specifications
 ### 1. Store State Types
@@ -41,10 +41,10 @@ interface CartItem {
 - Handshake with `onRehydrateStorage` to prevent hydration mismatches (flash of empty cart) in Next.js.
 
 ## ✅ Acceptance Criteria
-- [ ] State survives page refreshes 100% of the time.
-- [ ] Items from different categories can coexist in the same array.
-- [ ] Adding an existing item in Branding correctly increments `quantity`.
-- [ ] Adding an existing item in Logistics (e.g., G-Wagon) correctly increments `metadata.days`.
+- [x] State survives page refreshes 100% of the time.
+- [x] Items from different categories can coexist in the same array.
+- [x] Adding an existing item in Branding correctly increments `quantity`.
+- [x] Adding an existing item in Logistics (e.g., G-Wagon) correctly increments `metadata.days`.
 
 ## 🛡️ Edge Cases
 - **Hydration Sync:** Ensure the "Cart Count" badge is zero until the server-client sync is complete to avoid Hydration Error.

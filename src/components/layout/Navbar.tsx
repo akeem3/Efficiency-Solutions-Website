@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { LuMenu, LuX, LuShoppingCart } from "react-icons/lu";
+import { LuMenu, LuX, LuShoppingCart, LuChevronDown } from "react-icons/lu";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -91,32 +91,81 @@ export const Navbar = () => {
 
         {/* Center: Navigation Links (Desktop) */}
         <div className="hidden lg:flex lg:flex-1 justify-center items-center gap-2">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={(e) => {
-                if (item.href === "/#services" && pathname === "/") {
-                  e.preventDefault();
-                  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
-                } else if (item.href === "/" && pathname === "/") {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                } else if (pathname.startsWith(item.href) && item.href !== "/") {
-                  // Handle case where we click a service link while already on that service's subpage
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-              }}
-              className={cn(
-                buttonVariants({ variant: "ghost" }),
-                "text-base font-medium text-brand-muted hover:text-brand-primary transition-colors",
-                pathname === item.href && "text-brand-primary font-semibold",
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            if (item.name === "Services") {
+              return (
+                <div key={item.href} className="relative group">
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      buttonVariants({ variant: "ghost" }),
+                      "text-base font-medium text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1",
+                      pathname.startsWith("/services") && "text-brand-primary font-semibold"
+                    )}
+                  >
+                    {item.name}
+                    <LuChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
+                  </Link>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 p-3 w-72 flex flex-col gap-1">
+                      <Link href="/services/branding" className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors group/link">
+                        <div className="h-10 w-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center shrink-0 transition-transform group-hover/link:scale-110">
+                          <Icons.Services className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <div className="font-bold font-heading text-brand-primary text-sm">Premium Branding</div>
+                          <div className="text-xs text-brand-muted mt-0.5">Custom apparel & gifts</div>
+                        </div>
+                      </Link>
+                      <Link href="/services/logistics" className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors group/link">
+                        <div className="h-10 w-10 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center shrink-0 transition-transform group-hover/link:scale-110">
+                          <Icons.Logistics className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <div className="font-bold font-heading text-brand-primary text-sm">Luxury Logistics</div>
+                          <div className="text-xs text-brand-muted mt-0.5">Elite vehicle rentals</div>
+                        </div>
+                      </Link>
+                      <Link href="/services/accounting" className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors group/link">
+                        <div className="h-10 w-10 rounded-lg bg-emerald-600/10 text-emerald-600 flex items-center justify-center shrink-0 transition-transform group-hover/link:scale-110">
+                          <Icons.Accounting className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <div className="font-bold font-heading text-brand-primary text-sm">Accounting Services</div>
+                          <div className="text-xs text-brand-muted mt-0.5">Financial intelligence</div>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={(e) => {
+                  if (item.href === "/#services" && pathname === "/") {
+                    e.preventDefault();
+                    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+                  } else if (item.href === "/" && pathname === "/") {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else if (pathname.startsWith(item.href) && item.href !== "/") {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
+                className={cn(
+                  buttonVariants({ variant: "ghost" }),
+                  "text-base font-medium text-brand-muted hover:text-brand-primary transition-colors",
+                  pathname === item.href && "text-brand-primary font-semibold",
+                )}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Right Side: Cart, CTA and Mobile Menu Button */}

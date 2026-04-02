@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 ---
 
 # Story 2.3: Client-Side Filter & Sort Logic
@@ -8,10 +8,10 @@ Status: TODO
 This story brings the catalog to life. Users need to filter through the branding inventory by category, search by name, and sort by price. All logic must be handled on the client for instant responsiveness.
 
 ## 🎯 Deliverables
-- [ ] Filtering logic for the Sidebar.
-- [ ] Sorting functionality for the "Sort By" dropdown.
-- [ ] Real-time search in the catalog header.
-- [ ] URL State Synchronization.
+- [x] Filtering logic for the Sidebar.
+- [x] Sorting functionality for the "Sort By" dropdown.
+- [x] Real-time search in the catalog header.
+- [x] URL State Synchronization.
 
 ## 🛠️ Requirements & Constraints
 - **URL Sync:** If a user selects "Apparel", the URL should update to `/services/branding?category=apparel`. This allows users to share filtered links.
@@ -27,6 +27,6 @@ This story brings the catalog to life. Users need to filter through the branding
 3. Add a "Clear Filters" button that appears only when active filters exist.
 
 ## ✅ Acceptance Criteria
-- [ ] Performance check: Filtering 8+ products feels "instant" (< 50ms).
-- [ ] URL check: Refreshing the page with `?category=Apparel` in the URL preserves the filter state.
-- [ ] Search check: Typing "Mug" instantly hides everything except your mug products.
+- [x] Performance check: Filtering 8+ products feels "instant" (< 50ms).
+- [x] URL check: Refreshing the page with `?category=Apparel` in the URL preserves the filter state.
+- [x] Search check: Typing "Mug" instantly hides everything except your mug products.

@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 ---
 
 # Epic 1: Infrastructure & Design Alignment
@@ -21,7 +21,7 @@ Establish the technical safety-net, design foundations, and the global visual sh
 
 ## 📜 User Stories
 ---
-Status: TODO
+Status: DONE
 ---
 1. **[Story 1.1: Environment Validation](../stories/story-1.1-env-validation.md)** - Singleton config pattern.
 ---
@@ -29,6 +29,6 @@ Status: DONE
 ---
 2. **[Story 1.2: Design System Setup](../stories/story-1.2-design-system-setup.md)** - Token mapping and typography.
 ---
-Status: TODO
+Status: DONE
 ---
 3. **[Story 1.3: Global Layout Shell](../stories/story-1.3-global-layout-shell.md)** - Responsive Navbar, Footer, and WhatsApp Button.

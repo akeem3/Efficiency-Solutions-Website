@@ -41,3 +41,11 @@ export function generateWhatsAppLink(items: CartItem[], total: number) {
 
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
+
+export function generateConsultationLink(serviceName: string) {
+  const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  
+  const message = `Hi Efficiency Solutions! 👋\n\nI would like to book a free consultation for your *${serviceName}* services.\n\nPlease let me know your available times for a brief introductory call. Thank you!`;
+
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}

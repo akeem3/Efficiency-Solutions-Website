@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 Story_ID: STR-304
 ---
 
@@ -9,8 +9,8 @@ Story_ID: STR-304
 Good software feels "alive." Every interaction should prove to the user that their action was recorded. Using **Sonner**, we provide non-intrusive feedack that guides the user toward the next step in the journey: discovery or checkout.
 
 ## 🎯 Deliverables
-- [ ] Standardized `cartToast` utility.
-- [ ] Integration into the `CatalogCard` components.
+- [x] Standardized `cartToast` utility.
+- [x] Integration into the `CatalogCard` components.
 
 ## 🛠️ Detailed Requirements & Specifications
 ### 1. User Feedback Flows
@@ -28,9 +28,9 @@ Good software feels "alive." Every interaction should prove to the user that the
 - If the same item is added twice within 1 second, update the existing toast rather than stack new ones (Prevents "Toast Spam").
 
 ## ✅ Acceptance Criteria
-- [ ] Toast is visible on both Desktop (Top-Right) and Mobile (Top-Center).
-- [ ] Clicking "VIEW CART" inside the toast triggers the drawer successfully.
-- [ ] Contrast ratios for text within the Navy frame pass accessibility standards (WCAG).
+- [x] Toast is visible on both Desktop (Top-Right) and Mobile (Top-Center).
+- [x] Clicking "VIEW CART" inside the toast triggers the drawer successfully.
+- [x] Contrast ratios for text within the Navy frame pass accessibility standards (WCAG).
 
 ## 🛡️ Edge Cases
 - **Multi-Toast:** Ensure that adding different items in rapid succession doesn't hide previous feedback too quickly.

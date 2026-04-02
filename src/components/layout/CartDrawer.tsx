@@ -163,8 +163,8 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
                 onClick={handleCheckout}
               >
                 Checkout to WhatsApp
-                <div className="ml-3 h-7 w-7 flex items-center justify-center rounded-full bg-brand-secondary text-white transform transition-transform group-hover:translate-x-1 group-hover:rotate-12">
-                   <Icons.Logo className="h-3 w-3" />
+                <div className="ml-3 h-7 w-7 flex items-center justify-center rounded-full bg-white transform transition-transform group-hover:translate-x-1 group-hover:rotate-12 overflow-hidden bg-transparent">
+                   <Image src="/whatsapp.png" alt="WhatsApp" width={28} height={28} className="object-contain" />
                 </div>
               </Button>
               

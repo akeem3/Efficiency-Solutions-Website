@@ -1,5 +1,5 @@
 ---
-Status: TODO
+Status: DONE
 ---
 
 # Epic 2: Branding Service Vertical (Mock-First)
@@ -19,14 +19,14 @@ Implement the first full service catalog ("Premium Branding") using a "Mock-Firs
 
 ## 📜 User Stories
 ---
-Status: TODO
+Status: DONE
 ---
 1. **[Story 2.1: Mock Inventory Core](../stories/story-2.1-mock-inventory-core.md)** - Schema and repository pattern.
 ---
-Status: TODO
+Status: DONE
 ---
 2. **[Story 2.2: Catalog UI Components](../stories/story-2.2-catalog-ui-components.md)** - Sidebar, cards, and grid.
 ---
-Status: TODO
+Status: DONE
 ---
 3. **[Story 2.3: Filtering & Sorting Logic](../stories/story-2.3-filtering-sorting-logic.md)** - Logic and URL synchronization.
