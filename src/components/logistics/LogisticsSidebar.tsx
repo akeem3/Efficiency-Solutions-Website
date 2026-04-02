@@ -24,12 +24,12 @@ export const LogisticsSidebar = ({
   return (
     <aside 
       className={cn(
-        "sticky top-24 hidden h-fit w-72 flex-col rounded-3xl bg-white p-8 text-brand-primary shadow-2xl ring-1 ring-black/5 lg:flex",
+        "sticky top-24 hidden h-fit w-72 flex-col rounded-[10px] bg-white p-8 text-brand-primary shadow-2xl ring-1 ring-black/5 lg:flex",
         className
       )}
     >
       <div className="flex items-center gap-4 mb-10">
-        <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-brand-primary text-white">
+        <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-brand-primary text-white">
           <LuShield className="h-5 w-5" />
         </div>
         <h2 className="text-xl font-extrabold font-heading">Our Fleet</h2>
@@ -45,7 +45,7 @@ export const LogisticsSidebar = ({
               key={category}
               onClick={() => onCategoryChange?.(isActive ? "" : category)}
               className={cn(
-                "group relative flex w-full items-center justify-between overflow-hidden rounded-2xl px-6 py-4 text-left text-sm font-bold transition-all duration-300",
+                "group relative flex w-full items-center justify-between overflow-hidden rounded-[10px] px-6 py-4 text-left text-sm font-bold transition-all duration-300",
                 isActive ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/20" : "bg-brand-muted/5 text-brand-muted hover:bg-brand-muted/10 hover:text-brand-primary"
               )}
             >
@@ -68,7 +68,7 @@ export const LogisticsSidebar = ({
         })}
       </nav>
 
-      <div className="mt-12 p-6 rounded-2xl bg-brand-secondary/10 border border-brand-secondary/20">
+      <div className="mt-12 p-6 rounded-[10px] bg-brand-secondary/10 border border-brand-secondary/20">
          <p className="text-xs font-bold font-heading text-brand-secondary uppercase tracking-widest mb-2">Need a Custom Fleet?</p>
          <p className="text-xs text-brand-muted/80 leading-relaxed mb-4">Contact our logistics team for bulk rentals and diplomatic escort packages.</p>
          <button className="text-brand-primary font-bold font-heading text-xs underline underline-offset-4 hover:text-brand-secondary transition-all">Agent Consultation</button>

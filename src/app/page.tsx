@@ -51,7 +51,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-4xl"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/5 text-brand-primary font-bold font-heading text-xs uppercase tracking-widest mb-8 border border-brand-primary/10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-[10px] bg-brand-primary/5 text-brand-primary font-bold font-heading text-xs uppercase tracking-widest mb-8 border border-brand-primary/10">
             <Icons.Logo className="h-4 w-4" />
             Excellence & Efficiency
           </div>
@@ -68,12 +68,12 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="#services">
-              <Button size="lg" className="h-12 md:h-14 px-8 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-bold font-heading group">
+              <Button size="lg" className="h-12 md:h-14 px-8 rounded-[10px] bg-brand-primary hover:bg-brand-primary/90 text-white font-bold font-heading group">
                 Explore Our Services
                 <Icons.ExternalLink className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="h-12 md:h-14 px-8 rounded-full border-brand-primary/20 text-brand-primary font-bold font-heading hover:bg-brand-primary/5">
+            <Button variant="outline" size="lg" className="h-12 md:h-14 px-8 rounded-[10px] border-brand-primary/20 text-brand-primary font-bold font-heading hover:bg-brand-primary/5">
               Read Our Story
             </Button>
           </div>
@@ -107,7 +107,7 @@ export default function Home() {
                 <Link href={service.href} className="group block h-full">
                   <Card className="h-full border-none shadow-xl bg-white overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ring-1 ring-black/5">
                     <CardHeader className="pb-4">
-                      <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3", service.color)}>
+                      <div className={cn("w-14 h-14 rounded-[10px] flex items-center justify-center mb-6 text-white shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3", service.color)}>
                         <service.icon className="h-7 w-7" />
                       </div>
                       <CardTitle className="text-2xl font-bold font-heading text-brand-primary">

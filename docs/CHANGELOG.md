@@ -4,6 +4,21 @@ All notable changes to the **Efficiency Solutions** web application will be docu
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-04-02
+
+### Added
+- **Design System: Border Radius Normalization**:
+  - Implemented a global design rule to restrict border radii to a professional **10px-12px** range.
+  - Updated the global `--radius` CSS token to `0.625rem` (10px).
+  - Refactored all Hero sections, Service Cards, and Sidebars to eliminate "pill" and "bubble" shapes in favor of a refined, premium aesthetic.
+  - Documented the "Do Not Over-Round Elements" mandate in the PRD to prevent design regression.
+
+### Changed
+- **Accounting Service Strategy Pivot**:
+  - Eliminated the calendar-based consultation booking feature in favor of high-conversion WhatsApp CTAs.
+  - Standardized all Call-to-Action (CTA) elements in the Accounting vertical to trigger pre-filled WhatsApp consultation requests.
+  - Improved mobile-first positioning and element hierarchy for the Accounting service details and process stepper.
+
 ## [1.4.1] - 2026-04-02
 
 ### Changed
@@ -11,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Enriched Mobile Menu**: Transformed the static "Services" link into a dynamic, icon-rich accordion in the mobile drawer for improved service discovery.
 - **Responsive Typography & Spacing**: Optimized hero heading scales (4xl to 7xl) to ensure readability and aesthetic balance across all screen sizes.
 - **Global Button Sizing**: Adjusted large hero and checkout buttons to scale down on mobile (h-14/12), improving thumb-reach comfort and layout stability.
+- **Mobile Cart Sidebar Refinement**: Overhauled the **CartDrawer** with micro-sized iconography, adaptive padding, and fluid typography to eliminate layout constraints and improve usability on narrow mobile screens.
+- **Accounting Vertical Overhaul**: Transformed the **Accounting Service** into a high-tier consultancy experience with glassmorphic switchers, bento-grid feature displays, and structural "onboarding flow" Steppers.
 
 ## [1.4.0] - 2026-04-02
 

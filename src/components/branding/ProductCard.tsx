@@ -49,7 +49,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {product.isFeatured && (
-          <div className="absolute top-4 left-4 z-10 rounded-full bg-brand-secondary/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+          <div className="absolute top-4 left-4 z-10 rounded-[10px] bg-brand-secondary/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
             Featured
           </div>
         )}
@@ -72,7 +72,7 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
           variant="secondary" 
           size="sm"
           onClick={handleAddToCart}
-          className="group/btn relative bg-brand-secondary/10 text-brand-secondary hover:bg-brand-secondary hover:text-white transition-all duration-300 px-4 rounded-full"
+          className="group/btn relative bg-brand-secondary/10 text-brand-secondary hover:bg-brand-secondary hover:text-white transition-all duration-300 px-4 rounded-[10px]"
         >
           <span className="mr-2 text-xs font-bold font-heading">Add to Cart</span>
           <ShoppingCart className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover/btn:translate-x-1" />

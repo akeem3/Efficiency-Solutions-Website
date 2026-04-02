@@ -60,7 +60,7 @@ export default function BrandingPage() {
         <Breadcrumbs />
 
         {/* Hero Section */}
-        <section className="relative mb-16 overflow-hidden rounded-[2rem] bg-brand-primary/5 p-8 lg:p-16">
+        <section className="relative mb-16 overflow-hidden rounded-[10px] bg-brand-primary/5 p-6 md:p-10 lg:p-16">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div className="z-10">
               <h1 className="mb-6 text-4xl font-extrabold font-heading text-brand-primary leading-[1.1] md:text-5xl lg:text-6xl">
@@ -78,10 +78,10 @@ export default function BrandingPage() {
                 src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=1200"
                 alt="Branding Showcase"
                 fill
-                className="rounded-2xl object-cover shadow-2xl"
+                className="rounded-[10px] object-cover shadow-2xl"
                 priority
               />
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10" />
+              <div className="absolute inset-0 rounded-[10px] ring-1 ring-black/10" />
             </div>
           </div>
 
@@ -93,7 +93,7 @@ export default function BrandingPage() {
         <div className="flex lg:hidden overflow-x-auto pb-6 mb-8 no-scrollbar -mx-2 px-2 gap-3">
           <button
             onClick={() => setActiveCategory(undefined)}
-            className={`flex-shrink-0 px-6 py-3 rounded-full text-sm font-bold font-heading whitespace-nowrap transition-all ${
+            className={`flex-shrink-0 px-6 py-3 rounded-[10px] text-sm font-bold font-heading whitespace-nowrap transition-all ${
               activeCategory === undefined
                 ? "bg-brand-primary text-white shadow-lg" 
                 : "bg-white text-brand-muted hover:bg-brand-primary/5"
@@ -106,7 +106,7 @@ export default function BrandingPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`flex-shrink-0 px-6 py-3 rounded-full text-sm font-bold font-heading whitespace-nowrap transition-all ${
+              className={`flex-shrink-0 px-6 py-3 rounded-[10px] text-sm font-bold font-heading whitespace-nowrap transition-all ${
                 activeCategory === cat 
                   ? "bg-brand-primary text-white shadow-lg" 
                   : "bg-white text-brand-muted hover:bg-brand-primary/5"
@@ -128,35 +128,37 @@ export default function BrandingPage() {
           {/* Catalog Area */}
           <div className="flex-1">
             {/* Controls Bar */}
-            <div className="mb-10 flex flex-col items-center justify-between gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 md:flex-row md:px-10">
+            <div className="mb-10 flex flex-col items-center justify-between gap-6 rounded-[10px] bg-white p-6 shadow-sm ring-1 ring-black/5 md:flex-row md:px-10">
               <div className="relative w-full md:max-w-md">
                 <LuSearch className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-brand-muted" />
                 <Input 
                   placeholder="Search premium items..." 
-                  className="h-12 w-full rounded-full border-none bg-brand-muted/5 pl-12 pr-6 text-sm font-medium focus-visible:ring-brand-secondary/50"
+                  className="h-12 w-full rounded-[10px] border-none bg-brand-muted/5 pl-12 pr-6 text-sm font-medium focus-visible:ring-brand-secondary/50"
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                 />
               </div>
 
-              <div className="flex items-center gap-4 w-full md:w-auto">
-                <Select 
-                  value={sortBy} 
-                  onValueChange={(val) => setSortBy(val ?? "featured")}
-                >
-                  <SelectTrigger className="h-12 w-full md:w-48 rounded-full border-none bg-brand-muted/5 font-bold font-heading text-xs text-brand-primary focus:ring-brand-secondary/50">
-                    <SelectValue placeholder="Sort by" />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-xl border-none shadow-xl">
-                    <SelectItem value="featured" className="text-xs font-bold font-heading py-3">Featured First</SelectItem>
-                    <SelectItem value="price-asc" className="text-xs font-bold font-heading py-3">Price: Low to High</SelectItem>
-                    <SelectItem value="price-desc" className="text-xs font-bold font-heading py-3">Price: High to Low</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="flex flex-col sm:flex-row items-center gap-6 w-full md:w-auto">
+                <div className="w-full sm:w-48">
+                  <Select 
+                    value={sortBy} 
+                    onValueChange={(val) => setSortBy(val ?? "featured")}
+                  >
+                    <SelectTrigger className="h-12 w-full rounded-[10px] border-none bg-brand-muted/5 font-bold font-heading text-xs text-brand-primary focus:ring-brand-secondary/50">
+                      <SelectValue placeholder="Sort by" />
+                    </SelectTrigger>
+                    <SelectContent className="rounded-[10px] border-none shadow-xl min-w-[180px]">
+                      <SelectItem value="featured" className="text-xs font-bold font-heading py-3">Featured First</SelectItem>
+                      <SelectItem value="price-asc" className="text-xs font-bold font-heading py-3">Price: Low to High</SelectItem>
+                      <SelectItem value="price-desc" className="text-xs font-bold font-heading py-3">Price: High to Low</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
                 
                 <div className="hidden h-8 w-px bg-brand-muted/20 md:block" />
                 
-                <span className="shrink-0 text-xs font-bold font-heading text-brand-muted uppercase tracking-widest">
+                <span className="shrink-0 text-[10px] md:text-xs font-bold font-heading text-brand-muted uppercase tracking-widest text-center sm:text-left">
                   {filteredProducts.length} Items Found
                 </span>
               </div>
@@ -166,7 +168,7 @@ export default function BrandingPage() {
             {filteredProducts.length > 0 ? (
               <ProductGrid products={filteredProducts} />
             ) : (
-              <div className="flex min-h-[400px] flex-col items-center justify-center rounded-3xl border-2 border-dashed border-brand-muted/20 bg-white/50 p-12 text-center">
+              <div className="flex min-h-[400px] flex-col items-center justify-center rounded-[10px] border-2 border-dashed border-brand-muted/20 bg-white/50 p-12 text-center">
                 <LuSearch className="mb-6 h-12 w-12 text-brand-muted/30" />
                 <h3 className="mb-2 text-xl font-bold font-heading text-brand-primary">No items found</h3>
                 <p className="text-brand-muted mb-8">Try adjusting your search or filters to discover our services.</p>

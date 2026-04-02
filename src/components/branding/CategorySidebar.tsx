@@ -18,7 +18,7 @@ export const CategorySidebar = ({
   return (
     <aside 
       className={cn(
-        "sticky top-24 hidden h-fit w-64 flex-col rounded-2xl bg-brand-primary p-6 text-white shadow-xl lg:flex",
+        "sticky top-24 hidden h-fit w-64 flex-col rounded-[10px] bg-brand-primary p-6 text-white shadow-xl lg:flex",
         className
       )}
     >

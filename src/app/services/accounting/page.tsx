@@ -12,6 +12,8 @@ import { AccountingSidebar } from "@/components/accounting/AccountingSidebar";
 import { ServiceDetail } from "@/components/accounting/ServiceDetail";
 import { ProcessStepper } from "@/components/accounting/ProcessStepper";
 import { generateConsultationLink } from "@/lib/whatsapp";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export default function AccountingPage() {
   const [activeCategory, setActiveCategory] = useState<AccountingCategory>("Accounting");
@@ -29,21 +31,36 @@ export default function AccountingPage() {
         {/* Hero Section */}
         <AccountingHero onConsult={handleConsultation} />
 
-        {/* Horizontal Navigation (Mobile Only) */}
-        <div className="flex lg:hidden overflow-x-auto pb-6 mb-8 no-scrollbar -mx-2 px-2 gap-3">
-          {ACCOUNTING_CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`flex-shrink-0 px-6 py-3 rounded-full text-sm font-bold font-heading whitespace-nowrap transition-all ${
-                activeCategory === cat 
-                  ? "bg-brand-primary text-white shadow-lg" 
-                  : "bg-white text-brand-muted hover:bg-brand-primary/5"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Premium Tab Navigation (Mobile Only) */}
+        <div className="sticky top-16 z-30 -mx-6 lg:hidden mb-12">
+          <div className="bg-white/80 backdrop-blur-md border-y border-brand-primary/5 px-6 py-4 overflow-x-auto no-scrollbar flex gap-2">
+            {ACCOUNTING_CATEGORIES.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={cn(
+                    "relative flex-shrink-0 px-6 py-3 rounded-[10px] text-xs font-extra-bold font-heading uppercase tracking-widest transition-all duration-300",
+                    isActive 
+                      ? "text-white" 
+                      : "text-brand-muted hover:text-brand-primary hover:bg-brand-primary/5"
+                  )}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="mobile-tab-active"
+                      className="absolute inset-0 bg-brand-primary rounded-[10px] shadow-lg shadow-brand-primary/20"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{cat}</span>
+                </button>
+              );
+            })}
+          </div>
+          {/* Subtle bottom shadow for the sticky nav */}
+          <div className="h-4 w-full bg-gradient-to-b from-black/[0.02] to-transparent" />
         </div>
 
         {/* Main Section: Sidebar + Details */}

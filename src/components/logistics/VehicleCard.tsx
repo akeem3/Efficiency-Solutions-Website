@@ -54,7 +54,7 @@ export const VehicleCard = ({ vehicle, className }: VehicleCardProps) => {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         
         {vehicle.isFeatured && (
-          <div className="absolute top-4 left-4 z-10 rounded-full bg-brand-secondary px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
+          <div className="absolute top-4 left-4 z-10 rounded-[10px] bg-brand-secondary px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
             Premium Fleet
           </div>
         )}
@@ -78,7 +78,7 @@ export const VehicleCard = ({ vehicle, className }: VehicleCardProps) => {
               {vehicle.model}
             </p>
           </div>
-          <div className="h-10 w-10 rounded-xl bg-brand-primary/5 flex items-center justify-center">
+          <div className="h-10 w-10 rounded-[10px] bg-brand-primary/5 flex items-center justify-center">
              <LuShieldCheck className="h-5 w-5 text-brand-primary" />
           </div>
         </div>
@@ -109,7 +109,7 @@ export const VehicleCard = ({ vehicle, className }: VehicleCardProps) => {
         <Button 
           variant="default"
           onClick={handleAddToSelections}
-          className="bg-brand-primary hover:bg-brand-primary/90 text-white rounded-full px-6 flex gap-2 font-bold font-heading text-sm h-12"
+          className="bg-brand-primary hover:bg-brand-primary/90 text-white rounded-[10px] px-6 flex gap-2 font-bold font-heading text-sm h-12"
         >
           Book Now
           <LuExternalLink className="h-4 w-4" />

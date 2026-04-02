@@ -107,8 +107,8 @@ export const Navbar = () => {
                     <LuChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
                   </Link>
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 p-3 w-72 flex flex-col gap-1">
-                      <Link href="/services/branding" className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors group/link">
+                    <div className="bg-white rounded-[10px] shadow-xl ring-1 ring-black/5 p-3 w-72 flex flex-col gap-1">
+                      <Link href="/services/branding" className="flex items-center gap-3 p-3 rounded-[10px] hover:bg-brand-primary/5 transition-colors group/link">
                         <div className="h-10 w-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center shrink-0 transition-transform group-hover/link:scale-110">
                           <Icons.Services className="h-5 w-5" />
                         </div>
@@ -117,7 +117,7 @@ export const Navbar = () => {
                           <div className="text-xs text-brand-muted mt-0.5">Custom apparel & gifts</div>
                         </div>
                       </Link>
-                      <Link href="/services/logistics" className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors group/link">
+                      <Link href="/services/logistics" className="flex items-center gap-3 p-3 rounded-[10px] hover:bg-brand-primary/5 transition-colors group/link">
                         <div className="h-10 w-10 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center shrink-0 transition-transform group-hover/link:scale-110">
                           <Icons.Logistics className="h-5 w-5" />
                         </div>
@@ -126,7 +126,7 @@ export const Navbar = () => {
                           <div className="text-xs text-brand-muted mt-0.5">Elite vehicle rentals</div>
                         </div>
                       </Link>
-                      <Link href="/services/accounting" className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors group/link">
+                      <Link href="/services/accounting" className="flex items-center gap-3 p-3 rounded-[10px] hover:bg-brand-primary/5 transition-colors group/link">
                         <div className="h-10 w-10 rounded-lg bg-emerald-600/10 text-emerald-600 flex items-center justify-center shrink-0 transition-transform group-hover/link:scale-110">
                           <Icons.Accounting className="h-5 w-5" />
                         </div>
@@ -173,7 +173,7 @@ export const Navbar = () => {
           {/* Cart Trigger */}
           <CartDrawer>
             <button 
-              className="group relative flex h-11 w-11 items-center justify-center rounded-full bg-brand-primary/5 text-brand-primary transition-all hover:bg-brand-primary hover:text-white"
+              className="group relative flex h-11 w-11 items-center justify-center rounded-[10px] bg-brand-primary/5 text-brand-primary transition-all hover:bg-brand-primary hover:text-white"
               aria-label="View Cart"
             >
               <LuShoppingCart className="h-5 w-5" />
@@ -191,7 +191,7 @@ export const Navbar = () => {
             rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "default", size: "lg" }),
-              "bg-brand-primary hover:bg-brand-primary/90 text-white hidden lg:inline-flex rounded-full gap-2 px-8 h-12 shadow-lg shadow-brand-primary/10"
+              "bg-brand-primary hover:bg-brand-primary/90 text-white hidden lg:inline-flex rounded-[10px] gap-2 px-8 h-12 shadow-lg shadow-brand-primary/10"
             )}
           >
             Contact
@@ -202,7 +202,7 @@ export const Navbar = () => {
           <button
             className={cn(
               buttonVariants({ variant: "outline", size: "icon" }),
-              "lg:hidden h-11 w-11 rounded-full border-brand-primary/20 hover:bg-brand-primary/5",
+              "lg:hidden h-11 w-11 rounded-[10px] border-brand-primary/20 hover:bg-brand-primary/5",
             )}
             aria-label="Open mobile menu"
             onClick={toggleMobileMenu}
@@ -269,7 +269,7 @@ export const Navbar = () => {
                           {item.name}
                         </div>
                         <div className="flex flex-col gap-2 pl-4 border-l-2 border-brand-primary/10">
-                          <Link href="/services/branding" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors">
+                          <Link href="/services/branding" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-[10px] hover:bg-brand-primary/5 transition-colors">
                             <div className="h-8 w-8 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center shrink-0">
                               <Icons.Services className="h-4 w-4" />
                             </div>
@@ -278,7 +278,7 @@ export const Navbar = () => {
                               <div className="text-[11px] text-brand-muted mt-0.5">Custom apparel & gifts</div>
                             </div>
                           </Link>
-                          <Link href="/services/logistics" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors">
+                          <Link href="/services/logistics" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-[10px] hover:bg-brand-primary/5 transition-colors">
                             <div className="h-8 w-8 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center shrink-0">
                               <Icons.Logistics className="h-4 w-4" />
                             </div>
@@ -287,7 +287,7 @@ export const Navbar = () => {
                               <div className="text-[11px] text-brand-muted mt-0.5">Elite vehicle rentals</div>
                             </div>
                           </Link>
-                          <Link href="/services/accounting" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-xl hover:bg-brand-primary/5 transition-colors">
+                          <Link href="/services/accounting" onClick={toggleMobileMenu} className="flex items-center gap-3 p-3 rounded-[10px] hover:bg-brand-primary/5 transition-colors">
                             <div className="h-8 w-8 rounded-lg bg-emerald-600/10 text-emerald-600 flex items-center justify-center shrink-0">
                               <Icons.Accounting className="h-4 w-4" />
                             </div>
@@ -325,7 +325,7 @@ export const Navbar = () => {
                   rel="noopener noreferrer"
                   className={cn(
                     buttonVariants({ variant: "default", size: "lg" }),
-                    "w-full bg-brand-primary hover:bg-brand-primary/90 text-white rounded-full flex gap-2 h-14 text-lg",
+                    "w-full bg-brand-primary hover:bg-brand-primary/90 text-white rounded-[10px] flex gap-2 h-14 text-lg",
                   )}
                   onClick={toggleMobileMenu}
                 >

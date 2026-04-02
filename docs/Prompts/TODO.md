@@ -28,8 +28,9 @@
 - [x] Story 5.1: Accounting Service Showcase UI.
 - [x] Story 5.2: "How It Works" Stepper Component.
 - [x] Story 5.3: Consultation Conversion Flow (WhatsApp).
+- [x] Story 5.4: Mobile-First UX Optimization.
 
-## Epic 6: Supabase Database & Admin Dashboard [TODO]
+## Epic 6: Supabase Database & Admin Integration [IN PROGRESS]
 - [ ] Story 6.1: Prisma Schema & Local Database Setup.
 - [ ] Story 6.2: Production Seed & Inventory Migration.
 - [ ] Story 6.3: Secure Admin CRUD Panel.

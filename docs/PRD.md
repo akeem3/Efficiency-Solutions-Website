@@ -24,6 +24,7 @@ The UI strives for a clean, professional, and trustworthy aesthetic, balancing a
     *   **Navigation Experience:** Uses global `scroll-behavior: smooth` for single-page segment transitions when clicking 'Services' or 'Home' from the landing page.
     *   **Sidebar Navigation:** Used heavily in the e-commerce-style pages (Branding, Logistics) for easy category filtering.
 *   **Currency Formatting:** All pricing must be consistently formatted as **Nigerian Naira (₦)** using a global utility (`Intl.NumberFormat('en-NG')`). hardcoded ₦ symbols are prohibited.
+*   **Border Radius Normalization:** To maintain a professional, refined agency aesthetic, strict border-radius limits are enforced. All primary UI elements (Buttons, Cards, Search Inputs, Hero Sections) MUST use a normalized border radius of **10px to 12px** (`rounded-[10px]` or `rounded-lg`). Overly rounded "pill" shapes (`rounded-full`) and extreme corner radii (`rounded-3xl`, `rounded-4xl`) are prohibited for structural containers to prevent a "toy-like" or "overly bubbly" appearance. Small functional icons (Socials, Cart Count, WhatsApp Float) are the Only exceptions.
 
 ## 3. Core Features & User Stories
 
@@ -63,11 +64,10 @@ This tech stack is designed for current needs while maintaining high scalability
 *   **Database Engine:** Supabase (managed PostgreSQL). The ONLY data to be persistently stored is the **Products** (inventory/pricing for branding and vehicles). Supabase is chosen explicitly for its built-in PgBouncer to prevent Vercel serverless connection pooling issues. There is no public user registration or user data storage.
 *   **ORM:** Prisma, to provide type-safe database queries.
 *   **Admin Dashboard:** A dedicated, secure dashboard used exclusively for CRUD operations on the Products database.
-*   **Email Systems:** **Nodemailer**, utilized to fire off automated transaction emails and Google Meet calendar invites to the user and admin.
+*   **Email Systems:** **Nodemailer**, utilized to fire off automated transaction emails.
 *   **Monitoring & Analytics:** 
     *   **Sentry:** For real-time error tracking and session replays.
     *   **Vercel Analytics:** For privacy-friendly traffic and performance monitoring.
-*   **Calendar Integration:** A third-party setup or Google Calendar API integration to generate meeting links.
 
 ### 4.3. Image Hosting Strategy
 *   **Hybrid Approach:** 

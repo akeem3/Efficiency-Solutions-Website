@@ -36,7 +36,7 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
       <SheetContent className="flex flex-col w-full sm:max-w-md bg-white border-l border-brand-primary/10 p-0 shadow-2xl">
         <SheetHeader className="p-4 md:p-6 border-b border-brand-primary/5 bg-brand-primary/2">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 md:h-10 md:w-10 flex items-center justify-center rounded-xl bg-brand-primary text-white shadow-lg">
+            <div className="h-9 w-9 md:h-10 md:w-10 flex items-center justify-center rounded-[10px] bg-brand-primary text-white shadow-lg">
               <LuShoppingCart className="h-4 w-4 md:h-5 md:w-5" />
             </div>
             <SheetTitle className="text-lg md:text-xl font-extrabold font-heading text-brand-primary">
@@ -57,7 +57,7 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
             </div>
             <h3 className="text-lg md:text-xl font-bold font-heading text-brand-primary mb-3">Your cart is currently empty</h3>
             <p className="text-brand-muted/70 mb-8 md:mb-10 max-w-[200px] text-sm md:text-base">Discover our premium services to start building your quote.</p>
-            <Button variant="outline" className="rounded-full px-6 md:px-8 text-brand-primary border-brand-primary/20 font-bold font-heading h-11 md:h-12">
+            <Button variant="outline" className="rounded-[10px] px-6 md:px-8 text-brand-primary border-brand-primary/20 font-bold font-heading h-11 md:h-12">
                Explore Services
             </Button>
           </div>
@@ -73,10 +73,10 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
-                      className="group relative flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-2xl md:rounded-3xl bg-brand-primary/[0.02] border border-brand-primary/5 transition-all hover:bg-brand-primary/[0.04] hover:border-brand-primary/10"
+                      className="group relative flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-[10px] bg-brand-primary/[0.02] border border-brand-primary/5 transition-all hover:bg-brand-primary/[0.04] hover:border-brand-primary/10"
                     >
                       {/* Product Image */}
-                      <div className="relative h-16 w-16 md:h-20 md:w-20 flex-shrink-0 bg-white rounded-xl md:rounded-2xl overflow-hidden border border-brand-primary/5 shadow-sm">
+                      <div className="relative h-16 w-16 md:h-20 md:w-20 flex-shrink-0 bg-white rounded-[10px] overflow-hidden border border-brand-primary/5 shadow-sm">
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -102,7 +102,7 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
                         </div>
                         
                         <div className="flex items-center justify-between mt-2 md:mt-4">
-                           <div className="flex items-center gap-1 bg-white rounded-lg md:rounded-xl border border-brand-primary/5 p-0.5 md:p-1 shadow-sm">
+                           <div className="flex items-center gap-1 bg-white rounded-lg border border-brand-primary/5 p-0.5 md:p-1 shadow-sm">
                              <Button
                                 variant="ghost"
                                 size="icon"
@@ -159,7 +159,7 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
 
               <Button
                 size="lg"
-                className="w-full h-12 md:h-16 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-extrabold font-heading text-sm md:text-lg group shadow-xl"
+                className="w-full h-12 md:h-16 rounded-[10px] bg-brand-primary hover:bg-brand-primary/90 text-white font-extrabold font-heading text-sm md:text-lg group shadow-xl"
                 onClick={handleCheckout}
               >
                 Checkout to WhatsApp
