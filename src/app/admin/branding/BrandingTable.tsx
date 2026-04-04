@@ -101,7 +101,12 @@ export default function BrandingTable({ initialProducts }: { initialProducts: Br
                       <ProductFormModal 
                         product={product} 
                         trigger={
-                          <Button variant="outline" size="icon" className="h-8 w-8">
+                          <Button 
+                            variant="outline" 
+                            size="icon" 
+                            className="h-8 w-8"
+                            onClick={() => console.log('Edit clicked for', product.id)}
+                          >
                             <LuPencil className="h-4 w-4" />
                           </Button>
                         } 

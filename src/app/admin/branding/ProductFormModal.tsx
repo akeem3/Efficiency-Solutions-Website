@@ -84,8 +84,11 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<>{trigger || <Button variant="outline">Edit</Button>}</>} />
+    <Dialog open={open} onOpenChange={(val) => {
+      console.log('Dialog open state changing to:', val);
+      setOpen(val);
+    }}>
+      <DialogTrigger render={trigger ? <>{trigger}</> : <Button variant="outline">Edit</Button>} />
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>{product ? 'Edit Product' : 'Add New Product'}</DialogTitle>
@@ -111,7 +114,10 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select 
+                    onValueChange={field.onChange} 
+                    value={field.value}
+                  >
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a category" />
@@ -137,9 +143,13 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
                   <FormItem>
                     <FormLabel>Price (₦)</FormLabel>
                     <FormControl>
-                      <Input type="number" {...field} />
-                    </FormControl>
-                    <FormMessage />
+                      <Input 
+                        type="number" 
+                        {...field} 
+                        value={field.value || ''}
+                        onChange={(e) => field.onChange(e.target.valueAsNumber || 0)} 
+                      />
+                    </FormControl>                    <FormMessage />
                   </FormItem>
                 )}
               />

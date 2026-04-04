@@ -93,7 +93,7 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<>{trigger || <Button variant="outline">Edit</Button>}</>} />
+      <DialogTrigger render={trigger ? <>{trigger}</> : <Button variant="outline">Edit</Button>} />
       <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{vehicle ? 'Edit Vehicle' : 'Add New Vehicle'}</DialogTitle>
@@ -134,7 +134,10 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select 
+                    onValueChange={field.onChange} 
+                    value={field.value}
+                  >
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a category" />
@@ -160,9 +163,13 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
                   <FormItem>
                     <FormLabel>Price Per Day (₦)</FormLabel>
                     <FormControl>
-                      <Input type="number" {...field} />
-                    </FormControl>
-                    <FormMessage />
+                      <Input 
+                        type="number" 
+                        {...field} 
+                        value={field.value || ''}
+                        onChange={(e) => field.onChange(e.target.valueAsNumber || 0)} 
+                      />
+                    </FormControl>                    <FormMessage />
                   </FormItem>
                 )}
               />
