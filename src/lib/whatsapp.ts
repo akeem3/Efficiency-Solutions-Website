@@ -67,6 +67,14 @@ export function generateWhatsAppLink(items: CartItem[], total: number) {
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
+export function generateAccountingLink() {
+  const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  
+  const message = `Hi, I’d like to book a consultation for Accounting & Financial Intelligence.\n\nNeed help with:\n[Briefly describe your requirements]\n\nIs this a good time to talk?`;
+
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
 export function generateConsultationLink(serviceName: string) {
   const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   

@@ -11,7 +11,7 @@ import { AccountingHero } from "@/components/accounting/AccountingHero";
 import { AccountingSidebar } from "@/components/accounting/AccountingSidebar";
 import { ServiceDetail } from "@/components/accounting/ServiceDetail";
 import { ProcessStepper } from "@/components/accounting/ProcessStepper";
-import { generateConsultationLink } from "@/lib/whatsapp";
+import { generateAccountingLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -19,7 +19,7 @@ export default function AccountingPage() {
   const [activeCategory, setActiveCategory] = useState<AccountingCategory>("Accounting");
 
   const handleConsultation = () => {
-    const link = generateConsultationLink(activeCategory);
+    const link = generateAccountingLink();
     window.open(link, "_blank");
   };
 
