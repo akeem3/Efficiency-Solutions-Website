@@ -4,6 +4,23 @@ All notable changes to the **Efficiency Solutions** web application will be docu
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-04-04
+
+### Added
+- **Mobile-First Admin UX Overhaul**:
+  - Transformed the **Branding Inventory** and **Logistics Fleet** tables into a **Responsive Hybrid Layout**.
+  - Implemented high-quality **Stacked Card Views** for mobile devices (< 640px) featuring rich thumbnails, status badges, and quick-action toolbars.
+  - Optimized touch targets and spacing for admin CRUD operations on handheld devices.
+
+### Changed
+- **Next.js 16 Migration & Admin Stability**:
+  - Migrated the application middleware to the new **Next.js 16 Proxy convention** (`src/proxy.ts`).
+  - Standardized all **Dialog & Alert triggers** to use native `<button>` elements, definitively resolving "Base UI Trigger" nesting conflicts and console warnings.
+  - Implemented a robust **function-based render prop** in `ProductFormModal` and `VehicleFormModal` for safe prop cloning.
+- **Build & Performance Optimization**:
+  - Enforced **Dynamic Rendering** (`force-dynamic`) on all Prisma-dependent management routes to ensure build stability and real-time data accuracy.
+  - Standardized global hydration and scroll behavior settings in the root layout to eliminate browser extension interference.
+
 ## [1.6.0] - 2026-04-04
 
 ### Added
