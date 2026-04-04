@@ -1,0 +1,151 @@
+'use client';
+
+import { useState } from 'react';
+import { 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableHead, 
+  TableHeader, 
+  TableRow 
+} from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
+import { formatCurrency } from '@/lib/utils';
+import type { LogisticsVehicle } from '@prisma/client';
+import VehicleFormModal from './VehicleFormModal';
+import { 
+  AlertDialog, 
+  AlertDialogAction, 
+  AlertDialogCancel, 
+  AlertDialogContent, 
+  AlertDialogDescription, 
+  AlertDialogFooter, 
+  AlertDialogHeader, 
+  AlertDialogTitle, 
+  AlertDialogTrigger 
+} from '@/components/ui/alert-dialog';
+import { deleteLogisticsVehicle } from '../actions';
+import { toast } from 'sonner';
+import { LuPlus, LuPencil, LuTrash2 } from 'react-icons/lu';
+
+export default function LogisticsTable({ initialVehicles }: { initialVehicles: LogisticsVehicle[] }) {
+  const [loadingId, setLoadingId] = useState<string | null>(null);
+
+  async function onDelete(id: string) {
+    setLoadingId(id);
+    try {
+      await deleteLogisticsVehicle(id);
+      toast.success('Vehicle deleted successfully');
+    } catch (error) {
+      toast.error('Failed to delete vehicle');
+      console.error(error);
+    } finally {
+      setLoadingId(null);
+    }
+  }
+
+  return (
+    <div>
+      <div className="flex items-center justify-between p-4 border-b border-black/5">
+        <h2 className="text-lg font-bold font-heading text-brand-primary">Fleet</h2>
+        <VehicleFormModal 
+          trigger={
+            <Button className="bg-brand-primary text-white hover:bg-brand-primary/90 gap-2">
+              <LuPlus className="h-4 w-4" />
+              Add Vehicle
+            </Button>
+          } 
+        />
+      </div>
+
+      <div className="overflow-x-auto">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[80px]">Image</TableHead>
+              <TableHead>Brand & Model</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Price Per Day</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {initialVehicles.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={5} className="h-24 text-center">
+                  No vehicles found.
+                </TableCell>
+              </TableRow>
+            ) : (
+              initialVehicles.map((vehicle) => (
+                <TableRow key={vehicle.id}>
+                  <TableCell>
+                    <img 
+                      src={vehicle.imageUrl} 
+                      alt={`${vehicle.name} ${vehicle.model}`} 
+                      className="h-10 w-10 rounded-[10px] object-cover" 
+                    />
+                  </TableCell>
+                  <TableCell className="font-medium text-brand-primary">
+                    {vehicle.name} {vehicle.model}
+                    {vehicle.isFeatured && (
+                      <span className="ml-2 inline-flex items-center rounded-full bg-brand-gold/10 px-2 py-0.5 text-[10px] font-medium text-brand-gold">
+                        Featured
+                      </span>
+                    )}
+                  </TableCell>
+                  <TableCell>{vehicle.category}</TableCell>
+                  <TableCell>{formatCurrency(vehicle.pricePerDay)}</TableCell>
+                  <TableCell className="text-right">
+                    <div className="flex justify-end gap-2">
+                      <VehicleFormModal 
+                        vehicle={vehicle} 
+                        trigger={
+                          <Button variant="outline" size="icon" className="h-8 w-8">
+                            <LuPencil className="h-4 w-4" />
+                          </Button>
+                        } 
+                      />
+                      
+                      <AlertDialog>
+                        <AlertDialogTrigger 
+                          render={
+                            <Button 
+                              variant="outline" 
+                              size="icon" 
+                              className="h-8 w-8 text-destructive hover:text-destructive"
+                              disabled={loadingId === vehicle.id}
+                            >
+                              <LuTrash2 className="h-4 w-4" />
+                            </Button>
+                          }
+                        />
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              This action cannot be undone. This will permanently delete <strong>{vehicle.name} {vehicle.model}</strong> from the database.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction 
+                              onClick={() => onDelete(vehicle.id)}
+                              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                            >
+                              Delete
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  );
+}

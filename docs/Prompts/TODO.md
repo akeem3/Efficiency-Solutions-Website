@@ -30,10 +30,18 @@
 - [x] Story 5.3: Consultation Conversion Flow (WhatsApp).
 - [x] Story 5.4: Mobile-First UX Optimization.
 
-## Epic 6: Supabase Database & Admin Integration [IN PROGRESS]
-- [ ] Story 6.1: Prisma Schema & Local Database Setup.
-- [ ] Story 6.2: Production Seed & Inventory Migration.
-- [ ] Story 6.3: Secure Admin CRUD Panel.
+## Epic 6: Supabase Database & Admin Integration [COMPLETE]
+- [x] Story 6.1: Prisma Schema & Local Database Setup.
+- [x] Story 6.2: Production Seed & Inventory Migration.
+- [x] Story 6.3: Secure Admin CRUD Panel.
+    - [x] **Infrastructure**: Install missing Shadcn UI components (Form, Label, Checkbox, Textarea).
+    - [x] **Type Safety**: Replace all mock-type imports with `@prisma/client` types across the app.
+    - [x] **Server Actions**: Implement `upsert` and `delete` actions for `BrandingProduct` and `LogisticsVehicle` in `src/app/admin/actions.ts`.
+    - [x] **Validation**: Create Zod schemas for Product and Vehicle forms.
+    - [x] **UI - Modals**: Build polymorphic `ProductFormModal` and `VehicleFormModal` using `Dialog`.
+    - [x] **UI - Actions**: Connect "Edit" and "Delete" buttons in tables to Server Actions.
+    - [x] **UX**: Implement Sonner feedback and `revalidatePath` for real-time updates.
+    - [ ] **Cleanup**: Safely remove/deprecate `src/lib/mock` directory (Pending Accounting Migration in Epic 7/8).
 
 ## Epic 7: Advanced SEO & OG Automation [TODO]
 - [ ] Story 7.1: Dynamic Metadata API Implementation.

@@ -4,6 +4,24 @@ All notable changes to the **Efficiency Solutions** web application will be docu
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-04-04
+
+### Added
+- **Epic 6: Supabase Database & Admin Integration**:
+  - Implemented **Prisma ORM** with a singleton pattern for type-safe database interactions.
+  - Configured **Supabase PostgreSQL** connection with PgBouncer support (Transaction Mode) for serverless stability.
+  - Built a **Bespoke Admin Dashboard** at `/admin` for direct inventory management.
+  - Created **Server Actions** for full CRUD operations (Create, Read, Update, Delete) on Branding Products and Logistics Vehicles.
+  - Implemented **Secure Admin Login** flow at `/login` with dual-credential validation (Email & Password).
+  - Added **Middleware-based Route Protection** to restrict `/admin` access to authenticated staff only.
+  - Integrated **Base UI** primitives via Shadcn's `base-nova` style for higher-density, high-performance admin interfaces.
+  - Automated database population via a custom **Prisma Seed** script.
+
+### Changed
+- **Production Data Migration**: Successfully transitioned the Branding and Logistics verticals from local mock data to live Server Component queries.
+- **Type System Refinement**: Refactored the entire catalog system to use auto-generated `@prisma/client` types instead of static mock definitions.
+- **Improved Routing**: Relocated admin login to a top-level `/login` route to isolate it from the restricted admin layout and site-wide navigation.
+
 ## [1.5.0] - 2026-04-02
 
 ### Added

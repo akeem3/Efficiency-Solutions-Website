@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 import { toast } from "sonner";
-import { type BrandingProduct } from "@/lib/mock/products";
+import { type BrandingProduct } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";

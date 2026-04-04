@@ -12,8 +12,9 @@ This document acts as a living record of the technology, libraries, and tools us
 ## 🎨 Styling & UI System
 - **CSS Framework:** Tailwind CSS v4 (CSS-First)
     - *Why:* A "Zero-Runtime" CSS engine. All design tokens are defined in `globals.css` using the `@theme` block, allowing for native CSS variable performance and zero jank.
-- **Branding Tokens:** Mustard/Gold (#c69b59) & Navy (#32406a)
-    - *Mapping:* These brand colors are mapped directly to shadcn's `--primary` and `--secondary` root variables, ensuring all components are automatically branded.
+- **UI Component Engine:** Shadcn/UI (Base-Nova Style)
+    - *Primitives:* Powered by **Base UI** (MUI) for higher component density and unstyled flexibility.
+    - *Branding:* Brand colors are mapped directly to shadcn's `--primary` and `--secondary` root variables.
 - **Typography:**
     - **Headings:** Outfit (via `next/font/google`) - Geometric sans-serif for luxury agency feel.
     - **Body:** Inter (via `next/font/google`) - Optimized for high UI readability.
@@ -35,8 +36,8 @@ This document acts as a living record of the technology, libraries, and tools us
     - *Why:* Built-in PgBouncer on port `6543` prevents connection exhaustion in serverless environments.
 - **Database ORM:** Prisma
     - *Why:* Provides a type-safe database layer that matches our TypeScript-first philosophy.
-- **Admin Dashboard:** AdminJS *(Planned)*
-    - *Why:* Auto-generates a secure full-CRUD panel at `/admin` for product management.
+- **Admin Dashboard:** Bespoke Shadcn/UI + Server Actions
+    - *Why:* Provides a high-performance, secure CRUD panel integrated directly into the App Router without the overhead of external frameworks.
 - **Rate Limiting:** Upstash Redis
     - *Why:* Protects critical routes (Admin login, API) using an edge-compatible Redis store.
 

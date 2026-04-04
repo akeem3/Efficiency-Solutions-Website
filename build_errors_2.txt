@@ -1,0 +1,13 @@
+.next/types/validator.ts(24,44): error TS2344: Type 'Route' does not satisfy the constraint '"/"'.
+  Type 'LayoutRoutes' is not assignable to type '"/"'.
+    Type '"/admin"' is not assignable to type '"/"'.
+.next/types/validator.ts(24,75): error TS2344: Type 'Route' does not satisfy the constraint '"/"'.
+  Type 'LayoutRoutes' is not assignable to type '"/"'.
+    Type '"/admin"' is not assignable to type '"/"'.
+src/app/admin/branding/BrandingTable.tsx(13,10): error TS2305: Module '"@/lib/utils"' has no exported member 'formatCurrency'.
+src/app/admin/login/page.tsx(14,15): error TS2322: Type '(formData: FormData) => Promise<{ error: string; }>' is not assignable to type 'string | ((formData: FormData) => void | Promise<void>) | undefined'.
+  Type '(formData: FormData) => Promise<{ error: string; }>' is not assignable to type '(formData: FormData) => void | Promise<void>'.
+    Type 'Promise<{ error: string; }>' is not assignable to type 'void | Promise<void>'.
+      Type 'Promise<{ error: string; }>' is not assignable to type 'Promise<void>'.
+        Type '{ error: string; }' is not assignable to type 'void'.
+src/app/admin/logistics/page.tsx(2,28): error TS2307: Cannot find module './LogisticsTable' or its corresponding type declarations.

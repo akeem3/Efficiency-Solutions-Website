@@ -3,14 +3,14 @@
 import Image from "next/image";
 import { useCart } from "@/hooks/useCart";
 import { toast } from "sonner";
-import { type LogisticsProduct } from "@/lib/mock/logistics";
+import { type LogisticsVehicle } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { LuShieldCheck, LuUsers, LuClock, LuExternalLink } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 
 interface VehicleCardProps {
-  vehicle: LogisticsProduct;
+  vehicle: LogisticsVehicle;
   className?: string;
 }
 

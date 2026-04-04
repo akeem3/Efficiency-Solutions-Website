@@ -35,7 +35,8 @@ export const FloatingWhatsApp = () => {
           alt="WhatsApp Chat" 
           width={64} 
           height={64} 
-          className="object-contain"
+          className="object-contain w-16 h-auto"
+          style={{ width: '100%', height: 'auto' }}
           priority
         />
       </Link>

@@ -1,27 +1,36 @@
 ## Error Type
-Build Error
+Runtime PrismaClientKnownRequestError
 
 ## Error Message
-Module not found: Can't resolve '@/env.mjs'
 
-## Build Output
-./src/components/layout/FloatingWhatsApp.tsx:6:1
-Module not found: Can't resolve '@/env.mjs'
-  4 | import { motion } from "framer-motion";
-  5 | import { Icons } from "@/components/ui/icons"; // Assuming Icons component includes WhatsApp
-> 6 | import { env } from "@/env.mjs"; // Import env variables
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | export const FloatingWhatsApp = () => {
-  9 |   const whatsappNumber = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].logisticsVehicle.count()` invocation in
+D:\Personal Projects\Effciency Solution\Es-app\.next\dev\server\chunks\ssr\[root-of-the-server]__06fx-q-._.js:44:153
 
-Import map: aliased to relative './src/env.mjs' inside of [project]/
+  41 async function AdminDashboardPage() {
+  42     const [brandingCount, logisticsCount] = await Promise.all([
+  43         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].brandingProduct.count(),
+→ 44         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].logisticsVehicle.count(
+Can't reach database server at `aws-0-eu-west-1.pooler.supabase.com:6543`
 
-Import trace:
-  Server Component:
-    ./src/components/layout/FloatingWhatsApp.tsx
-    ./src/app/layout.tsx
+Please make sure your database server is running at `aws-0-eu-west-1.pooler.supabase.com:6543`.
 
-https://nextjs.org/docs/messages/module-not-found
+
+    at <unknown> (src\app\admin\page.tsx:8:29)
+    at Function.all (<anonymous>:1:21)
+    at AdminDashboardPage (src\app\admin\page.tsx:6:43)
+    at resolveErrorDev (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+
+## Code Frame
+   6 |   const [brandingCount, logisticsCount] = await Promise.all([
+   7 |     prisma.brandingProduct.count(),
+>  8 |     prisma.logisticsVehicle.count()
+     |                             ^
+   9 |   ]);
+  10 |
+  11 |   return (
 
 Next.js version: 16.2.1 (Turbopack)

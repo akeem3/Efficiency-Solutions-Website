@@ -1,11 +1,11 @@
 "use client";
 
-import { type LogisticsProduct } from "@/lib/mock/logistics";
+import { type LogisticsVehicle } from "@prisma/client";
 import { VehicleCard } from "./VehicleCard";
 import { cn } from "@/lib/utils";
 
 interface LogisticsGridProps {
-  vehicles: LogisticsProduct[];
+  vehicles: LogisticsVehicle[];
   className?: string;
 }
 

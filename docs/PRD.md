@@ -83,13 +83,15 @@ To ensure a pristine, scalable, and maintainable codebase, the development will 
 *   **Zero Hardcoding in Pages:** Page files (`app/**/page.tsx`) will act purely as containers. They will only serve to fetch data (or import mock data) and assemble independent components. No raw text or deep HTML structures should be hardcoded directly inside a `page.tsx`.
 *   **Global Layouts:** Elements like the Navbar, Footer, and Sidebars will be constructed as independent layout components and injected at the layout level, guaranteeing there is no hardcoding or duplication across routes.
 
-### 5.2. Data Mocking Strategy
-*   Before any backend or database integration occurs, all product data, categories, and content must be mocked in a dedicated `src/constants/mockData.ts` or `src/lib/mock/` directory.
-*   Components will be built and tested entirely against this mock data first to finalize the UI/UX.
+### 5.2. Production Data Strategy
+*   The application has successfully transitioned from a "Mock-First" phase to a live **Production Database**.
+*   All product data, categories, and fleet inventory are managed via **Supabase PostgreSQL** and queried through **Prisma Server Components**.
+*   The `src/lib/mock/` directory is maintained for legacy reference and static content (e.g., Accounting) but is bypassed for Branding and Logistics verticals.
 
 ### 5.3. Reliability & Validation
 *   **Environment Validation:** All critical `process.env` variables (Database, WhatsApp, Email, Redis) must be validated at **build-time** using **Zod**. The app must fail to build if config is missing.
-*   **Form Strategy:** All forms (Booking, Account Queries) must use **React Hook Form** + **Zod** for type-safe validation and performance.
+*   **Form Strategy:** All forms (Admin CRUD, Booking, Account Queries) must use **React Hook Form** + **Zod** for type-safe validation and performance.
+*   **Admin Security:** The Admin Dashboard (`/admin`) is protected via middleware and a secure dual-credential login (`/login`), validating against `ADMIN_EMAIL` and `ADMIN_PASSWORD`.
 *   **Page States:** Every route must implement `loading.tsx` (skelton UI), `error.tsx` (graceful recovery), and `not-found.tsx` for a consistent, professional user experience.
 
 ### 5.4. Shadcn UI Styling & Conflict Resolution
