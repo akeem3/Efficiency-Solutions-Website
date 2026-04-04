@@ -49,7 +49,7 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
   const [loading, setLoading] = useState(false);
 
   const form = useForm<ProductFormValues>({
-    resolver: zodResolver(BrandingProductSchema),
+    resolver: zodResolver(BrandingProductSchema) as any,
     defaultValues: product ? {
       id: product.id,
       name: product.name,
@@ -57,7 +57,7 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
       price: product.price,
       category: product.category,
       imageUrl: product.imageUrl,
-      isFeatured: product.isFeatured,
+      isFeatured: !!product.isFeatured,
     } : {
       name: '',
       description: '',
@@ -85,7 +85,7 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={trigger || <Button variant="outline">Edit</Button>} />
+      <DialogTrigger render={<>{trigger || <Button variant="outline">Edit</Button>}</>} />
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>{product ? 'Edit Product' : 'Add New Product'}</DialogTitle>

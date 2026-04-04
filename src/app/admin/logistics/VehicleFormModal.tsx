@@ -50,7 +50,7 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
   const [loading, setLoading] = useState(false);
 
   const form = useForm<VehicleFormValues>({
-    resolver: zodResolver(LogisticsVehicleSchema),
+    resolver: zodResolver(LogisticsVehicleSchema) as any,
     defaultValues: vehicle ? {
       id: vehicle.id,
       name: vehicle.name,
@@ -60,7 +60,7 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
       category: vehicle.category,
       imageUrl: vehicle.imageUrl,
       features: vehicle.features,
-      isFeatured: vehicle.isFeatured,
+      isFeatured: !!vehicle.isFeatured,
     } : {
       name: '',
       model: '',
@@ -93,7 +93,7 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={trigger || <Button variant="outline">Edit</Button>} />
+      <DialogTrigger render={<>{trigger || <Button variant="outline">Edit</Button>}</>} />
       <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{vehicle ? 'Edit Vehicle' : 'Add New Vehicle'}</DialogTitle>
