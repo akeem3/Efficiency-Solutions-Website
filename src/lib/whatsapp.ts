@@ -12,37 +12,57 @@ export const formatNaira = (amount: number) => {
 export function generateWhatsAppLink(items: CartItem[], total: number) {
   const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   
-  let message = "🌟 *EFFICIENCY SOLUTIONS: NEW ORDER REQUEST* 🌟\n\n";
-  message += "Hello Team! I would like to proceed with the following selection from your catalog:\n\n";
-
-  // Group by type
   const brandingItems = items.filter((i) => i.type === "branding");
   const logisticsItems = items.filter((i) => i.type === "logistics");
 
-  if (brandingItems.length > 0) {
-    message += "🛒 *PREMIUM BRANDING INVENTORY:*\n";
-    brandingItems.forEach((item) => {
-      message += `- ${item.name} x ${item.quantity} (${formatNaira(item.price * item.quantity)})\n`;
-    });
-    
-    // Custom branding specification block as requested
-    message += "\n📝 _CUSTOM BRANDING SPECIFICATIONS_\n";
-    message += "(Please describe your design requirements, sizes, or custom colors here):\n";
-    message += "___________________________________\n\n";
-  }
+  const isPureLogistics = logisticsItems.length > 0 && brandingItems.length === 0;
+  const isPureBranding = brandingItems.length > 0 && logisticsItems.length === 0;
 
-  if (logisticsItems.length > 0) {
-    message += "🚗 *LUXURY LOGISTICS FLEET:*\n";
+  let message = "";
+
+  if (isPureLogistics) {
+    message = "Hi, I’d like to book:\n\n";
     logisticsItems.forEach((item) => {
       const days = item.metadata?.days || 1;
-      message += `- ${item.name} (${days} days) @ ${formatNaira(item.price)}/day\n`;
+      message += `${item.name} – ${days} day\n`;
     });
-    message += "\n";
-  }
+    message += `Total: ${formatNaira(total)}\n\n`;
+    message += "Is this available?";
+  } else if (isPureBranding) {
+    message = "Hi, I want to order:\n\n";
+    brandingItems.forEach((item) => {
+      message += `${item.name} x${item.quantity} – ${formatNaira(item.price * item.quantity)}\n`;
+    });
+    message += `\nTotal: ${formatNaira(total)}\n\n`;
+    message += "Customization:\n";
+    message += "[Please describe design, text, size, colors]";
+  } else {
+    // Mixed Order: Combine templates professionally
+    message = "Hi, I'd like to place an order for the following:\n\n";
+    
+    if (logisticsItems.length > 0) {
+      message += "*Luxury Logistics:*\n";
+      logisticsItems.forEach((item) => {
+        const days = item.metadata?.days || 1;
+        message += `- ${item.name} – ${days} day\n`;
+      });
+      message += "\n";
+    }
 
-  message += `💎 *TOTAL ESTIMATE:* ${formatNaira(total)}\n\n`;
-  message += "--- \n";
-  message += "Please confirm availability and procurement timelines. Thank you!";
+    if (brandingItems.length > 0) {
+      message += "*Premium Branding:*\n";
+      brandingItems.forEach((item) => {
+        message += `- ${item.name} x${item.quantity} – ${formatNaira(item.price * item.quantity)}\n`;
+      });
+      message += "\n";
+    }
+
+    message += `Total Estimate: ${formatNaira(total)}\n\n`;
+    if (brandingItems.length > 0) {
+      message += "Customization (Branding):\n";
+      message += "[Please describe design, text, size, colors]";
+    }
+  }
 
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
