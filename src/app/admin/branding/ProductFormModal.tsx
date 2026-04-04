@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,7 +23,7 @@ import {
   FormMessage 
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { 
   Select, 
@@ -36,6 +37,7 @@ import { upsertBrandingProduct } from '../actions';
 import { BrandingProductSchema } from '../schemas';
 import { BRANDING_CATEGORIES } from '@/lib/mock/products';
 import type { BrandingProduct } from '@prisma/client';
+import { cn } from '@/lib/utils';
 
 type ProductFormValues = z.infer<typeof BrandingProductSchema>;
 
@@ -88,7 +90,20 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
       console.log('Dialog open state changing to:', val);
       setOpen(val);
     }}>
-      <DialogTrigger render={trigger ? <>{trigger}</> : <Button variant="outline">Edit</Button>} />
+      <DialogTrigger 
+        render={(props) => 
+          trigger ? (
+            React.cloneElement(trigger as React.ReactElement, props)
+          ) : (
+            <button 
+              {...props} 
+              className={cn(buttonVariants({ variant: "outline" }))}
+            >
+              Edit
+            </button>
+          )
+        } 
+      />
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>{product ? 'Edit Product' : 'Add New Product'}</DialogTitle>

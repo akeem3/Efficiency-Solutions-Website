@@ -2,6 +2,9 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { LuTags, LuCar } from 'react-icons/lu';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function AdminDashboardPage() {
   const [brandingCount, logisticsCount] = await Promise.all([
     prisma.brandingProduct.count(),
@@ -9,10 +12,10 @@ export default async function AdminDashboardPage() {
   ]);
 
   return (
-    <div className="p-8">
+    <>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold font-heading text-brand-primary">Overview Dashboard</h1>
-        <p className="mt-2 text-brand-muted">Welcome to the Efficiency Solutions admin panel.</p>
+        <h1 className="text-2xl md:text-3xl font-bold font-heading text-brand-primary tracking-tight">Overview Dashboard</h1>
+        <p className="mt-2 text-sm md:text-base text-brand-muted">Welcome to the Efficiency Solutions admin panel.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -68,6 +71,6 @@ export default async function AdminDashboardPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

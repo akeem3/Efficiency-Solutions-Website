@@ -1,85 +1,36 @@
 ## Error Type
-Console Error
+Runtime PrismaClientKnownRequestError
 
 ## Error Message
-Received NaN for the `value` attribute. If this is expected, cast the value to a string.
+
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].brandingProduct.count()` invocation in
+D:\Personal Projects\Effciency Solution\Es-app\.next\dev\server\chunks\ssr\[root-of-the-server]__06fx-q-._.js:43:152
+
+  40 ;
+  41 async function AdminDashboardPage() {
+  42     const [brandingCount, logisticsCount] = await Promise.all([
+→ 43         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].brandingProduct.count(
+Can't reach database server at `aws-0-eu-west-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-0-eu-west-1.pooler.supabase.com:6543`.
 
 
-    at createConsoleError (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_0dy8tts._.js:2333:71)
-    at handleConsoleError (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_0dy8tts._.js:3119:54)
-    at console.error (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_0dy8tts._.js:3266:57)
-    at validateProperty (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:2091:71)
-    at warnUnknownProperties (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:2203:26)
-    at validatePropertiesInDevelopment (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:10679:66)
-    at updateProperties (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:11147:9)
-    at commitUpdate (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:11894:9)
-    at runWithFiberInDEV (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:965:74)
-    at commitHostUpdate (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:7421:13)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8298:100)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8286:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8403:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8403:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8286:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8286:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8403:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8403:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8214:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8403:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at commitMutationEffectsOnFiber (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8286:17)
-    at recursivelyTraverseMutationEffects (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-dom_05gdm94._.js:8205:106)
-    at input (<anonymous>:null:null)
-    at renderTag (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/0zbh_%40base-ui_react_esm_00vxkek._.js:640:311)
-    at evaluateRenderProp (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/0zbh_%40base-ui_react_esm_00vxkek._.js:607:20)
-    at useRenderElement (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/0zbh_%40base-ui_react_esm_00vxkek._.js:525:12)
-    at FieldControl (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules__pnpm_0.8.77d._.js:4977:327)
-    at Input (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules__pnpm_0.8.77d._.js:5248:315)
-    at Input (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/src_0q12rd_._.js:1618:327)
-    at Object.render (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/src_0q12rd_._.js:2902:384)
-    at Controller (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules__pnpm_0.8.77d._.js:663:39)
-    at Slot.Slot (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules__pnpm_0.8.77d._.js:3309:321)
-    at FormControl (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/src_0q12rd_._.js:1391:327)
-    at Object.render (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/src_0q12rd_._.js:2901:370)
-    at Controller (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/node_modules__pnpm_0.8.77d._.js:663:39)
-    at FormField (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/src_0q12rd_._.js:1140:327)
-    at ProductFormModal (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/src_0q12rd_._.js:2889:354)
-    at BrandingTable (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/src_0q12rd_._.js:3829:334)
-    at AdminBrandingPage (src\app\admin\branding\page.tsx:21:9)
+    at <unknown> (src\app\admin\page.tsx:7:28)
+    at Function.all (<anonymous>:1:21)
+    at AdminDashboardPage (src\app\admin\page.tsx:6:43)
+    at resolveErrorDev (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:1919:150)
+    at processFullStringRow (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:2434:29)
+    at processFullBinaryRow (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:2393:9)
+    at processBinaryChunk (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:2502:221)
+    at progress (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:2689:13)
 
 ## Code Frame
-  19 |
-  20 |       <div className="rounded-[10px] bg-white shadow-sm ring-1 ring-black/5">
-> 21 |         <BrandingTable initialProducts={products} />
-     |         ^
-  22 |       </div>
-  23 |     </div>
-  24 |   );
+   5 | export default async function AdminDashboardPage() {
+   6 |   const [brandingCount, logisticsCount] = await Promise.all([
+>  7 |     prisma.brandingProduct.count(),
+     |                            ^
+   8 |     prisma.logisticsVehicle.count()
+   9 |   ]);
+  10 |
 
 Next.js version: 16.2.1 (Turbopack)

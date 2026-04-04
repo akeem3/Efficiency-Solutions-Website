@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -23,7 +24,8 @@ import {
   FormDescription
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import { Textarea } from '@/components/ui/textarea';
 import { 
   Select, 
@@ -93,7 +95,20 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={trigger ? <>{trigger}</> : <Button variant="outline">Edit</Button>} />
+      <DialogTrigger 
+        render={(props) => 
+          trigger ? (
+            React.cloneElement(trigger as React.ReactElement, props)
+          ) : (
+            <button 
+              {...props} 
+              className={cn(buttonVariants({ variant: "outline" }))}
+            >
+              Edit
+            </button>
+          )
+        } 
+      />
       <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{vehicle ? 'Edit Vehicle' : 'Add New Vehicle'}</DialogTitle>
