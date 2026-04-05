@@ -10,14 +10,6 @@ import { cn } from "@/lib/utils";
 
 const services = [
   {
-    id: "branding",
-    title: "Premium Branding",
-    description: "Elevate your identity with custom apparel, signage, and corporate gifts.",
-    icon: Icons.Services,
-    href: "/services/branding",
-    color: "bg-orange-500",
-  },
-  {
     id: "logistics",
     title: "Luxury Logistics",
     description: "Elite vehicle rentals and professional security escort services.",
@@ -26,12 +18,36 @@ const services = [
     color: "bg-blue-600",
   },
   {
+    id: "branding",
+    title: "Premium Branding & Printing",
+    description: "Elevate your identity with custom apparel, signage, and corporate gifts.",
+    icon: Icons.Services,
+    href: "/services/branding",
+    color: "bg-orange-500",
+  },
+  {
+    id: "digital",
+    title: "Digital Product Development",
+    description: "High-performance mobile apps, web platforms and user-focused product design services.",
+    icon: Icons.Digital,
+    href: "/services/digital",
+    color: "bg-indigo-600",
+  },
+  {
     id: "accounting",
     title: "Accounting Services",
     description: "Precision auditing and financial management for growing enterprises.",
     icon: Icons.Accounting,
     href: "/services/accounting",
     color: "bg-emerald-600",
+  },
+  {
+    id: "tailoring",
+    title: "Tailoring & Fashion Design",
+    description: "Bespoke couture and premium garment construction for individual and corporate clients.",
+    icon: Icons.Tailoring,
+    href: "/services/tailoring",
+    color: "bg-orange-600",
   },
 ];
 

@@ -4,6 +4,38 @@ All notable changes to the **Efficiency Solutions** web application will be docu
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] - 2026-04-05
+
+### Added
+- **Premium "What We Do" Sections**:
+  - Implemented high-conversion service summaries for **Tailoring** and **Digital Product Development**.
+  - Integrated **Staggered Framer Motion animations** for a premium, agency-grade entrance effect.
+  - Optimized for **Mobile-First UX**, ensuring elegant stacked views and larger touch targets.
+
+### Changed
+- **Brand Rebranding**:
+  - Renamed "**Premium Branding**" to "**Premium Branding & Printing**" across the entire application (Homepage, Navbar, Footer, WhatsApp logic, and PRD).
+- **Service Prioritization**:
+  - Reordered homepage and navigation services to prioritize **Luxury Logistics** at the top.
+  - Synced **Footer** services to match the new global order and included the missing Digital and Tailoring links.
+- **Improved Copy**:
+  - Refined service descriptions for **Digital Product Development** to emphasize "Product Design" and "Web Development" expertise.
+
+## [1.8.0] - 2026-04-05
+
+### Added
+- **Epic 7: Service Expansion Roadmap**:
+  - Integrated **Tailoring & Fashion Design** and **Digital Product Development** into the core PRD.
+  - Defined minimal, high-converting 4-section architecture for new service verticals.
+  - Mapped individual WhatsApp pre-filled message templates to each new service type.
+  - Added new service cards to the development roadmap in the project `TODO.md`.
+
+### Changed
+- **Premium WhatsApp Redirection Experience**:
+  - Implemented service-specific templates for **Luxury Logistics** ("I’d like to book...") and **Premium Branding** ("I want to order...").
+  - Categorized order lists with professional headers and integrated a dedicated "Customization Prompt" for branding orders.
+  - Standardized **Accounting Consultation** logic to a direct, high-intent format to streamline financial advisory inquiries.
+
 ## [1.7.0] - 2026-04-04
 
 ### Added

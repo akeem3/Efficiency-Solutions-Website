@@ -43,11 +43,17 @@
     - [x] **UX**: Implement Sonner feedback and `revalidatePath` for real-time updates.
     - [ ] **Cleanup**: Safely remove/deprecate `src/lib/mock` directory (Pending Accounting Migration in Epic 7/8).
 
-## Epic 7: Advanced SEO & OG Automation [TODO]
-- [ ] Story 7.1: Dynamic Metadata API Implementation.
-- [ ] Story 7.2: Automated Open Graph Previews.
-- [ ] Story 7.3: Sitemap & Robots Optimization.
+## Epic 7: Expand Service Offerings (Tailoring & Digital) [COMPLETE]
+- [x] Story 7.1: Service Page Infrastructure (Minimalistic 4-Section Layout + What We Do).
+- [x] Story 7.2: Tailoring & Fashion Launch (Portfolio & Custom CTA).
+- [x] Story 7.3: Digital Product Development Launch (Showcase & Strategy CTA).
+- [x] Story 7.4: Global Navigation & Homepage Integration.
+
+## Epic 8: Advanced SEO & OG Automation [TODO]
+- [ ] Story 8.1: Dynamic Metadata API Implementation.
+- [ ] Story 8.2: Automated Open Graph Previews.
+- [ ] Story 8.3: Sitemap & Robots Optimization.
 
 ## Upcoming Epics (Post-V1 Launch)
-- Epic 8: Enhanced Analytics & Client Session Replays.
-- Epic 9: Automated WhatsApp Webhooks/Chatbot Integration.
+- Epic 9: Enhanced Analytics & Client Session Replays.
+- Epic 10: Automated WhatsApp Webhooks/Chatbot Integration.

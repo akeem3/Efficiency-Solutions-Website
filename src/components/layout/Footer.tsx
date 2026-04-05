@@ -6,9 +6,11 @@ import { env } from "@/env";
 
 const footerNavItems = {
   services: [
-    { name: "Premium Branding", href: "/services/branding" },
     { name: "Luxury Logistics", href: "/services/logistics" },
+    { name: "Premium Branding & Printing", href: "/services/branding" },
+    { name: "Digital Development", href: "/services/digital" },
     { name: "Accounting Services", href: "/services/accounting" },
+    { name: "Tailoring & Fashion", href: "/services/tailoring" },
   ],
   quickLinks: [
     { name: "Home", href: "/" },
@@ -46,7 +48,7 @@ export const Footer = () => {
             </span>
           </div>
           <p className="text-sm text-secondary/80 leading-relaxed">
-            Premium Branding, Luxury Logistics, and Accounting Services. We drive your
+            Premium Branding & Printing, Luxury Logistics, and Accounting Services. We drive your
             business forward with unparalleled expertise and dedication.
           </p>
         </div>

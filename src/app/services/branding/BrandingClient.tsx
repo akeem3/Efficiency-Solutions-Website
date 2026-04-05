@@ -175,7 +175,7 @@ export function BrandingClient({ initialProducts }: { initialProducts: BrandingP
                   onClick={() => { setActiveCategory(undefined); setSearchQuery(""); }}
                   className="text-brand-secondary font-bold font-heading underline underline-offset-8 transition-all hover:text-brand-primary"
                 >
-                  View All Branding Products
+                  View All Branding & Printing Products
                 </button>
               </div>
             )}

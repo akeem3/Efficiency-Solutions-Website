@@ -10,6 +10,8 @@ import {
   Mail,
   MapPin,
   Search,
+  Scissors,
+  Monitor,
 } from "lucide-react";
 import {
   FaFacebook,
@@ -43,6 +45,8 @@ export const Icons = {
   Services,
   Logistics,
   Accounting,
+  Tailoring: Scissors,
+  Digital: Monitor,
   Phone: PhoneIcon,
   Mail: MailIcon,
   Location: LocationIcon,

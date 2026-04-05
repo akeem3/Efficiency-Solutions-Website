@@ -50,7 +50,7 @@ export function generateWhatsAppLink(items: CartItem[], total: number) {
     }
 
     if (brandingItems.length > 0) {
-      message += "*Premium Branding:*\n";
+      message += "*Premium Branding & Printing:*\n";
       brandingItems.forEach((item) => {
         message += `- ${item.name} x${item.quantity} – ${formatNaira(item.price * item.quantity)}\n`;
       });
@@ -72,6 +72,18 @@ export function generateAccountingLink() {
   
   const message = `Hi, I’d like to book a consultation for Accounting & Financial Intelligence.\n\nNeed help with:\n[Briefly describe your requirements]\n\nIs this a good time to talk?`;
 
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+export function generateTailoringLink() {
+  const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const message = "Hello Efficiency Solutions, I am interested in your Tailoring & Fashion Design service. I would like to get started. I will describe what I need below:";
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+export function generateDigitalLink() {
+  const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const message = "Hello Efficiency Solutions, I am interested in your Digital Product Development service. I would like to get started. I will describe what I need below:";
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
