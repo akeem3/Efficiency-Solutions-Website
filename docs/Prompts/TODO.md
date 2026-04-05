@@ -34,14 +34,7 @@
 - [x] Story 6.1: Prisma Schema & Local Database Setup.
 - [x] Story 6.2: Production Seed & Inventory Migration.
 - [x] Story 6.3: Secure Admin CRUD Panel.
-    - [x] **Infrastructure**: Install missing Shadcn UI components (Form, Label, Checkbox, Textarea).
-    - [x] **Type Safety**: Replace all mock-type imports with `@prisma/client` types across the app.
-    - [x] **Server Actions**: Implement `upsert` and `delete` actions for `BrandingProduct` and `LogisticsVehicle` in `src/app/admin/actions.ts`.
-    - [x] **Validation**: Create Zod schemas for Product and Vehicle forms.
-    - [x] **UI - Modals**: Build polymorphic `ProductFormModal` and `VehicleFormModal` using `Dialog`.
-    - [x] **UI - Actions**: Connect "Edit" and "Delete" buttons in tables to Server Actions.
-    - [x] **UX**: Implement Sonner feedback and `revalidatePath` for real-time updates.
-    - [ ] **Cleanup**: Safely remove/deprecate `src/lib/mock` directory (Pending Accounting Migration in Epic 7/8).
+- [x] **New**: Full Mobile-responsive Admin table overhaul.
 
 ## Epic 7: Expand Service Offerings (Tailoring & Digital) [COMPLETE]
 - [x] Story 7.1: Service Page Infrastructure (Minimalistic 4-Section Layout + What We Do).
@@ -50,10 +43,24 @@
 - [x] Story 7.4: Global Navigation & Homepage Integration.
 
 ## Epic 8: Advanced SEO & OG Automation [TODO]
-- [ ] Story 8.1: Dynamic Metadata API Implementation.
-- [ ] Story 8.2: Automated Open Graph Previews.
-- [ ] Story 8.3: Sitemap & Robots Optimization.
+- [ ] Story 8.1: Dynamic Metadata API Generator (Service-specific Titles/Tags).
+- [ ] Story 8.2: Automated Social Media (OG) Previews for all 5 verticals.
+- [ ] Story 8.3: Dynamic XML Sitemap & Robots.txt generation.
 
-## Upcoming Epics (Post-V1 Launch)
-- Epic 9: Enhanced Analytics & Client Session Replays.
-- Epic 10: Automated WhatsApp Webhooks/Chatbot Integration.
+## Epic 9: Performance & Monitoring [TODO]
+- [ ] Story 9.1: Zero-Downtime Error Tracking with Sentry Integration.
+- [ ] Story 9.2: Real-User Performance Monitoring (Vercel Speed Insights).
+- [ ] Story 9.3: Localized Error Boundaries & Fallback User Interface.
+
+## Epic 10: Lead Capture Automation [TODO]
+- [ ] Story 10.1: Lead "Pre-Capture" Logic (Saves intent before WhatsApp redirect).
+- [ ] Story 10.2: Lead Management Dashboard (Admin visualization of inquiries).
+- [ ] Story 10.3: High-Value Recovery Intelligence (Identifying lost leads).
+
+## Upcoming Growth Epics (V2+)
+- **Epic 11**: Admin-Managed Google Reviews (Social Proof Multiplier).
+- **Epic 12**: Multi-Location Agency Scalability (Abuja/Lagos instances).
+- **Epic 13**: Automated WhatsApp Webhooks & Lead-to-Sale tracking.
+
+---
+*Last Documentation Sync: April 05, 2026*

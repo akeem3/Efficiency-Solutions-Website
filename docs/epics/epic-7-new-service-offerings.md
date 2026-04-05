@@ -20,7 +20,7 @@ Expand the platform's service spectrum from 3 to 5 verticals by integrating "Tai
 
 ## 📜 User Stories
 
-### 1. **Story 7.1: Service Page Infrastructure**
+### 1. **Story 7.1: Service Page Infrastructure [DONE]**
 Implement the 4-section layout component used across both new verticals.
 - **Acceptance Criteria**:
     - Hero section with clear H1 and WhatsApp CTA.
@@ -28,19 +28,19 @@ Implement the 4-section layout component used across both new verticals.
     - "What You Get" bullet point list with icons.
     - Final "Strong Conversion" CTA section.
 
-### 2. **Story 7.2: Tailoring & Fashion Launch**
+### 2. **Story 7.2: Tailoring & Fashion Launch [DONE]**
 Draft and implement the content for the Tailoring vertical.
 - **Acceptance Criteria**:
     - WhatsApp message: "Hello Efficiency Solutions, I am interested in your Tailoring & Fashion Design service..."
     - Showcase samples of traditional and western couture.
 
-### 3. **Story 7.3: Digital Product Development Launch**
+### 3. **Story 7.3: Digital Product Development Launch [DONE]**
 Draft and implement the content for the Digital vertical.
 - **Acceptance Criteria**:
     - WhatsApp message: "Hello Efficiency Solutions, I am interested in your Digital Product Development service..."
     - Showcase samples of apps and web platforms.
 
-### 4. **Story 7.4: Global Navigation & Homepage Update**
+### 4. **Story 7.4: Global Navigation & Homepage Update [DONE]**
 Integrate the new services into the site's entry points.
 - **Acceptance Criteria**:
     - Homepage `Services` section updated with 2 new cards.

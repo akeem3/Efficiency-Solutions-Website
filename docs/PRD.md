@@ -11,7 +11,12 @@ Efficiency Solutions is a Nigerian-style agency web application designed to conn
 The core conversion strategy centers around WhatsApp. Rather than a traditional integrated checkout (Stripe/PayPal), users will build a cart or schedule a consultation and be seamlessly redirected to a WhatsApp chat with a pre-filled, formatted message to complete their transaction.
 
 ## 2. Design System & User Interface
-... (Design system lines 11 to 28 preserved)
+- **Aesthetic**: Premium, minimalist, "High-End Agency" feel.
+- **Color Palette**: 
+    - Secondary: `#000000` (Deep Onyx)
+    - Primary: `#4F46E5` (Indigo-600) / `#EA580C` (Orange-600) for accents.
+- **Components**: Rounded corners (`rounded-[10px]`), glassmorphism effects, and professional typography (`Outfit` for headings).
+- **Mobile-First**: Every page is optimized for mobile navigation and conversion.
 
 ## 3. Core Features & User Stories
 
@@ -38,4 +43,22 @@ The core conversion strategy centers around WhatsApp. Rather than a traditional 
 *   **Conversion:** High-intent WhatsApp inquiry for discovery calls and project estimations.
 
 ### 3.6. Checkout & WhatsApp Messaging
-... (rest of the file preserved)
+*   **Cart Logic:** Aggregates selected branding items or vehicles. No user account required.
+*   **WhatsApp Redirect:** Upon checkout, the user is redirected to WhatsApp via a `wa.me` link with a **structured message template**.
+
+## 4. Technical Architecture
+- **Framework**: Next.js 15 (App Router).
+- **Styling**: Tailwind CSS v4.
+- **Database**: Supabase (PostgreSQL) via Prisma ORM.
+- **State Management**: Zustand (Client-side Cart).
+
+## 5. Future Scale & Social Proof (V2 Suggestion)
+
+### 5.1. Admin-Managed Google Reviews
+*   **Objective**: Build trust by displaying real Google testimonials categorized by service.
+*   **Implementation**: A `Review` table in Supabase where the admin can manually copy/paste high-quality Google reviews, assign a `service_category`, and manage them via the existing Admin Dashboard.
+*   **Outcome**: Service-specific social proof component for each landing page.
+
+### 5.2. Lead Pre-Capture
+*   **Objective**: Prevent "Inquiry Loss" by capturing user intent before the WhatsApp redirect.
+*   **Implementation**: A "Discovery Form" (Email/Name) that triggers just before the `wa.me` redirection, saving the lead to Supabase for follow-up if the user doesn't complete the WhatsApp chat.
