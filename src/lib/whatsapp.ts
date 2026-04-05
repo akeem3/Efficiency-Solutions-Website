@@ -77,13 +77,13 @@ export function generateAccountingLink() {
 
 export function generateTailoringLink() {
   const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-  const message = "Hello Efficiency Solutions, I am interested in your Tailoring & Fashion Design service. I would like to get started. I will describe what I need below:";
+  const message = "Hi 👗 I’m interested in a custom outfit. Here’s what I have in mind: [Describe your style, fabric, or idea]";
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
 export function generateDigitalLink() {
   const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-  const message = "Hello Efficiency Solutions, I am interested in your Digital Product Development service. I would like to get started. I will describe what I need below:";
+  const message = "Hi 🚀 I have a digital product idea I’d like to build. Here’s a brief overview: [Describe your app, website, or idea]";
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
