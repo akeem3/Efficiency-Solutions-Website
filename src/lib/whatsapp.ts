@@ -94,3 +94,32 @@ export function generateConsultationLink(serviceName: string) {
 
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
+
+/**
+ * Generates a consistent WhatsApp link for global CTAs (Navbar, Floating Button).
+ * Supports optional service-specific messages based on the current pathname.
+ */
+export function getWhatsAppLink(pathname?: string) {
+  const number = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  
+  // Requirement 1: Exact default message
+  const defaultMessage = "Hi 👋 I’d like to get started. Please I’d like to know more about your services. Here’s what I need:";
+
+  // Requirement 5: Service-specific overrides
+  const serviceMap: Record<string, string> = {
+    "/services/logistics": "Luxury Logistics",
+    "/services/branding": "Premium Branding & Printing",
+    "/services/digital": "Digital Product Development",
+    "/services/accounting": "Accounting Services",
+    "/services/tailoring": "Tailoring & Fashion Design",
+  };
+
+  let finalMessage = defaultMessage;
+
+  // If path is a direct service match, use customized message
+  if (pathname && serviceMap[pathname]) {
+    finalMessage = `Hi 👋 I'm interested in your ${serviceMap[pathname]} services. I’d like to know more. Here’s what I need:`;
+  }
+
+  return `https://wa.me/${number}?text=${encodeURIComponent(finalMessage)}`;
+}

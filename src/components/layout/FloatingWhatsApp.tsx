@@ -3,11 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { env } from "@/env";
+import { usePathname } from "next/navigation";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export const FloatingWhatsApp = () => {
-  const whatsappNumber = env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  const pathname = usePathname();
+  const whatsappUrl = getWhatsAppLink(pathname);
 
   return (
     <motion.div

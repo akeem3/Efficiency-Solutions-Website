@@ -14,6 +14,7 @@ import { env } from "@/env";
 import { CartDrawer } from "@/components/layout/CartDrawer";
 import { useCart } from "@/hooks/useCart";
 import { Badge } from "@/components/ui/badge";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -204,7 +205,7 @@ export const Navbar = () => {
           </CartDrawer>
 
           <Link
-            href={`https://wa.me/${env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
+            href={getWhatsAppLink(pathname)}
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
@@ -356,7 +357,7 @@ export const Navbar = () => {
               {/* Drawer Footer: CTA */}
               <div className="p-6 border-t border-border">
                 <Link
-                  href={`https://wa.me/${env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
+                  href={getWhatsAppLink(pathname)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
