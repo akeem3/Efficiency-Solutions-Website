@@ -113,6 +113,13 @@ exports.Prisma.BrandingProductScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LogisticsCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.LogisticsVehicleScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -120,6 +127,7 @@ exports.Prisma.LogisticsVehicleScalarFieldEnum = {
   description: 'description',
   pricePerDay: 'pricePerDay',
   category: 'category',
+  categoryId: 'categoryId',
   imageUrl: 'imageUrl',
   features: 'features',
   isFeatured: 'isFeatured',
@@ -146,6 +154,7 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   BrandingCategory: 'BrandingCategory',
   BrandingProduct: 'BrandingProduct',
+  LogisticsCategory: 'LogisticsCategory',
   LogisticsVehicle: 'LogisticsVehicle'
 };
 /**
@@ -177,7 +186,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
@@ -187,7 +196,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -196,13 +204,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/client\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel BrandingCategory {\n  id        String            @id @default(uuid())\n  name      String            @unique\n  products  BrandingProduct[]\n  createdAt DateTime          @default(now())\n  updatedAt DateTime          @updatedAt\n}\n\nmodel BrandingProduct {\n  id          String            @id @default(uuid())\n  name        String\n  description String\n  price       Int\n  category    String // Keep for temporary migration reference\n  categoryId  String? // New foreign key\n  categoryRel BrandingCategory? @relation(fields: [categoryId], references: [id], onDelete: Cascade)\n  imageUrl    String\n  isFeatured  Boolean           @default(false)\n  createdAt   DateTime          @default(now())\n  updatedAt   DateTime          @updatedAt\n}\n\nmodel LogisticsVehicle {\n  id          String   @id @default(uuid())\n  name        String\n  model       String\n  description String\n  pricePerDay Int\n  category    String\n  imageUrl    String\n  features    String[]\n  isFeatured  Boolean  @default(false)\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n",
-  "inlineSchemaHash": "4b3fe2c29ba0448dff943b3d3b12e082ad5d8248919ae7a89028e4f70a188985",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/client\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel BrandingCategory {\n  id        String            @id @default(uuid())\n  name      String            @unique\n  products  BrandingProduct[]\n  createdAt DateTime          @default(now())\n  updatedAt DateTime          @updatedAt\n}\n\nmodel BrandingProduct {\n  id          String            @id @default(uuid())\n  name        String\n  description String\n  price       Int\n  category    String // Keep for temporary migration reference\n  categoryId  String? // New foreign key\n  categoryRel BrandingCategory? @relation(fields: [categoryId], references: [id], onDelete: Cascade)\n  imageUrl    String\n  isFeatured  Boolean           @default(false)\n  createdAt   DateTime          @default(now())\n  updatedAt   DateTime          @updatedAt\n}\n\nmodel LogisticsCategory {\n  id        String             @id @default(uuid())\n  name      String             @unique\n  vehicles  LogisticsVehicle[]\n  createdAt DateTime           @default(now())\n  updatedAt DateTime           @updatedAt\n}\n\nmodel LogisticsVehicle {\n  id          String             @id @default(uuid())\n  name        String\n  model       String\n  description String\n  pricePerDay Int\n  category    String // Legacy string for migration\n  categoryId  String? // New relational reference\n  categoryRel LogisticsCategory? @relation(fields: [categoryId], references: [id], onDelete: Cascade)\n  imageUrl    String\n  features    String[]\n  isFeatured  Boolean            @default(false)\n  createdAt   DateTime           @default(now())\n  updatedAt   DateTime           @updatedAt\n}\n",
+  "inlineSchemaHash": "4e16e78669e72b7ee1250006ed9a6cd8df653d0239050a246c779dfed41d2285",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"BrandingCategory\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"products\",\"kind\":\"object\",\"type\":\"BrandingProduct\",\"relationName\":\"BrandingCategoryToBrandingProduct\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"BrandingProduct\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryRel\",\"kind\":\"object\",\"type\":\"BrandingCategory\",\"relationName\":\"BrandingCategoryToBrandingProduct\"},{\"name\":\"imageUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isFeatured\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"LogisticsVehicle\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"model\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"pricePerDay\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"imageUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"features\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isFeatured\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"BrandingCategory\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"products\",\"kind\":\"object\",\"type\":\"BrandingProduct\",\"relationName\":\"BrandingCategoryToBrandingProduct\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"BrandingProduct\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryRel\",\"kind\":\"object\",\"type\":\"BrandingCategory\",\"relationName\":\"BrandingCategoryToBrandingProduct\"},{\"name\":\"imageUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isFeatured\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"LogisticsCategory\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"vehicles\",\"kind\":\"object\",\"type\":\"LogisticsVehicle\",\"relationName\":\"LogisticsCategoryToLogisticsVehicle\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"LogisticsVehicle\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"model\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"pricePerDay\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryRel\",\"kind\":\"object\",\"type\":\"LogisticsCategory\",\"relationName\":\"LogisticsCategoryToLogisticsVehicle\"},{\"name\":\"imageUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"features\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isFeatured\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

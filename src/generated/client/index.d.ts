@@ -24,6 +24,11 @@ export type BrandingCategory = $Result.DefaultSelection<Prisma.$BrandingCategory
  */
 export type BrandingProduct = $Result.DefaultSelection<Prisma.$BrandingProductPayload>
 /**
+ * Model LogisticsCategory
+ * 
+ */
+export type LogisticsCategory = $Result.DefaultSelection<Prisma.$LogisticsCategoryPayload>
+/**
  * Model LogisticsVehicle
  * 
  */
@@ -166,6 +171,16 @@ export class PrismaClient<
     * ```
     */
   get brandingProduct(): Prisma.BrandingProductDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.logisticsCategory`: Exposes CRUD operations for the **LogisticsCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LogisticsCategories
+    * const logisticsCategories = await prisma.logisticsCategory.findMany()
+    * ```
+    */
+  get logisticsCategory(): Prisma.LogisticsCategoryDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.logisticsVehicle`: Exposes CRUD operations for the **LogisticsVehicle** model.
@@ -619,6 +634,7 @@ export namespace Prisma {
   export const ModelName: {
     BrandingCategory: 'BrandingCategory',
     BrandingProduct: 'BrandingProduct',
+    LogisticsCategory: 'LogisticsCategory',
     LogisticsVehicle: 'LogisticsVehicle'
   };
 
@@ -638,7 +654,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "brandingCategory" | "brandingProduct" | "logisticsVehicle"
+      modelProps: "brandingCategory" | "brandingProduct" | "logisticsCategory" | "logisticsVehicle"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -787,6 +803,80 @@ export namespace Prisma {
           count: {
             args: Prisma.BrandingProductCountArgs<ExtArgs>
             result: $Utils.Optional<BrandingProductCountAggregateOutputType> | number
+          }
+        }
+      }
+      LogisticsCategory: {
+        payload: Prisma.$LogisticsCategoryPayload<ExtArgs>
+        fields: Prisma.LogisticsCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LogisticsCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LogisticsCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.LogisticsCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LogisticsCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.LogisticsCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.LogisticsCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.LogisticsCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LogisticsCategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.LogisticsCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>
+          }
+          update: {
+            args: Prisma.LogisticsCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.LogisticsCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LogisticsCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LogisticsCategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.LogisticsCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogisticsCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.LogisticsCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLogisticsCategory>
+          }
+          groupBy: {
+            args: Prisma.LogisticsCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LogisticsCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LogisticsCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<LogisticsCategoryCountAggregateOutputType> | number
           }
         }
       }
@@ -962,6 +1052,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     brandingCategory?: BrandingCategoryOmit
     brandingProduct?: BrandingProductOmit
+    logisticsCategory?: LogisticsCategoryOmit
     logisticsVehicle?: LogisticsVehicleOmit
   }
 
@@ -1066,6 +1157,37 @@ export namespace Prisma {
    */
   export type BrandingCategoryCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BrandingProductWhereInput
+  }
+
+
+  /**
+   * Count Type LogisticsCategoryCountOutputType
+   */
+
+  export type LogisticsCategoryCountOutputType = {
+    vehicles: number
+  }
+
+  export type LogisticsCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    vehicles?: boolean | LogisticsCategoryCountOutputTypeCountVehiclesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LogisticsCategoryCountOutputType without action
+   */
+  export type LogisticsCategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategoryCountOutputType
+     */
+    select?: LogisticsCategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LogisticsCategoryCountOutputType without action
+   */
+  export type LogisticsCategoryCountOutputTypeCountVehiclesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LogisticsVehicleWhereInput
   }
 
 
@@ -3307,6 +3429,1063 @@ export namespace Prisma {
 
 
   /**
+   * Model LogisticsCategory
+   */
+
+  export type AggregateLogisticsCategory = {
+    _count: LogisticsCategoryCountAggregateOutputType | null
+    _min: LogisticsCategoryMinAggregateOutputType | null
+    _max: LogisticsCategoryMaxAggregateOutputType | null
+  }
+
+  export type LogisticsCategoryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LogisticsCategoryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LogisticsCategoryCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type LogisticsCategoryMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LogisticsCategoryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LogisticsCategoryCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type LogisticsCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LogisticsCategory to aggregate.
+     */
+    where?: LogisticsCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LogisticsCategories to fetch.
+     */
+    orderBy?: LogisticsCategoryOrderByWithRelationInput | LogisticsCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LogisticsCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LogisticsCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LogisticsCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LogisticsCategories
+    **/
+    _count?: true | LogisticsCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LogisticsCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LogisticsCategoryMaxAggregateInputType
+  }
+
+  export type GetLogisticsCategoryAggregateType<T extends LogisticsCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateLogisticsCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLogisticsCategory[P]>
+      : GetScalarType<T[P], AggregateLogisticsCategory[P]>
+  }
+
+
+
+
+  export type LogisticsCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LogisticsCategoryWhereInput
+    orderBy?: LogisticsCategoryOrderByWithAggregationInput | LogisticsCategoryOrderByWithAggregationInput[]
+    by: LogisticsCategoryScalarFieldEnum[] | LogisticsCategoryScalarFieldEnum
+    having?: LogisticsCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LogisticsCategoryCountAggregateInputType | true
+    _min?: LogisticsCategoryMinAggregateInputType
+    _max?: LogisticsCategoryMaxAggregateInputType
+  }
+
+  export type LogisticsCategoryGroupByOutputType = {
+    id: string
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: LogisticsCategoryCountAggregateOutputType | null
+    _min: LogisticsCategoryMinAggregateOutputType | null
+    _max: LogisticsCategoryMaxAggregateOutputType | null
+  }
+
+  type GetLogisticsCategoryGroupByPayload<T extends LogisticsCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LogisticsCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LogisticsCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LogisticsCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], LogisticsCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LogisticsCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    vehicles?: boolean | LogisticsCategory$vehiclesArgs<ExtArgs>
+    _count?: boolean | LogisticsCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["logisticsCategory"]>
+
+  export type LogisticsCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["logisticsCategory"]>
+
+  export type LogisticsCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["logisticsCategory"]>
+
+  export type LogisticsCategorySelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type LogisticsCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["logisticsCategory"]>
+  export type LogisticsCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    vehicles?: boolean | LogisticsCategory$vehiclesArgs<ExtArgs>
+    _count?: boolean | LogisticsCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LogisticsCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type LogisticsCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $LogisticsCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LogisticsCategory"
+    objects: {
+      vehicles: Prisma.$LogisticsVehiclePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["logisticsCategory"]>
+    composites: {}
+  }
+
+  type LogisticsCategoryGetPayload<S extends boolean | null | undefined | LogisticsCategoryDefaultArgs> = $Result.GetResult<Prisma.$LogisticsCategoryPayload, S>
+
+  type LogisticsCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LogisticsCategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LogisticsCategoryCountAggregateInputType | true
+    }
+
+  export interface LogisticsCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LogisticsCategory'], meta: { name: 'LogisticsCategory' } }
+    /**
+     * Find zero or one LogisticsCategory that matches the filter.
+     * @param {LogisticsCategoryFindUniqueArgs} args - Arguments to find a LogisticsCategory
+     * @example
+     * // Get one LogisticsCategory
+     * const logisticsCategory = await prisma.logisticsCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LogisticsCategoryFindUniqueArgs>(args: SelectSubset<T, LogisticsCategoryFindUniqueArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one LogisticsCategory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LogisticsCategoryFindUniqueOrThrowArgs} args - Arguments to find a LogisticsCategory
+     * @example
+     * // Get one LogisticsCategory
+     * const logisticsCategory = await prisma.logisticsCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LogisticsCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, LogisticsCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LogisticsCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogisticsCategoryFindFirstArgs} args - Arguments to find a LogisticsCategory
+     * @example
+     * // Get one LogisticsCategory
+     * const logisticsCategory = await prisma.logisticsCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LogisticsCategoryFindFirstArgs>(args?: SelectSubset<T, LogisticsCategoryFindFirstArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LogisticsCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogisticsCategoryFindFirstOrThrowArgs} args - Arguments to find a LogisticsCategory
+     * @example
+     * // Get one LogisticsCategory
+     * const logisticsCategory = await prisma.logisticsCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LogisticsCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, LogisticsCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LogisticsCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogisticsCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LogisticsCategories
+     * const logisticsCategories = await prisma.logisticsCategory.findMany()
+     * 
+     * // Get first 10 LogisticsCategories
+     * const logisticsCategories = await prisma.logisticsCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const logisticsCategoryWithIdOnly = await prisma.logisticsCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LogisticsCategoryFindManyArgs>(args?: SelectSubset<T, LogisticsCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a LogisticsCategory.
+     * @param {LogisticsCategoryCreateArgs} args - Arguments to create a LogisticsCategory.
+     * @example
+     * // Create one LogisticsCategory
+     * const LogisticsCategory = await prisma.logisticsCategory.create({
+     *   data: {
+     *     // ... data to create a LogisticsCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends LogisticsCategoryCreateArgs>(args: SelectSubset<T, LogisticsCategoryCreateArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many LogisticsCategories.
+     * @param {LogisticsCategoryCreateManyArgs} args - Arguments to create many LogisticsCategories.
+     * @example
+     * // Create many LogisticsCategories
+     * const logisticsCategory = await prisma.logisticsCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LogisticsCategoryCreateManyArgs>(args?: SelectSubset<T, LogisticsCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LogisticsCategories and returns the data saved in the database.
+     * @param {LogisticsCategoryCreateManyAndReturnArgs} args - Arguments to create many LogisticsCategories.
+     * @example
+     * // Create many LogisticsCategories
+     * const logisticsCategory = await prisma.logisticsCategory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LogisticsCategories and only return the `id`
+     * const logisticsCategoryWithIdOnly = await prisma.logisticsCategory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LogisticsCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, LogisticsCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a LogisticsCategory.
+     * @param {LogisticsCategoryDeleteArgs} args - Arguments to delete one LogisticsCategory.
+     * @example
+     * // Delete one LogisticsCategory
+     * const LogisticsCategory = await prisma.logisticsCategory.delete({
+     *   where: {
+     *     // ... filter to delete one LogisticsCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LogisticsCategoryDeleteArgs>(args: SelectSubset<T, LogisticsCategoryDeleteArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one LogisticsCategory.
+     * @param {LogisticsCategoryUpdateArgs} args - Arguments to update one LogisticsCategory.
+     * @example
+     * // Update one LogisticsCategory
+     * const logisticsCategory = await prisma.logisticsCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LogisticsCategoryUpdateArgs>(args: SelectSubset<T, LogisticsCategoryUpdateArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more LogisticsCategories.
+     * @param {LogisticsCategoryDeleteManyArgs} args - Arguments to filter LogisticsCategories to delete.
+     * @example
+     * // Delete a few LogisticsCategories
+     * const { count } = await prisma.logisticsCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LogisticsCategoryDeleteManyArgs>(args?: SelectSubset<T, LogisticsCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LogisticsCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogisticsCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LogisticsCategories
+     * const logisticsCategory = await prisma.logisticsCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LogisticsCategoryUpdateManyArgs>(args: SelectSubset<T, LogisticsCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LogisticsCategories and returns the data updated in the database.
+     * @param {LogisticsCategoryUpdateManyAndReturnArgs} args - Arguments to update many LogisticsCategories.
+     * @example
+     * // Update many LogisticsCategories
+     * const logisticsCategory = await prisma.logisticsCategory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more LogisticsCategories and only return the `id`
+     * const logisticsCategoryWithIdOnly = await prisma.logisticsCategory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LogisticsCategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, LogisticsCategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one LogisticsCategory.
+     * @param {LogisticsCategoryUpsertArgs} args - Arguments to update or create a LogisticsCategory.
+     * @example
+     * // Update or create a LogisticsCategory
+     * const logisticsCategory = await prisma.logisticsCategory.upsert({
+     *   create: {
+     *     // ... data to create a LogisticsCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LogisticsCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LogisticsCategoryUpsertArgs>(args: SelectSubset<T, LogisticsCategoryUpsertArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of LogisticsCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogisticsCategoryCountArgs} args - Arguments to filter LogisticsCategories to count.
+     * @example
+     * // Count the number of LogisticsCategories
+     * const count = await prisma.logisticsCategory.count({
+     *   where: {
+     *     // ... the filter for the LogisticsCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends LogisticsCategoryCountArgs>(
+      args?: Subset<T, LogisticsCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LogisticsCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LogisticsCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogisticsCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LogisticsCategoryAggregateArgs>(args: Subset<T, LogisticsCategoryAggregateArgs>): Prisma.PrismaPromise<GetLogisticsCategoryAggregateType<T>>
+
+    /**
+     * Group by LogisticsCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogisticsCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LogisticsCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LogisticsCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: LogisticsCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LogisticsCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLogisticsCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LogisticsCategory model
+   */
+  readonly fields: LogisticsCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LogisticsCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LogisticsCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    vehicles<T extends LogisticsCategory$vehiclesArgs<ExtArgs> = {}>(args?: Subset<T, LogisticsCategory$vehiclesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LogisticsVehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LogisticsCategory model
+   */
+  interface LogisticsCategoryFieldRefs {
+    readonly id: FieldRef<"LogisticsCategory", 'String'>
+    readonly name: FieldRef<"LogisticsCategory", 'String'>
+    readonly createdAt: FieldRef<"LogisticsCategory", 'DateTime'>
+    readonly updatedAt: FieldRef<"LogisticsCategory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LogisticsCategory findUnique
+   */
+  export type LogisticsCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LogisticsCategory to fetch.
+     */
+    where: LogisticsCategoryWhereUniqueInput
+  }
+
+  /**
+   * LogisticsCategory findUniqueOrThrow
+   */
+  export type LogisticsCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LogisticsCategory to fetch.
+     */
+    where: LogisticsCategoryWhereUniqueInput
+  }
+
+  /**
+   * LogisticsCategory findFirst
+   */
+  export type LogisticsCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LogisticsCategory to fetch.
+     */
+    where?: LogisticsCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LogisticsCategories to fetch.
+     */
+    orderBy?: LogisticsCategoryOrderByWithRelationInput | LogisticsCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LogisticsCategories.
+     */
+    cursor?: LogisticsCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LogisticsCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LogisticsCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LogisticsCategories.
+     */
+    distinct?: LogisticsCategoryScalarFieldEnum | LogisticsCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * LogisticsCategory findFirstOrThrow
+   */
+  export type LogisticsCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LogisticsCategory to fetch.
+     */
+    where?: LogisticsCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LogisticsCategories to fetch.
+     */
+    orderBy?: LogisticsCategoryOrderByWithRelationInput | LogisticsCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LogisticsCategories.
+     */
+    cursor?: LogisticsCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LogisticsCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LogisticsCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LogisticsCategories.
+     */
+    distinct?: LogisticsCategoryScalarFieldEnum | LogisticsCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * LogisticsCategory findMany
+   */
+  export type LogisticsCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LogisticsCategories to fetch.
+     */
+    where?: LogisticsCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LogisticsCategories to fetch.
+     */
+    orderBy?: LogisticsCategoryOrderByWithRelationInput | LogisticsCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LogisticsCategories.
+     */
+    cursor?: LogisticsCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LogisticsCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LogisticsCategories.
+     */
+    skip?: number
+    distinct?: LogisticsCategoryScalarFieldEnum | LogisticsCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * LogisticsCategory create
+   */
+  export type LogisticsCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LogisticsCategory.
+     */
+    data: XOR<LogisticsCategoryCreateInput, LogisticsCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * LogisticsCategory createMany
+   */
+  export type LogisticsCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LogisticsCategories.
+     */
+    data: LogisticsCategoryCreateManyInput | LogisticsCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LogisticsCategory createManyAndReturn
+   */
+  export type LogisticsCategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many LogisticsCategories.
+     */
+    data: LogisticsCategoryCreateManyInput | LogisticsCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LogisticsCategory update
+   */
+  export type LogisticsCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LogisticsCategory.
+     */
+    data: XOR<LogisticsCategoryUpdateInput, LogisticsCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which LogisticsCategory to update.
+     */
+    where: LogisticsCategoryWhereUniqueInput
+  }
+
+  /**
+   * LogisticsCategory updateMany
+   */
+  export type LogisticsCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LogisticsCategories.
+     */
+    data: XOR<LogisticsCategoryUpdateManyMutationInput, LogisticsCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which LogisticsCategories to update
+     */
+    where?: LogisticsCategoryWhereInput
+    /**
+     * Limit how many LogisticsCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LogisticsCategory updateManyAndReturn
+   */
+  export type LogisticsCategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update LogisticsCategories.
+     */
+    data: XOR<LogisticsCategoryUpdateManyMutationInput, LogisticsCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which LogisticsCategories to update
+     */
+    where?: LogisticsCategoryWhereInput
+    /**
+     * Limit how many LogisticsCategories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LogisticsCategory upsert
+   */
+  export type LogisticsCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LogisticsCategory to update in case it exists.
+     */
+    where: LogisticsCategoryWhereUniqueInput
+    /**
+     * In case the LogisticsCategory found by the `where` argument doesn't exist, create a new LogisticsCategory with this data.
+     */
+    create: XOR<LogisticsCategoryCreateInput, LogisticsCategoryUncheckedCreateInput>
+    /**
+     * In case the LogisticsCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LogisticsCategoryUpdateInput, LogisticsCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * LogisticsCategory delete
+   */
+  export type LogisticsCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which LogisticsCategory to delete.
+     */
+    where: LogisticsCategoryWhereUniqueInput
+  }
+
+  /**
+   * LogisticsCategory deleteMany
+   */
+  export type LogisticsCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LogisticsCategories to delete
+     */
+    where?: LogisticsCategoryWhereInput
+    /**
+     * Limit how many LogisticsCategories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * LogisticsCategory.vehicles
+   */
+  export type LogisticsCategory$vehiclesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsVehicle
+     */
+    select?: LogisticsVehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsVehicle
+     */
+    omit?: LogisticsVehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
+    where?: LogisticsVehicleWhereInput
+    orderBy?: LogisticsVehicleOrderByWithRelationInput | LogisticsVehicleOrderByWithRelationInput[]
+    cursor?: LogisticsVehicleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LogisticsVehicleScalarFieldEnum | LogisticsVehicleScalarFieldEnum[]
+  }
+
+  /**
+   * LogisticsCategory without action
+   */
+  export type LogisticsCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model LogisticsVehicle
    */
 
@@ -3333,6 +4512,7 @@ export namespace Prisma {
     description: string | null
     pricePerDay: number | null
     category: string | null
+    categoryId: string | null
     imageUrl: string | null
     isFeatured: boolean | null
     createdAt: Date | null
@@ -3346,6 +4526,7 @@ export namespace Prisma {
     description: string | null
     pricePerDay: number | null
     category: string | null
+    categoryId: string | null
     imageUrl: string | null
     isFeatured: boolean | null
     createdAt: Date | null
@@ -3359,6 +4540,7 @@ export namespace Prisma {
     description: number
     pricePerDay: number
     category: number
+    categoryId: number
     imageUrl: number
     features: number
     isFeatured: number
@@ -3383,6 +4565,7 @@ export namespace Prisma {
     description?: true
     pricePerDay?: true
     category?: true
+    categoryId?: true
     imageUrl?: true
     isFeatured?: true
     createdAt?: true
@@ -3396,6 +4579,7 @@ export namespace Prisma {
     description?: true
     pricePerDay?: true
     category?: true
+    categoryId?: true
     imageUrl?: true
     isFeatured?: true
     createdAt?: true
@@ -3409,6 +4593,7 @@ export namespace Prisma {
     description?: true
     pricePerDay?: true
     category?: true
+    categoryId?: true
     imageUrl?: true
     features?: true
     isFeatured?: true
@@ -3510,6 +4695,7 @@ export namespace Prisma {
     description: string
     pricePerDay: number
     category: string
+    categoryId: string | null
     imageUrl: string
     features: string[]
     isFeatured: boolean
@@ -3543,11 +4729,13 @@ export namespace Prisma {
     description?: boolean
     pricePerDay?: boolean
     category?: boolean
+    categoryId?: boolean
     imageUrl?: boolean
     features?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    categoryRel?: boolean | LogisticsVehicle$categoryRelArgs<ExtArgs>
   }, ExtArgs["result"]["logisticsVehicle"]>
 
   export type LogisticsVehicleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3557,11 +4745,13 @@ export namespace Prisma {
     description?: boolean
     pricePerDay?: boolean
     category?: boolean
+    categoryId?: boolean
     imageUrl?: boolean
     features?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    categoryRel?: boolean | LogisticsVehicle$categoryRelArgs<ExtArgs>
   }, ExtArgs["result"]["logisticsVehicle"]>
 
   export type LogisticsVehicleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3571,11 +4761,13 @@ export namespace Prisma {
     description?: boolean
     pricePerDay?: boolean
     category?: boolean
+    categoryId?: boolean
     imageUrl?: boolean
     features?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    categoryRel?: boolean | LogisticsVehicle$categoryRelArgs<ExtArgs>
   }, ExtArgs["result"]["logisticsVehicle"]>
 
   export type LogisticsVehicleSelectScalar = {
@@ -3585,6 +4777,7 @@ export namespace Prisma {
     description?: boolean
     pricePerDay?: boolean
     category?: boolean
+    categoryId?: boolean
     imageUrl?: boolean
     features?: boolean
     isFeatured?: boolean
@@ -3592,11 +4785,22 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type LogisticsVehicleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "model" | "description" | "pricePerDay" | "category" | "imageUrl" | "features" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["logisticsVehicle"]>
+  export type LogisticsVehicleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "model" | "description" | "pricePerDay" | "category" | "categoryId" | "imageUrl" | "features" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["logisticsVehicle"]>
+  export type LogisticsVehicleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    categoryRel?: boolean | LogisticsVehicle$categoryRelArgs<ExtArgs>
+  }
+  export type LogisticsVehicleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    categoryRel?: boolean | LogisticsVehicle$categoryRelArgs<ExtArgs>
+  }
+  export type LogisticsVehicleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    categoryRel?: boolean | LogisticsVehicle$categoryRelArgs<ExtArgs>
+  }
 
   export type $LogisticsVehiclePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "LogisticsVehicle"
-    objects: {}
+    objects: {
+      categoryRel: Prisma.$LogisticsCategoryPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -3604,6 +4808,7 @@ export namespace Prisma {
       description: string
       pricePerDay: number
       category: string
+      categoryId: string | null
       imageUrl: string
       features: string[]
       isFeatured: boolean
@@ -4003,6 +5208,7 @@ export namespace Prisma {
    */
   export interface Prisma__LogisticsVehicleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    categoryRel<T extends LogisticsVehicle$categoryRelArgs<ExtArgs> = {}>(args?: Subset<T, LogisticsVehicle$categoryRelArgs<ExtArgs>>): Prisma__LogisticsCategoryClient<$Result.GetResult<Prisma.$LogisticsCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4038,6 +5244,7 @@ export namespace Prisma {
     readonly description: FieldRef<"LogisticsVehicle", 'String'>
     readonly pricePerDay: FieldRef<"LogisticsVehicle", 'Int'>
     readonly category: FieldRef<"LogisticsVehicle", 'String'>
+    readonly categoryId: FieldRef<"LogisticsVehicle", 'String'>
     readonly imageUrl: FieldRef<"LogisticsVehicle", 'String'>
     readonly features: FieldRef<"LogisticsVehicle", 'String[]'>
     readonly isFeatured: FieldRef<"LogisticsVehicle", 'Boolean'>
@@ -4060,6 +5267,10 @@ export namespace Prisma {
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
+    /**
      * Filter, which LogisticsVehicle to fetch.
      */
     where: LogisticsVehicleWhereUniqueInput
@@ -4078,6 +5289,10 @@ export namespace Prisma {
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
+    /**
      * Filter, which LogisticsVehicle to fetch.
      */
     where: LogisticsVehicleWhereUniqueInput
@@ -4095,6 +5310,10 @@ export namespace Prisma {
      * Omit specific fields from the LogisticsVehicle
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
     /**
      * Filter, which LogisticsVehicle to fetch.
      */
@@ -4144,6 +5363,10 @@ export namespace Prisma {
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
+    /**
      * Filter, which LogisticsVehicle to fetch.
      */
     where?: LogisticsVehicleWhereInput
@@ -4192,6 +5415,10 @@ export namespace Prisma {
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
+    /**
      * Filter, which LogisticsVehicles to fetch.
      */
     where?: LogisticsVehicleWhereInput
@@ -4235,6 +5462,10 @@ export namespace Prisma {
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
+    /**
      * The data needed to create a LogisticsVehicle.
      */
     data: XOR<LogisticsVehicleCreateInput, LogisticsVehicleUncheckedCreateInput>
@@ -4268,6 +5499,10 @@ export namespace Prisma {
      */
     data: LogisticsVehicleCreateManyInput | LogisticsVehicleCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4282,6 +5517,10 @@ export namespace Prisma {
      * Omit specific fields from the LogisticsVehicle
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
     /**
      * The data needed to update a LogisticsVehicle.
      */
@@ -4334,6 +5573,10 @@ export namespace Prisma {
      * Limit how many LogisticsVehicles to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4348,6 +5591,10 @@ export namespace Prisma {
      * Omit specific fields from the LogisticsVehicle
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
     /**
      * The filter to search for the LogisticsVehicle to update in case it exists.
      */
@@ -4375,6 +5622,10 @@ export namespace Prisma {
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
+    /**
      * Filter which LogisticsVehicle to delete.
      */
     where: LogisticsVehicleWhereUniqueInput
@@ -4395,6 +5646,25 @@ export namespace Prisma {
   }
 
   /**
+   * LogisticsVehicle.categoryRel
+   */
+  export type LogisticsVehicle$categoryRelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogisticsCategory
+     */
+    select?: LogisticsCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogisticsCategory
+     */
+    omit?: LogisticsCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsCategoryInclude<ExtArgs> | null
+    where?: LogisticsCategoryWhereInput
+  }
+
+  /**
    * LogisticsVehicle without action
    */
   export type LogisticsVehicleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4406,6 +5676,10 @@ export namespace Prisma {
      * Omit specific fields from the LogisticsVehicle
      */
     omit?: LogisticsVehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LogisticsVehicleInclude<ExtArgs> | null
   }
 
 
@@ -4449,6 +5723,16 @@ export namespace Prisma {
   export type BrandingProductScalarFieldEnum = (typeof BrandingProductScalarFieldEnum)[keyof typeof BrandingProductScalarFieldEnum]
 
 
+  export const LogisticsCategoryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type LogisticsCategoryScalarFieldEnum = (typeof LogisticsCategoryScalarFieldEnum)[keyof typeof LogisticsCategoryScalarFieldEnum]
+
+
   export const LogisticsVehicleScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -4456,6 +5740,7 @@ export namespace Prisma {
     description: 'description',
     pricePerDay: 'pricePerDay',
     category: 'category',
+    categoryId: 'categoryId',
     imageUrl: 'imageUrl',
     features: 'features',
     isFeatured: 'isFeatured',
@@ -4693,6 +5978,56 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"BrandingProduct"> | Date | string
   }
 
+  export type LogisticsCategoryWhereInput = {
+    AND?: LogisticsCategoryWhereInput | LogisticsCategoryWhereInput[]
+    OR?: LogisticsCategoryWhereInput[]
+    NOT?: LogisticsCategoryWhereInput | LogisticsCategoryWhereInput[]
+    id?: StringFilter<"LogisticsCategory"> | string
+    name?: StringFilter<"LogisticsCategory"> | string
+    createdAt?: DateTimeFilter<"LogisticsCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"LogisticsCategory"> | Date | string
+    vehicles?: LogisticsVehicleListRelationFilter
+  }
+
+  export type LogisticsCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    vehicles?: LogisticsVehicleOrderByRelationAggregateInput
+  }
+
+  export type LogisticsCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: LogisticsCategoryWhereInput | LogisticsCategoryWhereInput[]
+    OR?: LogisticsCategoryWhereInput[]
+    NOT?: LogisticsCategoryWhereInput | LogisticsCategoryWhereInput[]
+    createdAt?: DateTimeFilter<"LogisticsCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"LogisticsCategory"> | Date | string
+    vehicles?: LogisticsVehicleListRelationFilter
+  }, "id" | "name">
+
+  export type LogisticsCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: LogisticsCategoryCountOrderByAggregateInput
+    _max?: LogisticsCategoryMaxOrderByAggregateInput
+    _min?: LogisticsCategoryMinOrderByAggregateInput
+  }
+
+  export type LogisticsCategoryScalarWhereWithAggregatesInput = {
+    AND?: LogisticsCategoryScalarWhereWithAggregatesInput | LogisticsCategoryScalarWhereWithAggregatesInput[]
+    OR?: LogisticsCategoryScalarWhereWithAggregatesInput[]
+    NOT?: LogisticsCategoryScalarWhereWithAggregatesInput | LogisticsCategoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"LogisticsCategory"> | string
+    name?: StringWithAggregatesFilter<"LogisticsCategory"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"LogisticsCategory"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"LogisticsCategory"> | Date | string
+  }
+
   export type LogisticsVehicleWhereInput = {
     AND?: LogisticsVehicleWhereInput | LogisticsVehicleWhereInput[]
     OR?: LogisticsVehicleWhereInput[]
@@ -4703,11 +6038,13 @@ export namespace Prisma {
     description?: StringFilter<"LogisticsVehicle"> | string
     pricePerDay?: IntFilter<"LogisticsVehicle"> | number
     category?: StringFilter<"LogisticsVehicle"> | string
+    categoryId?: StringNullableFilter<"LogisticsVehicle"> | string | null
     imageUrl?: StringFilter<"LogisticsVehicle"> | string
     features?: StringNullableListFilter<"LogisticsVehicle">
     isFeatured?: BoolFilter<"LogisticsVehicle"> | boolean
     createdAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
     updatedAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
+    categoryRel?: XOR<LogisticsCategoryNullableScalarRelationFilter, LogisticsCategoryWhereInput> | null
   }
 
   export type LogisticsVehicleOrderByWithRelationInput = {
@@ -4717,11 +6054,13 @@ export namespace Prisma {
     description?: SortOrder
     pricePerDay?: SortOrder
     category?: SortOrder
+    categoryId?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
     features?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    categoryRel?: LogisticsCategoryOrderByWithRelationInput
   }
 
   export type LogisticsVehicleWhereUniqueInput = Prisma.AtLeast<{
@@ -4734,11 +6073,13 @@ export namespace Prisma {
     description?: StringFilter<"LogisticsVehicle"> | string
     pricePerDay?: IntFilter<"LogisticsVehicle"> | number
     category?: StringFilter<"LogisticsVehicle"> | string
+    categoryId?: StringNullableFilter<"LogisticsVehicle"> | string | null
     imageUrl?: StringFilter<"LogisticsVehicle"> | string
     features?: StringNullableListFilter<"LogisticsVehicle">
     isFeatured?: BoolFilter<"LogisticsVehicle"> | boolean
     createdAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
     updatedAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
+    categoryRel?: XOR<LogisticsCategoryNullableScalarRelationFilter, LogisticsCategoryWhereInput> | null
   }, "id">
 
   export type LogisticsVehicleOrderByWithAggregationInput = {
@@ -4748,6 +6089,7 @@ export namespace Prisma {
     description?: SortOrder
     pricePerDay?: SortOrder
     category?: SortOrder
+    categoryId?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
     features?: SortOrder
     isFeatured?: SortOrder
@@ -4770,6 +6112,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"LogisticsVehicle"> | string
     pricePerDay?: IntWithAggregatesFilter<"LogisticsVehicle"> | number
     category?: StringWithAggregatesFilter<"LogisticsVehicle"> | string
+    categoryId?: StringNullableWithAggregatesFilter<"LogisticsVehicle"> | string | null
     imageUrl?: StringWithAggregatesFilter<"LogisticsVehicle"> | string
     features?: StringNullableListFilter<"LogisticsVehicle">
     isFeatured?: BoolWithAggregatesFilter<"LogisticsVehicle"> | boolean
@@ -4920,6 +6263,59 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LogisticsCategoryCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicles?: LogisticsVehicleCreateNestedManyWithoutCategoryRelInput
+  }
+
+  export type LogisticsCategoryUncheckedCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    vehicles?: LogisticsVehicleUncheckedCreateNestedManyWithoutCategoryRelInput
+  }
+
+  export type LogisticsCategoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicles?: LogisticsVehicleUpdateManyWithoutCategoryRelNestedInput
+  }
+
+  export type LogisticsCategoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    vehicles?: LogisticsVehicleUncheckedUpdateManyWithoutCategoryRelNestedInput
+  }
+
+  export type LogisticsCategoryCreateManyInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LogisticsCategoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LogisticsCategoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type LogisticsVehicleCreateInput = {
     id?: string
     name: string
@@ -4932,6 +6328,7 @@ export namespace Prisma {
     isFeatured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    categoryRel?: LogisticsCategoryCreateNestedOneWithoutVehiclesInput
   }
 
   export type LogisticsVehicleUncheckedCreateInput = {
@@ -4941,6 +6338,7 @@ export namespace Prisma {
     description: string
     pricePerDay: number
     category: string
+    categoryId?: string | null
     imageUrl: string
     features?: LogisticsVehicleCreatefeaturesInput | string[]
     isFeatured?: boolean
@@ -4960,6 +6358,7 @@ export namespace Prisma {
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categoryRel?: LogisticsCategoryUpdateOneWithoutVehiclesNestedInput
   }
 
   export type LogisticsVehicleUncheckedUpdateInput = {
@@ -4969,6 +6368,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     pricePerDay?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
@@ -4983,6 +6383,7 @@ export namespace Prisma {
     description: string
     pricePerDay: number
     category: string
+    categoryId?: string | null
     imageUrl: string
     features?: LogisticsVehicleCreatefeaturesInput | string[]
     isFeatured?: boolean
@@ -5011,6 +6412,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     pricePerDay?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
@@ -5237,12 +6639,48 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type LogisticsVehicleListRelationFilter = {
+    every?: LogisticsVehicleWhereInput
+    some?: LogisticsVehicleWhereInput
+    none?: LogisticsVehicleWhereInput
+  }
+
+  export type LogisticsVehicleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LogisticsCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LogisticsCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LogisticsCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type StringNullableListFilter<$PrismaModel = never> = {
     equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     has?: string | StringFieldRefInput<$PrismaModel> | null
     hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
     hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
     isEmpty?: boolean
+  }
+
+  export type LogisticsCategoryNullableScalarRelationFilter = {
+    is?: LogisticsCategoryWhereInput | null
+    isNot?: LogisticsCategoryWhereInput | null
   }
 
   export type LogisticsVehicleCountOrderByAggregateInput = {
@@ -5252,6 +6690,7 @@ export namespace Prisma {
     description?: SortOrder
     pricePerDay?: SortOrder
     category?: SortOrder
+    categoryId?: SortOrder
     imageUrl?: SortOrder
     features?: SortOrder
     isFeatured?: SortOrder
@@ -5270,6 +6709,7 @@ export namespace Prisma {
     description?: SortOrder
     pricePerDay?: SortOrder
     category?: SortOrder
+    categoryId?: SortOrder
     imageUrl?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
@@ -5283,6 +6723,7 @@ export namespace Prisma {
     description?: SortOrder
     pricePerDay?: SortOrder
     category?: SortOrder
+    categoryId?: SortOrder
     imageUrl?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
@@ -5375,13 +6816,71 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type LogisticsVehicleCreateNestedManyWithoutCategoryRelInput = {
+    create?: XOR<LogisticsVehicleCreateWithoutCategoryRelInput, LogisticsVehicleUncheckedCreateWithoutCategoryRelInput> | LogisticsVehicleCreateWithoutCategoryRelInput[] | LogisticsVehicleUncheckedCreateWithoutCategoryRelInput[]
+    connectOrCreate?: LogisticsVehicleCreateOrConnectWithoutCategoryRelInput | LogisticsVehicleCreateOrConnectWithoutCategoryRelInput[]
+    createMany?: LogisticsVehicleCreateManyCategoryRelInputEnvelope
+    connect?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+  }
+
+  export type LogisticsVehicleUncheckedCreateNestedManyWithoutCategoryRelInput = {
+    create?: XOR<LogisticsVehicleCreateWithoutCategoryRelInput, LogisticsVehicleUncheckedCreateWithoutCategoryRelInput> | LogisticsVehicleCreateWithoutCategoryRelInput[] | LogisticsVehicleUncheckedCreateWithoutCategoryRelInput[]
+    connectOrCreate?: LogisticsVehicleCreateOrConnectWithoutCategoryRelInput | LogisticsVehicleCreateOrConnectWithoutCategoryRelInput[]
+    createMany?: LogisticsVehicleCreateManyCategoryRelInputEnvelope
+    connect?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+  }
+
+  export type LogisticsVehicleUpdateManyWithoutCategoryRelNestedInput = {
+    create?: XOR<LogisticsVehicleCreateWithoutCategoryRelInput, LogisticsVehicleUncheckedCreateWithoutCategoryRelInput> | LogisticsVehicleCreateWithoutCategoryRelInput[] | LogisticsVehicleUncheckedCreateWithoutCategoryRelInput[]
+    connectOrCreate?: LogisticsVehicleCreateOrConnectWithoutCategoryRelInput | LogisticsVehicleCreateOrConnectWithoutCategoryRelInput[]
+    upsert?: LogisticsVehicleUpsertWithWhereUniqueWithoutCategoryRelInput | LogisticsVehicleUpsertWithWhereUniqueWithoutCategoryRelInput[]
+    createMany?: LogisticsVehicleCreateManyCategoryRelInputEnvelope
+    set?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+    disconnect?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+    delete?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+    connect?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+    update?: LogisticsVehicleUpdateWithWhereUniqueWithoutCategoryRelInput | LogisticsVehicleUpdateWithWhereUniqueWithoutCategoryRelInput[]
+    updateMany?: LogisticsVehicleUpdateManyWithWhereWithoutCategoryRelInput | LogisticsVehicleUpdateManyWithWhereWithoutCategoryRelInput[]
+    deleteMany?: LogisticsVehicleScalarWhereInput | LogisticsVehicleScalarWhereInput[]
+  }
+
+  export type LogisticsVehicleUncheckedUpdateManyWithoutCategoryRelNestedInput = {
+    create?: XOR<LogisticsVehicleCreateWithoutCategoryRelInput, LogisticsVehicleUncheckedCreateWithoutCategoryRelInput> | LogisticsVehicleCreateWithoutCategoryRelInput[] | LogisticsVehicleUncheckedCreateWithoutCategoryRelInput[]
+    connectOrCreate?: LogisticsVehicleCreateOrConnectWithoutCategoryRelInput | LogisticsVehicleCreateOrConnectWithoutCategoryRelInput[]
+    upsert?: LogisticsVehicleUpsertWithWhereUniqueWithoutCategoryRelInput | LogisticsVehicleUpsertWithWhereUniqueWithoutCategoryRelInput[]
+    createMany?: LogisticsVehicleCreateManyCategoryRelInputEnvelope
+    set?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+    disconnect?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+    delete?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+    connect?: LogisticsVehicleWhereUniqueInput | LogisticsVehicleWhereUniqueInput[]
+    update?: LogisticsVehicleUpdateWithWhereUniqueWithoutCategoryRelInput | LogisticsVehicleUpdateWithWhereUniqueWithoutCategoryRelInput[]
+    updateMany?: LogisticsVehicleUpdateManyWithWhereWithoutCategoryRelInput | LogisticsVehicleUpdateManyWithWhereWithoutCategoryRelInput[]
+    deleteMany?: LogisticsVehicleScalarWhereInput | LogisticsVehicleScalarWhereInput[]
+  }
+
   export type LogisticsVehicleCreatefeaturesInput = {
     set: string[]
+  }
+
+  export type LogisticsCategoryCreateNestedOneWithoutVehiclesInput = {
+    create?: XOR<LogisticsCategoryCreateWithoutVehiclesInput, LogisticsCategoryUncheckedCreateWithoutVehiclesInput>
+    connectOrCreate?: LogisticsCategoryCreateOrConnectWithoutVehiclesInput
+    connect?: LogisticsCategoryWhereUniqueInput
   }
 
   export type LogisticsVehicleUpdatefeaturesInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type LogisticsCategoryUpdateOneWithoutVehiclesNestedInput = {
+    create?: XOR<LogisticsCategoryCreateWithoutVehiclesInput, LogisticsCategoryUncheckedCreateWithoutVehiclesInput>
+    connectOrCreate?: LogisticsCategoryCreateOrConnectWithoutVehiclesInput
+    upsert?: LogisticsCategoryUpsertWithoutVehiclesInput
+    disconnect?: LogisticsCategoryWhereInput | boolean
+    delete?: LogisticsCategoryWhereInput | boolean
+    connect?: LogisticsCategoryWhereUniqueInput
+    update?: XOR<XOR<LogisticsCategoryUpdateToOneWithWhereWithoutVehiclesInput, LogisticsCategoryUpdateWithoutVehiclesInput>, LogisticsCategoryUncheckedUpdateWithoutVehiclesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5643,6 +7142,122 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LogisticsVehicleCreateWithoutCategoryRelInput = {
+    id?: string
+    name: string
+    model: string
+    description: string
+    pricePerDay: number
+    category: string
+    imageUrl: string
+    features?: LogisticsVehicleCreatefeaturesInput | string[]
+    isFeatured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LogisticsVehicleUncheckedCreateWithoutCategoryRelInput = {
+    id?: string
+    name: string
+    model: string
+    description: string
+    pricePerDay: number
+    category: string
+    imageUrl: string
+    features?: LogisticsVehicleCreatefeaturesInput | string[]
+    isFeatured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LogisticsVehicleCreateOrConnectWithoutCategoryRelInput = {
+    where: LogisticsVehicleWhereUniqueInput
+    create: XOR<LogisticsVehicleCreateWithoutCategoryRelInput, LogisticsVehicleUncheckedCreateWithoutCategoryRelInput>
+  }
+
+  export type LogisticsVehicleCreateManyCategoryRelInputEnvelope = {
+    data: LogisticsVehicleCreateManyCategoryRelInput | LogisticsVehicleCreateManyCategoryRelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type LogisticsVehicleUpsertWithWhereUniqueWithoutCategoryRelInput = {
+    where: LogisticsVehicleWhereUniqueInput
+    update: XOR<LogisticsVehicleUpdateWithoutCategoryRelInput, LogisticsVehicleUncheckedUpdateWithoutCategoryRelInput>
+    create: XOR<LogisticsVehicleCreateWithoutCategoryRelInput, LogisticsVehicleUncheckedCreateWithoutCategoryRelInput>
+  }
+
+  export type LogisticsVehicleUpdateWithWhereUniqueWithoutCategoryRelInput = {
+    where: LogisticsVehicleWhereUniqueInput
+    data: XOR<LogisticsVehicleUpdateWithoutCategoryRelInput, LogisticsVehicleUncheckedUpdateWithoutCategoryRelInput>
+  }
+
+  export type LogisticsVehicleUpdateManyWithWhereWithoutCategoryRelInput = {
+    where: LogisticsVehicleScalarWhereInput
+    data: XOR<LogisticsVehicleUpdateManyMutationInput, LogisticsVehicleUncheckedUpdateManyWithoutCategoryRelInput>
+  }
+
+  export type LogisticsVehicleScalarWhereInput = {
+    AND?: LogisticsVehicleScalarWhereInput | LogisticsVehicleScalarWhereInput[]
+    OR?: LogisticsVehicleScalarWhereInput[]
+    NOT?: LogisticsVehicleScalarWhereInput | LogisticsVehicleScalarWhereInput[]
+    id?: StringFilter<"LogisticsVehicle"> | string
+    name?: StringFilter<"LogisticsVehicle"> | string
+    model?: StringFilter<"LogisticsVehicle"> | string
+    description?: StringFilter<"LogisticsVehicle"> | string
+    pricePerDay?: IntFilter<"LogisticsVehicle"> | number
+    category?: StringFilter<"LogisticsVehicle"> | string
+    categoryId?: StringNullableFilter<"LogisticsVehicle"> | string | null
+    imageUrl?: StringFilter<"LogisticsVehicle"> | string
+    features?: StringNullableListFilter<"LogisticsVehicle">
+    isFeatured?: BoolFilter<"LogisticsVehicle"> | boolean
+    createdAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
+    updatedAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
+  }
+
+  export type LogisticsCategoryCreateWithoutVehiclesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LogisticsCategoryUncheckedCreateWithoutVehiclesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LogisticsCategoryCreateOrConnectWithoutVehiclesInput = {
+    where: LogisticsCategoryWhereUniqueInput
+    create: XOR<LogisticsCategoryCreateWithoutVehiclesInput, LogisticsCategoryUncheckedCreateWithoutVehiclesInput>
+  }
+
+  export type LogisticsCategoryUpsertWithoutVehiclesInput = {
+    update: XOR<LogisticsCategoryUpdateWithoutVehiclesInput, LogisticsCategoryUncheckedUpdateWithoutVehiclesInput>
+    create: XOR<LogisticsCategoryCreateWithoutVehiclesInput, LogisticsCategoryUncheckedCreateWithoutVehiclesInput>
+    where?: LogisticsCategoryWhereInput
+  }
+
+  export type LogisticsCategoryUpdateToOneWithWhereWithoutVehiclesInput = {
+    where?: LogisticsCategoryWhereInput
+    data: XOR<LogisticsCategoryUpdateWithoutVehiclesInput, LogisticsCategoryUncheckedUpdateWithoutVehiclesInput>
+  }
+
+  export type LogisticsCategoryUpdateWithoutVehiclesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LogisticsCategoryUncheckedUpdateWithoutVehiclesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BrandingProductCreateManyCategoryRelInput = {
     id?: string
     name: string
@@ -5686,6 +7301,62 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LogisticsVehicleCreateManyCategoryRelInput = {
+    id?: string
+    name: string
+    model: string
+    description: string
+    pricePerDay: number
+    category: string
+    imageUrl: string
+    features?: LogisticsVehicleCreatefeaturesInput | string[]
+    isFeatured?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LogisticsVehicleUpdateWithoutCategoryRelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    features?: LogisticsVehicleUpdatefeaturesInput | string[]
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LogisticsVehicleUncheckedUpdateWithoutCategoryRelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    features?: LogisticsVehicleUpdatefeaturesInput | string[]
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LogisticsVehicleUncheckedUpdateManyWithoutCategoryRelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

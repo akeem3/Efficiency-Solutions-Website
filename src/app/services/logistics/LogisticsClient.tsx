@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { 
-  LOGISTICS_CATEGORIES
-} from "@/lib/mock/logistics";
-import type { LogisticsVehicle } from "@prisma/client";
+import type { LogisticsVehicle, LogisticsCategory } from "@/generated/client";
 import { LogisticsSidebar } from "@/components/logistics/LogisticsSidebar";
 import { LogisticsGrid } from "@/components/logistics/LogisticsGrid";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
@@ -15,7 +12,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export function LogisticsClient({ initialVehicles }: { initialVehicles: LogisticsVehicle[] }) {
+export function LogisticsClient({ 
+  initialVehicles,
+  categories
+}: { 
+  initialVehicles: (LogisticsVehicle & { categoryRel?: LogisticsCategory | null })[],
+  categories: LogisticsCategory[]
+}) {
   const [activeCategory, setActiveCategory] = useState<string | undefined>(undefined);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("featured");
@@ -25,7 +28,7 @@ export function LogisticsClient({ initialVehicles }: { initialVehicles: Logistic
     let result = [...initialVehicles];
 
     if (activeCategory) {
-      result = result.filter((v) => v.category === activeCategory);
+      result = result.filter((v) => (v.categoryRel?.name || v.category) === activeCategory);
     }
 
     if (searchQuery) {
@@ -119,17 +122,17 @@ export function LogisticsClient({ initialVehicles }: { initialVehicles: Logistic
             All Vehicles
           </button>
           
-          {LOGISTICS_CATEGORIES.map((cat) => (
+          {categories.map((catObj) => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
+              key={catObj.id}
+              onClick={() => setActiveCategory(catObj.name)}
               className={`flex-shrink-0 px-6 py-3 rounded-[10px] text-sm font-bold font-heading whitespace-nowrap transition-all ${
-                activeCategory === cat 
+                activeCategory === catObj.name 
                   ? "bg-brand-primary text-white shadow-lg" 
                   : "bg-white text-brand-muted hover:bg-brand-primary/5"
               }`}
             >
-              {cat}
+              {catObj.name}
             </button>
           ))}
         </div>
@@ -139,6 +142,7 @@ export function LogisticsClient({ initialVehicles }: { initialVehicles: Logistic
           <LogisticsSidebar 
             activeCategory={activeCategory} 
             onCategoryChange={(cat) => setActiveCategory(cat || undefined)} 
+            categories={categories}
           />
 
           <div className="flex-1">

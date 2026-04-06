@@ -1,6 +1,6 @@
 "use client";
 
-import { LOGISTICS_CATEGORIES } from "@/lib/mock/logistics";
+import type { LogisticsCategory } from "@/generated/client";
 import { cn } from "@/lib/utils";
 import { LuChevronRight, LuShield, LuCar, LuUsers } from "react-icons/lu";
 
@@ -8,6 +8,7 @@ interface LogisticsSidebarProps {
   activeCategory?: string;
   onCategoryChange?: (category: string) => void;
   className?: string;
+  categories: LogisticsCategory[];
 }
 
 const getCategoryIcon = (category: string) => {
@@ -20,6 +21,7 @@ export const LogisticsSidebar = ({
   activeCategory,
   onCategoryChange,
   className,
+  categories,
 }: LogisticsSidebarProps) => {
   return (
     <aside 
@@ -36,14 +38,15 @@ export const LogisticsSidebar = ({
       </div>
 
       <nav role="list" className="space-y-4">
-        {LOGISTICS_CATEGORIES.map((category) => {
-          const isActive = activeCategory === category;
-          const Icon = getCategoryIcon(category);
+        {categories.map((categoryObj) => {
+          const catName = categoryObj.name;
+          const isActive = activeCategory === catName;
+          const Icon = getCategoryIcon(catName);
           
           return (
             <button
-              key={category}
-              onClick={() => onCategoryChange?.(isActive ? "" : category)}
+              key={categoryObj.id}
+              onClick={() => onCategoryChange?.(isActive ? "" : catName)}
               className={cn(
                 "group relative flex w-full items-center justify-between overflow-hidden rounded-[10px] px-6 py-4 text-left text-sm font-bold transition-all duration-300",
                 isActive ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/20" : "bg-brand-muted/5 text-brand-muted hover:bg-brand-muted/10 hover:text-brand-primary"
@@ -51,7 +54,7 @@ export const LogisticsSidebar = ({
             >
               <div className="flex items-center gap-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1">
                 <Icon className={cn("h-5 w-5", isActive ? "text-brand-secondary" : "text-brand-muted")} />
-                {category}
+                {catName}
               </div>
               <LuChevronRight 
                 className={cn(

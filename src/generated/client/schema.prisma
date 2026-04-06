@@ -31,16 +31,26 @@ model BrandingProduct {
   updatedAt   DateTime          @updatedAt
 }
 
+model LogisticsCategory {
+  id        String             @id @default(uuid())
+  name      String             @unique
+  vehicles  LogisticsVehicle[]
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+}
+
 model LogisticsVehicle {
-  id          String   @id @default(uuid())
+  id          String             @id @default(uuid())
   name        String
   model       String
   description String
   pricePerDay Int
-  category    String
+  category    String // Legacy string for migration
+  categoryId  String? // New relational reference
+  categoryRel LogisticsCategory? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   imageUrl    String
   features    String[]
-  isFeatured  Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  isFeatured  Boolean            @default(false)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
 }

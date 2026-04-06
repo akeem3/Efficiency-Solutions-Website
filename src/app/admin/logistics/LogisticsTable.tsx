@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/table';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { formatCurrency, cn } from '@/lib/utils';
-import type { LogisticsVehicle } from '@prisma/client';
 import VehicleFormModal from './VehicleFormModal';
 import { 
   AlertDialog, 
@@ -27,8 +26,15 @@ import {
 import { deleteLogisticsVehicle } from '../actions';
 import { toast } from 'sonner';
 import { LuPlus, LuPencil, LuTrash2 } from 'react-icons/lu';
+import type { LogisticsVehicle, LogisticsCategory } from '@/generated/client';
 
-export default function LogisticsTable({ initialVehicles }: { initialVehicles: LogisticsVehicle[] }) {
+export default function LogisticsTable({ 
+  initialVehicles,
+  categories
+}: { 
+  initialVehicles: (LogisticsVehicle & { categoryRel?: LogisticsCategory | null })[],
+  categories: LogisticsCategory[]
+}) {
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
   async function onDelete(id: string) {
@@ -49,6 +55,7 @@ export default function LogisticsTable({ initialVehicles }: { initialVehicles: L
       <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border-b border-black/5 gap-4">
         <h2 className="text-lg font-bold font-heading text-brand-primary">Fleet</h2>
         <VehicleFormModal 
+          categories={categories}
           trigger={
             <button className={cn(
               buttonVariants({ variant: "default" }), 
@@ -85,6 +92,7 @@ export default function LogisticsTable({ initialVehicles }: { initialVehicles: L
                     <div className="flex gap-2">
                       <VehicleFormModal 
                         vehicle={vehicle} 
+                        categories={categories}
                         trigger={
                           <button 
                             className={cn(
@@ -131,7 +139,7 @@ export default function LogisticsTable({ initialVehicles }: { initialVehicles: L
                       </AlertDialog>
                     </div>
                   </div>
-                  <span className="text-xs text-brand-muted mt-1">{vehicle.category}</span>
+                  <span className="text-xs text-brand-muted mt-1">{vehicle.categoryRel?.name || vehicle.category}</span>
                   <div className="mt-2 text-brand-primary font-bold">
                     {formatCurrency(vehicle.pricePerDay)}
                     <span className="text-[10px] font-normal text-brand-muted ml-1">/ day</span>
@@ -180,7 +188,7 @@ export default function LogisticsTable({ initialVehicles }: { initialVehicles: L
                   <TableCell className="font-medium text-brand-primary px-2 md:px-4 max-w-[120px] md:max-w-none truncate">
                     <div className="flex flex-col">
                       <span>{vehicle.name} {vehicle.model}</span>
-                      <span className="sm:hidden text-xs text-brand-muted font-normal">{vehicle.category}</span>
+                      <span className="sm:hidden text-xs text-brand-muted font-normal">{vehicle.categoryRel?.name || vehicle.category}</span>
                       {vehicle.isFeatured && (
                         <span className="mt-1 w-fit inline-flex items-center rounded-full bg-brand-gold/10 px-2 py-0.5 text-[10px] font-medium text-brand-gold">
                           Featured
@@ -188,12 +196,13 @@ export default function LogisticsTable({ initialVehicles }: { initialVehicles: L
                       )}
                     </div>
                   </TableCell>
-                  <TableCell className="hidden sm:table-cell px-4">{vehicle.category}</TableCell>
+                  <TableCell className="hidden sm:table-cell px-4">{vehicle.categoryRel?.name || vehicle.category}</TableCell>
                   <TableCell className="px-2 md:px-4 text-sm md:text-base">{formatCurrency(vehicle.pricePerDay)}</TableCell>
                   <TableCell className="text-right px-4">
                     <div className="flex justify-end gap-1.5 md:gap-2">
                       <VehicleFormModal 
                         vehicle={vehicle} 
+                        categories={categories}
                         trigger={
                           <button 
                             className={cn(

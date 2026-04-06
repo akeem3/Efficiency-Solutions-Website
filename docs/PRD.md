@@ -20,8 +20,8 @@ The core conversion strategy centers around WhatsApp. Rather than a traditional 
 
 ## 3. Core Features & User Stories
 
-### 3.1. Premium Branding & Printing
-*   **Functionality:** An e-commerce catalog layout. Users can browse items (e.g., T-Shirts, Mugs, Caps), filter by categories in the left sidebar (Apparel, Corporate Gifts, etc.), and sort items.
+*   **Functionality:** An e-commerce catalog layout. Users can browse items (e.g., T-Shirts, Mugs, Caps), filter by dynamic categories fetched from the database via a relational model (`BrandingCategory`), and sort items.
+*   **Administration:** Admins can manage categories (Create, Update, Delete) via the dashboard. Deleting a category containing products is protected by an admin password to prevent accidental data loss (Cascade Delete).
 *   **Conversion:** Users click "Add to Cart". The cart aggregates selected items and total estimated cost. Checking out redirects the user to WhatsApp with a summary of their cart.
 
 ### 3.2. Luxury Logistics

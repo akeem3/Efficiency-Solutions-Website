@@ -141,6 +141,13 @@ exports.Prisma.BrandingProductScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LogisticsCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.LogisticsVehicleScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -148,6 +155,7 @@ exports.Prisma.LogisticsVehicleScalarFieldEnum = {
   description: 'description',
   pricePerDay: 'pricePerDay',
   category: 'category',
+  categoryId: 'categoryId',
   imageUrl: 'imageUrl',
   features: 'features',
   isFeatured: 'isFeatured',
@@ -174,6 +182,7 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   BrandingCategory: 'BrandingCategory',
   BrandingProduct: 'BrandingProduct',
+  LogisticsCategory: 'LogisticsCategory',
   LogisticsVehicle: 'LogisticsVehicle'
 };
 

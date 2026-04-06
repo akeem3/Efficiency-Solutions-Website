@@ -8,7 +8,8 @@ import { z } from 'zod';
 import { 
   BrandingProductSchema, 
   LogisticsVehicleSchema,
-  BrandingCategorySchema 
+  BrandingCategorySchema,
+  LogisticsCategorySchema
 } from './schemas';
 
 // Auth helpers
@@ -151,4 +152,50 @@ export async function deleteLogisticsVehicle(id: string) {
 
   revalidatePath('/services/logistics');
   revalidatePath('/admin/logistics');
+}
+
+export async function upsertLogisticsCategory(data: z.infer<typeof LogisticsCategorySchema>) {
+  await checkAuth();
+  const validated = LogisticsCategorySchema.parse(data);
+  const { id, ...rest } = validated;
+
+  if (id) {
+    await prisma.logisticsCategory.update({
+      where: { id },
+      data: rest,
+    });
+  } else {
+    await prisma.logisticsCategory.create({
+      data: rest,
+    });
+  }
+
+  revalidatePath('/admin/logistics');
+  revalidatePath('/services/logistics');
+}
+
+export async function deleteLogisticsCategory(id: string, password?: string) {
+  await checkAuth();
+
+  const category = await prisma.logisticsCategory.findUnique({
+    where: { id },
+    include: { _count: { select: { vehicles: true } } }
+  });
+
+  if (!category) throw new Error('Category not found');
+
+  const vehicleCount = category._count.vehicles;
+
+  if (vehicleCount > 0) {
+    if (!password || password !== process.env.ADMIN_PASSWORD) {
+      throw new Error('PASSWORD_REQUIRED');
+    }
+  }
+
+  await prisma.logisticsCategory.delete({
+    where: { id },
+  });
+
+  revalidatePath('/admin/logistics');
+  revalidatePath('/services/logistics');
 }

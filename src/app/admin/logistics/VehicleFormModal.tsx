@@ -37,17 +37,17 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { upsertLogisticsVehicle } from '../actions';
 import { LogisticsVehicleSchema } from '../schemas';
-import { LOGISTICS_CATEGORIES } from '@/lib/mock/logistics';
-import type { LogisticsVehicle } from '@prisma/client';
+import type { LogisticsVehicle, LogisticsCategory } from '@/generated/client';
 
 type VehicleFormValues = z.infer<typeof LogisticsVehicleSchema>;
 
 interface VehicleFormModalProps {
   vehicle?: LogisticsVehicle;
+  categories: LogisticsCategory[];
   trigger?: React.ReactNode;
 }
 
-export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalProps) {
+export default function VehicleFormModal({ vehicle, categories, trigger }: VehicleFormModalProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -60,6 +60,7 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
       description: vehicle.description,
       pricePerDay: vehicle.pricePerDay,
       category: vehicle.category,
+      categoryId: vehicle.categoryId || '',
       imageUrl: vehicle.imageUrl,
       features: vehicle.features,
       isFeatured: !!vehicle.isFeatured,
@@ -69,6 +70,7 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
       description: '',
       pricePerDay: 0,
       category: '',
+      categoryId: '',
       imageUrl: '',
       features: [],
       isFeatured: false,
@@ -145,12 +147,16 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
             </div>
             <FormField
               control={form.control}
-              name="category"
+              name="categoryId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
                   <Select 
-                    onValueChange={field.onChange} 
+                    onValueChange={(val) => {
+                      field.onChange(val);
+                      const catName = categories.find(c => c.id === val)?.name || '';
+                      form.setValue('category', catName);
+                    }} 
                     value={field.value}
                   >
                     <FormControl>
@@ -159,9 +165,9 @@ export default function VehicleFormModal({ vehicle, trigger }: VehicleFormModalP
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {LOGISTICS_CATEGORIES.map((category) => (
-                        <SelectItem key={category} value={category}>
-                          {category}
+                      {categories.map((category) => (
+                        <SelectItem key={category.id} value={category.id}>
+                          {category.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
