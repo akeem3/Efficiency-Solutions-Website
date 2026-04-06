@@ -25,7 +25,8 @@ The core conversion strategy centers around WhatsApp. Rather than a traditional 
 *   **Conversion:** Users click "Add to Cart". The cart aggregates selected items and total estimated cost. Checking out redirects the user to WhatsApp with a summary of their cart.
 
 ### 3.2. Luxury Logistics
-*   **Functionality:** Similar catalog layout to the Branding page but focused on vehicle rentals (e.g., Lexus, Benz, G-Wagon). Users can filter by categories (Car Rental, Car Rental + Driver, Security Escort).
+*   **Functionality:** Catalog layout focused on elite vehicle rentals (e.g., Lexus, Benz, G-Wagon). Users can filter by dynamic categories fetched from the database via a relational model (`LogisticsCategory`).
+*   **Administration:** Admins can securely manage logistics categories (Create, Update, Delete). Password validation correctly secures deletions of categories populated with fleet vehicles (Cascade Delete). The Admin interface utilizes a Mobile-First responsive card design.
 *   **Conversion:** Users add vehicles to their cart. Checking out redirects to WhatsApp with vehicle selection, rental duration (implicitly or explicitly gathered), and required services.
 
 ### 3.3. Accounting Services

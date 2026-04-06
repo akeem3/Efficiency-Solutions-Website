@@ -7,13 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [1.9.0] - 2026-04-06
 
 ### Added
-- **Dynamic Category Management (Premium Branding)**:
-  - Migrated Branding categories from hardcoded arrays to a relational database model (`BrandingCategory`).
-  - Implemented full Category CRUD in the Admin Panel with product count indicators.
-- **Administrative Security**:
-  - Added password-guarded deletion for categories containing products to prevent accidental data loss.
+- **Dynamic Category Management (Branding & Logistics)**:
+  - Migrated both Branding and Luxury Logistics categories from hardcoded arrays to relational database models (`BrandingCategory` and `LogisticsCategory`).
+  - Implemented full Category CRUD in the Admin Panel with dynamic inventory count indicators and automated reference linking.
+- **Administrative Content Security**:
+  - Engineered password-guarded "Safety Cascade" deletion for categories containing active products or fleet vehicles to prevent accidental enterprise data loss.
+- **Mobile-First Admin Dashboard**:
+  - Fully refactored the Category Management pages onto a modern mobile-first design, transitioning from rigid desktop HTML tables to responsive stacked info-cards on smaller viewports.
 - **Architectural Stability**:
-  - Switched to a stable local Prisma Client output (`src/generated/client`) to resolve pnpm/Next.js type staleness issues on Windows.
+  - Switched to a stable local Prisma Client generation pathway (`src/generated/client`) bypassing inherent Next.js/pnpm type-caching bugs on Windows.
 
 ## [1.8.1] - 2026-04-05
 
