@@ -16,10 +16,12 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = constructMetadata({
   title: "Efficiency Solutions | Premium Agency Services",
-  description: "Luxury Branding, Logistics, and Accounting Services in Nigeria.",
-};
+  description: "Luxury Branding, Logistics, Accounting, Tailoring, and Digital Services in Nigeria.",
+});
 
 export default function RootLayout({
   children,

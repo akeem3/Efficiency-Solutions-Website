@@ -2,6 +2,12 @@ import Link from 'next/link';
 import { LuMenu } from 'react-icons/lu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import AdminSidebarNav from './components/AdminSidebarNav';
+import { constructMetadata } from '@/lib/metadata';
+
+export const metadata = constructMetadata({
+  title: "Admin Dashboard | Efficiency Solutions",
+  noIndex: true,
+});
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (

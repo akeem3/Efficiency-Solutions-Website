@@ -7,6 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [1.9.0] - 2026-04-06
 
 ### Added
+- **Advanced SEO & Open Graph Automation**:
+  - Engineered a centralized dynamic metadata factory (`src/lib/metadata.ts`) to automate site-wide index configuration.
+  - Implemented completely dynamic `sitemap.xml` and `robots.txt` generation via native Next.js 15 routing APIs.
+  - Integrated custom WhatsApp and Twitter link preview configurations (`og:image`, `twitter:card`) across all 5 service verticals.
+  - Added programmatic "noIndex" protection masking the Administrative Dashboard from web crawlers.
 - **Dynamic Category Management (Branding & Logistics)**:
   - Migrated both Branding and Luxury Logistics categories from hardcoded arrays to relational database models (`BrandingCategory` and `LogisticsCategory`).
   - Implemented full Category CRUD in the Admin Panel with dynamic inventory count indicators and automated reference linking.
