@@ -5,7 +5,11 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
-import { BrandingProductSchema, LogisticsVehicleSchema } from './schemas';
+import { 
+  BrandingProductSchema, 
+  LogisticsVehicleSchema,
+  BrandingCategorySchema 
+} from './schemas';
 
 // Auth helpers
 async function checkAuth() {
@@ -72,6 +76,50 @@ export async function deleteBrandingProduct(id: string) {
 
   revalidatePath('/services/branding');
   revalidatePath('/admin/branding');
+}
+
+// Category Actions
+export async function upsertBrandingCategory(data: z.infer<typeof BrandingCategorySchema>) {
+  await checkAuth();
+  const validated = BrandingCategorySchema.parse(data);
+  const { id, name } = validated;
+
+  if (id) {
+    await prisma.brandingCategory.update({
+      where: { id },
+      data: { name },
+    });
+  } else {
+    await prisma.brandingCategory.create({
+      data: { name },
+    });
+  }
+
+  revalidatePath('/admin/branding');
+  revalidatePath('/services/branding');
+}
+
+export async function deleteBrandingCategory(id: string, password?: string) {
+  await checkAuth();
+  
+  // Requirement: Check if category has products
+  const productCount = await prisma.brandingProduct.count({
+    where: { categoryId: id }
+  });
+
+  if (productCount > 0) {
+    if (!password || password !== process.env.ADMIN_PASSWORD) {
+      throw new Error('PASSWORD_REQUIRED');
+    }
+  }
+
+  // Deletion is carried out (Cascade is handled by DB)
+  await prisma.brandingCategory.delete({
+    where: { id },
+  });
+
+  revalidatePath('/admin/branding');
+  revalidatePath('/services/branding');
 }
 
 // Logistics Actions

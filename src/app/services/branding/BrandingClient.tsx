@@ -1,11 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
-import { 
-  BRANDING_CATEGORIES
-} from "@/lib/mock/products";
-import type { BrandingProduct } from "@prisma/client";
+import Image from "next/image";
+import type { BrandingProduct, BrandingCategory } from "@/generated/client";
 import { CategorySidebar } from "@/components/branding/CategorySidebar";
 import { ProductGrid } from "@/components/branding/ProductGrid";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
@@ -19,7 +16,13 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 
-export function BrandingClient({ initialProducts }: { initialProducts: BrandingProduct[] }) {
+export function BrandingClient({ 
+  initialProducts, 
+  categories 
+}: { 
+  initialProducts: BrandingProduct[],
+  categories: BrandingCategory[]
+}) {
   const [activeCategory, setActiveCategory] = useState<string | undefined>(undefined);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("featured");
@@ -101,17 +104,17 @@ export function BrandingClient({ initialProducts }: { initialProducts: BrandingP
             All Services
           </button>
           
-          {BRANDING_CATEGORIES.map((cat) => (
+          {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.name)}
               className={`flex-shrink-0 px-6 py-3 rounded-[10px] text-sm font-bold font-heading whitespace-nowrap transition-all ${
-                activeCategory === cat 
+                activeCategory === cat.name 
                   ? "bg-brand-primary text-white shadow-lg" 
                   : "bg-white text-brand-muted hover:bg-brand-primary/5"
               }`}
             >
-              {cat}
+              {cat.name}
             </button>
           ))}
         </div>
@@ -121,6 +124,7 @@ export function BrandingClient({ initialProducts }: { initialProducts: BrandingP
           {/* Sidebar */}
           <CategorySidebar 
             activeCategory={activeCategory} 
+            categories={categories}
             onCategoryChange={(cat) => setActiveCategory(cat === activeCategory ? undefined : cat)} 
           />
 

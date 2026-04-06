@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model BrandingCategory {
+  id        String            @id @default(uuid())
+  name      String            @unique
+  products  BrandingProduct[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model BrandingProduct {
+  id          String            @id @default(uuid())
+  name        String
+  description String
+  price       Int
+  category    String // Keep for temporary migration reference
+  categoryId  String? // New foreign key
+  categoryRel BrandingCategory? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  imageUrl    String
+  isFeatured  Boolean           @default(false)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model LogisticsVehicle {
+  id          String   @id @default(uuid())
+  name        String
+  model       String
+  description String
+  pricePerDay Int
+  category    String
+  imageUrl    String
+  features    String[]
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

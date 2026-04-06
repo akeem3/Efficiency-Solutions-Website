@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/table';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { formatCurrency, cn } from '@/lib/utils';
-import type { BrandingProduct } from '@prisma/client';
+import type { BrandingProduct } from '@/generated/client';
 import ProductFormModal from './ProductFormModal';
 import { 
   AlertDialog, 
@@ -27,8 +27,15 @@ import {
 import { deleteBrandingProduct } from '../actions';
 import { toast } from 'sonner';
 import { LuPlus, LuPencil, LuTrash2 } from 'react-icons/lu';
+import type { BrandingCategory } from '@/generated/client';
 
-export default function BrandingTable({ initialProducts }: { initialProducts: BrandingProduct[] }) {
+export default function BrandingTable({ 
+  initialProducts,
+  categories 
+}: { 
+  initialProducts: (BrandingProduct & { categoryRel?: BrandingCategory | null })[],
+  categories: BrandingCategory[]
+}) {
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
   async function onDelete(id: string) {
@@ -49,6 +56,7 @@ export default function BrandingTable({ initialProducts }: { initialProducts: Br
       <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border-b border-black/5 gap-4">
         <h2 className="text-lg font-bold font-heading text-brand-primary">Inventory</h2>
         <ProductFormModal 
+          categories={categories}
           trigger={
             <button className={cn(
               buttonVariants({ variant: "default" }), 
@@ -85,6 +93,7 @@ export default function BrandingTable({ initialProducts }: { initialProducts: Br
                     <div className="flex gap-2">
                        <ProductFormModal 
                         product={product} 
+                        categories={categories}
                         trigger={
                           <button 
                             className={cn(
@@ -193,6 +202,7 @@ export default function BrandingTable({ initialProducts }: { initialProducts: Br
                     <div className="flex justify-end gap-1.5 md:gap-2">
                       <ProductFormModal 
                         product={product} 
+                        categories={categories}
                         trigger={
                           <button 
                             className={cn(

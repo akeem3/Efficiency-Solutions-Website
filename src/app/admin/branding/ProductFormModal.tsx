@@ -35,18 +35,18 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { upsertBrandingProduct } from '../actions';
 import { BrandingProductSchema } from '../schemas';
-import { BRANDING_CATEGORIES } from '@/lib/mock/products';
-import type { BrandingProduct } from '@prisma/client';
+import type { BrandingProduct, BrandingCategory } from '@/generated/client';
 import { cn } from '@/lib/utils';
 
 type ProductFormValues = z.infer<typeof BrandingProductSchema>;
 
 interface ProductFormModalProps {
   product?: BrandingProduct;
+  categories: BrandingCategory[];
   trigger?: React.ReactNode;
 }
 
-export default function ProductFormModal({ product, trigger }: ProductFormModalProps) {
+export default function ProductFormModal({ product, categories, trigger }: ProductFormModalProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -58,6 +58,7 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
       description: product.description,
       price: product.price,
       category: product.category,
+      categoryId: product.categoryId || '',
       imageUrl: product.imageUrl,
       isFeatured: !!product.isFeatured,
     } : {
@@ -65,6 +66,7 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
       description: '',
       price: 0,
       category: '',
+      categoryId: '',
       imageUrl: '',
       isFeatured: false,
     },
@@ -125,12 +127,17 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
             />
             <FormField
               control={form.control}
-              name="category"
+              name="categoryId"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
                   <Select 
-                    onValueChange={field.onChange} 
+                    onValueChange={(val) => {
+                      field.onChange(val);
+                      // Also sync the legacy 'category' string for display
+                      const catName = categories.find(c => c.id === val)?.name || '';
+                      form.setValue('category', catName);
+                    }} 
                     value={field.value}
                   >
                     <FormControl>
@@ -139,9 +146,9 @@ export default function ProductFormModal({ product, trigger }: ProductFormModalP
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {BRANDING_CATEGORIES.map((category) => (
-                        <SelectItem key={category} value={category}>
-                          {category}
+                      {categories.map((category) => (
+                        <SelectItem key={category.id} value={category.id}>
+                          {category.name}
                         </SelectItem>
                       ))}
                     </SelectContent>

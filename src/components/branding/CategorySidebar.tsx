@@ -1,17 +1,19 @@
 "use client";
 
-import { BRANDING_CATEGORIES } from "@/lib/mock/products";
 import { cn } from "@/lib/utils";
 import { LuChevronRight, LuTag } from "react-icons/lu";
+import type { BrandingCategory } from "@/generated/client";
 
 interface CategorySidebarProps {
   activeCategory?: string;
+  categories: BrandingCategory[];
   onCategoryChange?: (category: string) => void;
   className?: string;
 }
 
 export const CategorySidebar = ({
   activeCategory,
+  categories,
   onCategoryChange,
   className,
 }: CategorySidebarProps) => {
@@ -28,13 +30,13 @@ export const CategorySidebar = ({
       </div>
 
       <nav role="list" className="space-y-4">
-        {BRANDING_CATEGORIES.map((category) => {
-          const isActive = activeCategory === category;
+        {categories.map((category) => {
+          const isActive = activeCategory === category.name;
           
           return (
             <button
-              key={category}
-              onClick={() => onCategoryChange?.(category)}
+              key={category.id}
+              onClick={() => onCategoryChange?.(category.name)}
               className={cn(
                 "group flex w-full items-center justify-between text-left text-sm font-semibold transition-all duration-300 hover:translate-x-2",
                 isActive ? "text-brand-secondary" : "text-white/70 hover:text-white"
@@ -47,7 +49,7 @@ export const CategorySidebar = ({
                     isActive ? "scale-125 bg-brand-secondary ring-4 ring-brand-secondary/30" : "bg-white/20"
                   )} 
                 />
-                {category}
+                {category.name}
               </div>
               <LuChevronRight 
                 className={cn(

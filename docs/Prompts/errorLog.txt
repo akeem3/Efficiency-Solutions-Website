@@ -1,36 +1,28 @@
-## Error Type
-Runtime PrismaClientKnownRequestError
-
-## Error Message
-
-Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].brandingProduct.count()` invocation in
-D:\Personal Projects\Effciency Solution\Es-app\.next\dev\server\chunks\ssr\[root-of-the-server]__06fx-q-._.js:43:152
-
-  40 ;
-  41 async function AdminDashboardPage() {
-  42     const [brandingCount, logisticsCount] = await Promise.all([
-→ 43         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].brandingProduct.count(
-Can't reach database server at `aws-0-eu-west-1.pooler.supabase.com:6543`
-
-Please make sure your database server is running at `aws-0-eu-west-1.pooler.supabase.com:6543`.
+[{
+	"resource": "/d:/Personal Projects/Effciency Solution/Es-app/src/app/services/branding/BrandingClient.tsx",
+	"owner": "typescript",
+	"code": "2305",
+	"severity": 8,
+	"message": "Module '\"@prisma/client\"' has no exported member 'BrandingCategory'.",
+	"source": "ts",
+	"startLineNumber": 5,
+	"startColumn": 32,
+	"endLineNumber": 5,
+	"endColumn": 48,
+	"origin": "extHost1"
+}]
 
 
-    at <unknown> (src\app\admin\page.tsx:7:28)
-    at Function.all (<anonymous>:1:21)
-    at AdminDashboardPage (src\app\admin\page.tsx:6:43)
-    at resolveErrorDev (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:1919:150)
-    at processFullStringRow (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:2434:29)
-    at processFullBinaryRow (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:2393:9)
-    at processBinaryChunk (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:2502:221)
-    at progress (file://D:/Personal Projects/Effciency Solution/Es-app/.next/dev/static/chunks/10tt_next_dist_compiled_react-server-dom-turbopack_0fg_kot._.js:2689:13)
-
-## Code Frame
-   5 | export default async function AdminDashboardPage() {
-   6 |   const [brandingCount, logisticsCount] = await Promise.all([
->  7 |     prisma.brandingProduct.count(),
-     |                            ^
-   8 |     prisma.logisticsVehicle.count()
-   9 |   ]);
-  10 |
-
-Next.js version: 16.2.1 (Turbopack)
+[{
+	"resource": "/d:/Personal Projects/Effciency Solution/Es-app/src/components/branding/CategorySidebar.tsx",
+	"owner": "typescript",
+	"code": "2305",
+	"severity": 8,
+	"message": "Module '\"@prisma/client\"' has no exported member 'BrandingCategory'.",
+	"source": "ts",
+	"startLineNumber": 5,
+	"startColumn": 15,
+	"endLineNumber": 5,
+	"endColumn": 31,
+	"origin": "extHost1"
+}]
