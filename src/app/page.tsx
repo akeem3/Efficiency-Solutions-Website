@@ -157,7 +157,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="w-20 h-1 bg-brand-secondary mx-auto mb-12" />
           <blockquote className="text-3xl md:text-5xl font-bold font-heading leading-tight mb-12 italic">
-            "Efficiency is not just our name—it is our mandate. We provide the substrate upon which luxury and profitability thrive."
+            "Efficiency Solutions guarantees reliability, quality, and accountability — with vetted vendors and fully managed service delivery."
           </blockquote>
           <div className="flex flex-col items-center">
             <span className="text-brand-secondary font-bold font-heading uppercase tracking-widest mb-2">The Managing Director</span>
