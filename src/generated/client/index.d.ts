@@ -2306,6 +2306,7 @@ export namespace Prisma {
     category: number
     categoryId: number
     imageUrl: number
+    imageUrls: number
     isFeatured: number
     createdAt: number
     updatedAt: number
@@ -2355,6 +2356,7 @@ export namespace Prisma {
     category?: true
     categoryId?: true
     imageUrl?: true
+    imageUrls?: true
     isFeatured?: true
     createdAt?: true
     updatedAt?: true
@@ -2451,10 +2453,11 @@ export namespace Prisma {
     id: string
     name: string
     description: string
-    price: number
+    price: number | null
     category: string
     categoryId: string | null
     imageUrl: string
+    imageUrls: string[]
     isFeatured: boolean
     createdAt: Date
     updatedAt: Date
@@ -2487,6 +2490,7 @@ export namespace Prisma {
     category?: boolean
     categoryId?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2501,6 +2505,7 @@ export namespace Prisma {
     category?: boolean
     categoryId?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2515,6 +2520,7 @@ export namespace Prisma {
     category?: boolean
     categoryId?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2529,12 +2535,13 @@ export namespace Prisma {
     category?: boolean
     categoryId?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BrandingProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "price" | "category" | "categoryId" | "imageUrl" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["brandingProduct"]>
+  export type BrandingProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "price" | "category" | "categoryId" | "imageUrl" | "imageUrls" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["brandingProduct"]>
   export type BrandingProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categoryRel?: boolean | BrandingProduct$categoryRelArgs<ExtArgs>
   }
@@ -2554,10 +2561,11 @@ export namespace Prisma {
       id: string
       name: string
       description: string
-      price: number
+      price: number | null
       category: string
       categoryId: string | null
       imageUrl: string
+      imageUrls: string[]
       isFeatured: boolean
       createdAt: Date
       updatedAt: Date
@@ -2992,6 +3000,7 @@ export namespace Prisma {
     readonly category: FieldRef<"BrandingProduct", 'String'>
     readonly categoryId: FieldRef<"BrandingProduct", 'String'>
     readonly imageUrl: FieldRef<"BrandingProduct", 'String'>
+    readonly imageUrls: FieldRef<"BrandingProduct", 'String[]'>
     readonly isFeatured: FieldRef<"BrandingProduct", 'Boolean'>
     readonly createdAt: FieldRef<"BrandingProduct", 'DateTime'>
     readonly updatedAt: FieldRef<"BrandingProduct", 'DateTime'>
@@ -4542,6 +4551,7 @@ export namespace Prisma {
     category: number
     categoryId: number
     imageUrl: number
+    imageUrls: number
     features: number
     isFeatured: number
     createdAt: number
@@ -4595,6 +4605,7 @@ export namespace Prisma {
     category?: true
     categoryId?: true
     imageUrl?: true
+    imageUrls?: true
     features?: true
     isFeatured?: true
     createdAt?: true
@@ -4697,6 +4708,7 @@ export namespace Prisma {
     category: string
     categoryId: string | null
     imageUrl: string
+    imageUrls: string[]
     features: string[]
     isFeatured: boolean
     createdAt: Date
@@ -4731,6 +4743,7 @@ export namespace Prisma {
     category?: boolean
     categoryId?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     features?: boolean
     isFeatured?: boolean
     createdAt?: boolean
@@ -4747,6 +4760,7 @@ export namespace Prisma {
     category?: boolean
     categoryId?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     features?: boolean
     isFeatured?: boolean
     createdAt?: boolean
@@ -4763,6 +4777,7 @@ export namespace Prisma {
     category?: boolean
     categoryId?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     features?: boolean
     isFeatured?: boolean
     createdAt?: boolean
@@ -4779,13 +4794,14 @@ export namespace Prisma {
     category?: boolean
     categoryId?: boolean
     imageUrl?: boolean
+    imageUrls?: boolean
     features?: boolean
     isFeatured?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type LogisticsVehicleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "model" | "description" | "pricePerDay" | "category" | "categoryId" | "imageUrl" | "features" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["logisticsVehicle"]>
+  export type LogisticsVehicleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "model" | "description" | "pricePerDay" | "category" | "categoryId" | "imageUrl" | "imageUrls" | "features" | "isFeatured" | "createdAt" | "updatedAt", ExtArgs["result"]["logisticsVehicle"]>
   export type LogisticsVehicleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categoryRel?: boolean | LogisticsVehicle$categoryRelArgs<ExtArgs>
   }
@@ -4810,6 +4826,7 @@ export namespace Prisma {
       category: string
       categoryId: string | null
       imageUrl: string
+      imageUrls: string[]
       features: string[]
       isFeatured: boolean
       createdAt: Date
@@ -5246,6 +5263,7 @@ export namespace Prisma {
     readonly category: FieldRef<"LogisticsVehicle", 'String'>
     readonly categoryId: FieldRef<"LogisticsVehicle", 'String'>
     readonly imageUrl: FieldRef<"LogisticsVehicle", 'String'>
+    readonly imageUrls: FieldRef<"LogisticsVehicle", 'String[]'>
     readonly features: FieldRef<"LogisticsVehicle", 'String[]'>
     readonly isFeatured: FieldRef<"LogisticsVehicle", 'Boolean'>
     readonly createdAt: FieldRef<"LogisticsVehicle", 'DateTime'>
@@ -5715,6 +5733,7 @@ export namespace Prisma {
     category: 'category',
     categoryId: 'categoryId',
     imageUrl: 'imageUrl',
+    imageUrls: 'imageUrls',
     isFeatured: 'isFeatured',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -5742,6 +5761,7 @@ export namespace Prisma {
     category: 'category',
     categoryId: 'categoryId',
     imageUrl: 'imageUrl',
+    imageUrls: 'imageUrls',
     features: 'features',
     isFeatured: 'isFeatured',
     createdAt: 'createdAt',
@@ -5903,10 +5923,11 @@ export namespace Prisma {
     id?: StringFilter<"BrandingProduct"> | string
     name?: StringFilter<"BrandingProduct"> | string
     description?: StringFilter<"BrandingProduct"> | string
-    price?: IntFilter<"BrandingProduct"> | number
+    price?: IntNullableFilter<"BrandingProduct"> | number | null
     category?: StringFilter<"BrandingProduct"> | string
     categoryId?: StringNullableFilter<"BrandingProduct"> | string | null
     imageUrl?: StringFilter<"BrandingProduct"> | string
+    imageUrls?: StringNullableListFilter<"BrandingProduct">
     isFeatured?: BoolFilter<"BrandingProduct"> | boolean
     createdAt?: DateTimeFilter<"BrandingProduct"> | Date | string
     updatedAt?: DateTimeFilter<"BrandingProduct"> | Date | string
@@ -5917,10 +5938,11 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    price?: SortOrder
+    price?: SortOrderInput | SortOrder
     category?: SortOrder
     categoryId?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
+    imageUrls?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5934,10 +5956,11 @@ export namespace Prisma {
     NOT?: BrandingProductWhereInput | BrandingProductWhereInput[]
     name?: StringFilter<"BrandingProduct"> | string
     description?: StringFilter<"BrandingProduct"> | string
-    price?: IntFilter<"BrandingProduct"> | number
+    price?: IntNullableFilter<"BrandingProduct"> | number | null
     category?: StringFilter<"BrandingProduct"> | string
     categoryId?: StringNullableFilter<"BrandingProduct"> | string | null
     imageUrl?: StringFilter<"BrandingProduct"> | string
+    imageUrls?: StringNullableListFilter<"BrandingProduct">
     isFeatured?: BoolFilter<"BrandingProduct"> | boolean
     createdAt?: DateTimeFilter<"BrandingProduct"> | Date | string
     updatedAt?: DateTimeFilter<"BrandingProduct"> | Date | string
@@ -5948,10 +5971,11 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    price?: SortOrder
+    price?: SortOrderInput | SortOrder
     category?: SortOrder
     categoryId?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
+    imageUrls?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5969,10 +5993,11 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"BrandingProduct"> | string
     name?: StringWithAggregatesFilter<"BrandingProduct"> | string
     description?: StringWithAggregatesFilter<"BrandingProduct"> | string
-    price?: IntWithAggregatesFilter<"BrandingProduct"> | number
+    price?: IntNullableWithAggregatesFilter<"BrandingProduct"> | number | null
     category?: StringWithAggregatesFilter<"BrandingProduct"> | string
     categoryId?: StringNullableWithAggregatesFilter<"BrandingProduct"> | string | null
     imageUrl?: StringWithAggregatesFilter<"BrandingProduct"> | string
+    imageUrls?: StringNullableListFilter<"BrandingProduct">
     isFeatured?: BoolWithAggregatesFilter<"BrandingProduct"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"BrandingProduct"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"BrandingProduct"> | Date | string
@@ -6040,6 +6065,7 @@ export namespace Prisma {
     category?: StringFilter<"LogisticsVehicle"> | string
     categoryId?: StringNullableFilter<"LogisticsVehicle"> | string | null
     imageUrl?: StringFilter<"LogisticsVehicle"> | string
+    imageUrls?: StringNullableListFilter<"LogisticsVehicle">
     features?: StringNullableListFilter<"LogisticsVehicle">
     isFeatured?: BoolFilter<"LogisticsVehicle"> | boolean
     createdAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
@@ -6056,6 +6082,7 @@ export namespace Prisma {
     category?: SortOrder
     categoryId?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
+    imageUrls?: SortOrder
     features?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
@@ -6075,6 +6102,7 @@ export namespace Prisma {
     category?: StringFilter<"LogisticsVehicle"> | string
     categoryId?: StringNullableFilter<"LogisticsVehicle"> | string | null
     imageUrl?: StringFilter<"LogisticsVehicle"> | string
+    imageUrls?: StringNullableListFilter<"LogisticsVehicle">
     features?: StringNullableListFilter<"LogisticsVehicle">
     isFeatured?: BoolFilter<"LogisticsVehicle"> | boolean
     createdAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
@@ -6091,6 +6119,7 @@ export namespace Prisma {
     category?: SortOrder
     categoryId?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
+    imageUrls?: SortOrder
     features?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
@@ -6114,6 +6143,7 @@ export namespace Prisma {
     category?: StringWithAggregatesFilter<"LogisticsVehicle"> | string
     categoryId?: StringNullableWithAggregatesFilter<"LogisticsVehicle"> | string | null
     imageUrl?: StringWithAggregatesFilter<"LogisticsVehicle"> | string
+    imageUrls?: StringNullableListFilter<"LogisticsVehicle">
     features?: StringNullableListFilter<"LogisticsVehicle">
     isFeatured?: BoolWithAggregatesFilter<"LogisticsVehicle"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"LogisticsVehicle"> | Date | string
@@ -6177,9 +6207,10 @@ export namespace Prisma {
     id?: string
     name: string
     description: string
-    price: number
+    price?: number | null
     category: string
     imageUrl: string
+    imageUrls?: BrandingProductCreateimageUrlsInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6190,10 +6221,11 @@ export namespace Prisma {
     id?: string
     name: string
     description: string
-    price: number
+    price?: number | null
     category: string
     categoryId?: string | null
     imageUrl: string
+    imageUrls?: BrandingProductCreateimageUrlsInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6203,9 +6235,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: BrandingProductUpdateimageUrlsInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6216,10 +6249,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: BrandingProductUpdateimageUrlsInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6229,10 +6263,11 @@ export namespace Prisma {
     id?: string
     name: string
     description: string
-    price: number
+    price?: number | null
     category: string
     categoryId?: string | null
     imageUrl: string
+    imageUrls?: BrandingProductCreateimageUrlsInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6242,9 +6277,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: BrandingProductUpdateimageUrlsInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6254,10 +6290,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: BrandingProductUpdateimageUrlsInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6324,6 +6361,7 @@ export namespace Prisma {
     pricePerDay: number
     category: string
     imageUrl: string
+    imageUrls?: LogisticsVehicleCreateimageUrlsInput | string[]
     features?: LogisticsVehicleCreatefeaturesInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
@@ -6340,6 +6378,7 @@ export namespace Prisma {
     category: string
     categoryId?: string | null
     imageUrl: string
+    imageUrls?: LogisticsVehicleCreateimageUrlsInput | string[]
     features?: LogisticsVehicleCreatefeaturesInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
@@ -6354,6 +6393,7 @@ export namespace Prisma {
     pricePerDay?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: LogisticsVehicleUpdateimageUrlsInput | string[]
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6370,6 +6410,7 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: LogisticsVehicleUpdateimageUrlsInput | string[]
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6385,6 +6426,7 @@ export namespace Prisma {
     category: string
     categoryId?: string | null
     imageUrl: string
+    imageUrls?: LogisticsVehicleCreateimageUrlsInput | string[]
     features?: LogisticsVehicleCreatefeaturesInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
@@ -6399,6 +6441,7 @@ export namespace Prisma {
     pricePerDay?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: LogisticsVehicleUpdateimageUrlsInput | string[]
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6414,6 +6457,7 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: LogisticsVehicleUpdateimageUrlsInput | string[]
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6509,15 +6553,15 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -6533,6 +6577,14 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -6558,6 +6610,7 @@ export namespace Prisma {
     category?: SortOrder
     categoryId?: SortOrder
     imageUrl?: SortOrder
+    imageUrls?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6597,20 +6650,20 @@ export namespace Prisma {
     price?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6670,12 +6723,15 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type LogisticsCategoryNullableScalarRelationFilter = {
@@ -6692,6 +6748,7 @@ export namespace Prisma {
     category?: SortOrder
     categoryId?: SortOrder
     imageUrl?: SortOrder
+    imageUrls?: SortOrder
     features?: SortOrder
     isFeatured?: SortOrder
     createdAt?: SortOrder
@@ -6732,6 +6789,22 @@ export namespace Prisma {
 
   export type LogisticsVehicleSumOrderByAggregateInput = {
     pricePerDay?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type BrandingProductCreateNestedManyWithoutCategoryRelInput = {
@@ -6784,18 +6857,27 @@ export namespace Prisma {
     deleteMany?: BrandingProductScalarWhereInput | BrandingProductScalarWhereInput[]
   }
 
+  export type BrandingProductCreateimageUrlsInput = {
+    set: string[]
+  }
+
   export type BrandingCategoryCreateNestedOneWithoutProductsInput = {
     create?: XOR<BrandingCategoryCreateWithoutProductsInput, BrandingCategoryUncheckedCreateWithoutProductsInput>
     connectOrCreate?: BrandingCategoryCreateOrConnectWithoutProductsInput
     connect?: BrandingCategoryWhereUniqueInput
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BrandingProductUpdateimageUrlsInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -6858,6 +6940,10 @@ export namespace Prisma {
     deleteMany?: LogisticsVehicleScalarWhereInput | LogisticsVehicleScalarWhereInput[]
   }
 
+  export type LogisticsVehicleCreateimageUrlsInput = {
+    set: string[]
+  }
+
   export type LogisticsVehicleCreatefeaturesInput = {
     set: string[]
   }
@@ -6866,6 +6952,19 @@ export namespace Prisma {
     create?: XOR<LogisticsCategoryCreateWithoutVehiclesInput, LogisticsCategoryUncheckedCreateWithoutVehiclesInput>
     connectOrCreate?: LogisticsCategoryCreateOrConnectWithoutVehiclesInput
     connect?: LogisticsCategoryWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type LogisticsVehicleUpdateimageUrlsInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type LogisticsVehicleUpdatefeaturesInput = {
@@ -6950,6 +7049,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6967,6 +7077,58 @@ export namespace Prisma {
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6996,49 +7158,14 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type BrandingProductCreateWithoutCategoryRelInput = {
     id?: string
     name: string
     description: string
-    price: number
+    price?: number | null
     category: string
     imageUrl: string
+    imageUrls?: BrandingProductCreateimageUrlsInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7048,9 +7175,10 @@ export namespace Prisma {
     id?: string
     name: string
     description: string
-    price: number
+    price?: number | null
     category: string
     imageUrl: string
+    imageUrls?: BrandingProductCreateimageUrlsInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7089,10 +7217,11 @@ export namespace Prisma {
     id?: StringFilter<"BrandingProduct"> | string
     name?: StringFilter<"BrandingProduct"> | string
     description?: StringFilter<"BrandingProduct"> | string
-    price?: IntFilter<"BrandingProduct"> | number
+    price?: IntNullableFilter<"BrandingProduct"> | number | null
     category?: StringFilter<"BrandingProduct"> | string
     categoryId?: StringNullableFilter<"BrandingProduct"> | string | null
     imageUrl?: StringFilter<"BrandingProduct"> | string
+    imageUrls?: StringNullableListFilter<"BrandingProduct">
     isFeatured?: BoolFilter<"BrandingProduct"> | boolean
     createdAt?: DateTimeFilter<"BrandingProduct"> | Date | string
     updatedAt?: DateTimeFilter<"BrandingProduct"> | Date | string
@@ -7150,6 +7279,7 @@ export namespace Prisma {
     pricePerDay: number
     category: string
     imageUrl: string
+    imageUrls?: LogisticsVehicleCreateimageUrlsInput | string[]
     features?: LogisticsVehicleCreatefeaturesInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
@@ -7164,6 +7294,7 @@ export namespace Prisma {
     pricePerDay: number
     category: string
     imageUrl: string
+    imageUrls?: LogisticsVehicleCreateimageUrlsInput | string[]
     features?: LogisticsVehicleCreatefeaturesInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
@@ -7208,6 +7339,7 @@ export namespace Prisma {
     category?: StringFilter<"LogisticsVehicle"> | string
     categoryId?: StringNullableFilter<"LogisticsVehicle"> | string | null
     imageUrl?: StringFilter<"LogisticsVehicle"> | string
+    imageUrls?: StringNullableListFilter<"LogisticsVehicle">
     features?: StringNullableListFilter<"LogisticsVehicle">
     isFeatured?: BoolFilter<"LogisticsVehicle"> | boolean
     createdAt?: DateTimeFilter<"LogisticsVehicle"> | Date | string
@@ -7262,9 +7394,10 @@ export namespace Prisma {
     id?: string
     name: string
     description: string
-    price: number
+    price?: number | null
     category: string
     imageUrl: string
+    imageUrls?: BrandingProductCreateimageUrlsInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7274,9 +7407,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: BrandingProductUpdateimageUrlsInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7286,9 +7420,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: BrandingProductUpdateimageUrlsInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7298,9 +7433,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: BrandingProductUpdateimageUrlsInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7314,6 +7450,7 @@ export namespace Prisma {
     pricePerDay: number
     category: string
     imageUrl: string
+    imageUrls?: LogisticsVehicleCreateimageUrlsInput | string[]
     features?: LogisticsVehicleCreatefeaturesInput | string[]
     isFeatured?: boolean
     createdAt?: Date | string
@@ -7328,6 +7465,7 @@ export namespace Prisma {
     pricePerDay?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: LogisticsVehicleUpdateimageUrlsInput | string[]
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7342,6 +7480,7 @@ export namespace Prisma {
     pricePerDay?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: LogisticsVehicleUpdateimageUrlsInput | string[]
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7356,6 +7495,7 @@ export namespace Prisma {
     pricePerDay?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    imageUrls?: LogisticsVehicleUpdateimageUrlsInput | string[]
     features?: LogisticsVehicleUpdatefeaturesInput | string[]
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

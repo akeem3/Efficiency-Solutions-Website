@@ -125,7 +125,10 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
                            </div>
                            
                            <span className="text-xs md:text-sm font-bold font-heading text-brand-primary">
-                             {formatNaira(item.price * item.quantity * (item.metadata?.days || 1))}
+                             {item.price 
+                               ? formatNaira(item.price * item.quantity * (item.metadata?.days || 1))
+                               : "Quote Required"
+                             }
                            </span>
                         </div>
                       </div>
@@ -145,16 +148,27 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
 
             <SheetFooter className="mt-auto flex flex-col gap-4 p-5 md:p-8 bg-brand-primary/2 border-t border-brand-primary/5">
               <div className="space-y-2 md:space-y-4">
-                <div className="flex items-center justify-between text-brand-muted">
-                  <span className="text-xs md:text-sm font-medium">Subtotal</span>
-                  <span className="text-sm md:text-base font-bold font-heading">{formatNaira(totalPrice)}</span>
-                </div>
-                <div className="flex items-center justify-between text-brand-primary">
-                  <span className="text-sm md:text-base font-bold font-heading">Total Estimate</span>
-                  <span className="text-xl md:text-2xl font-extrabold font-heading text-brand-secondary">
-                    {formatNaira(totalPrice)}
-                  </span>
-                </div>
+                {totalPrice > 0 && (
+                  <>
+                    <div className="flex items-center justify-between text-brand-muted">
+                      <span className="text-xs md:text-sm font-medium">Fleet Subtotal</span>
+                      <span className="text-sm md:text-base font-bold font-heading">{formatNaira(totalPrice)}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-brand-primary">
+                      <span className="text-sm md:text-base font-bold font-heading">Total Fleet Estimate</span>
+                      <span className="text-xl md:text-2xl font-extrabold font-heading text-brand-secondary">
+                        {formatNaira(totalPrice)}
+                      </span>
+                    </div>
+                  </>
+                )}
+                {totalPrice === 0 && (
+                  <div className="text-center py-2">
+                    <p className="text-sm font-bold text-brand-primary font-heading uppercase tracking-widest opacity-80">
+                      Pricing Available Upon Request
+                    </p>
+                  </div>
+                )}
               </div>
 
               <Button
@@ -162,14 +176,14 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
                 className="w-full h-12 md:h-16 rounded-[10px] bg-brand-primary hover:bg-brand-primary/90 text-white font-extrabold font-heading text-sm md:text-lg group shadow-xl"
                 onClick={handleCheckout}
               >
-                Checkout to WhatsApp
+                Send Request to WhatsApp
                 <div className="ml-2 md:ml-3 h-6 w-6 md:h-7 md:w-7 flex items-center justify-center rounded-full bg-white transform transition-transform group-hover:translate-x-1 group-hover:rotate-12 overflow-hidden bg-transparent shrink-0">
                    <Image src="/whatsapp.png" alt="WhatsApp" width={28} height={28} className="object-contain" />
                 </div>
               </Button>
               
               <p className="text-[9px] md:text-[10px] text-center text-brand-muted tracking-tight font-medium uppercase opacity-60">
-                 All prices are estimates • Agent verification required
+                 {totalPrice > 0 ? "Fleet prices are estimates • Agent verification required" : "Agent verification required"}
               </p>
             </SheetFooter>
           </>

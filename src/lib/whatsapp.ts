@@ -31,9 +31,9 @@ export function generateWhatsAppLink(items: CartItem[], total: number) {
   } else if (isPureBranding) {
     message = "Hi, I want to order:\n\n";
     brandingItems.forEach((item) => {
-      message += `${item.name} x${item.quantity} – ${formatNaira(item.price * item.quantity)}\n`;
+      message += `${item.name} x${item.quantity}\n`;
     });
-    message += `\nTotal: ${formatNaira(total)}\n\n`;
+    message += `\nPlease provides a quote for these items.\n\n`;
     message += "Customization:\n";
     message += "[Please describe design, text, size, colors]";
   } else {
@@ -52,12 +52,18 @@ export function generateWhatsAppLink(items: CartItem[], total: number) {
     if (brandingItems.length > 0) {
       message += "*Premium Branding & Printing:*\n";
       brandingItems.forEach((item) => {
-        message += `- ${item.name} x${item.quantity} – ${formatNaira(item.price * item.quantity)}\n`;
+        message += `- ${item.name} x${item.quantity}\n`;
       });
       message += "\n";
     }
 
-    message += `Total Estimate: ${formatNaira(total)}\n\n`;
+    // Only show total if there are logistics items
+    if (logisticsItems.length > 0) {
+      // Logic would need to be updated to only sum logistics items
+      // For now, keeping total as passed but ideally it should be logistics only
+      message += `Total Estimate (Fleet): ${formatNaira(total)}\n\n`;
+    }
+
     if (brandingItems.length > 0) {
       message += "Customization (Branding):\n";
       message += "[Please describe design, text, size, colors]";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { BrandingProduct } from "@prisma/client";
+import type { BrandingProduct } from "@/generated/client";
 import { ProductCard } from "./ProductCard";
 import { cn } from "@/lib/utils";
 

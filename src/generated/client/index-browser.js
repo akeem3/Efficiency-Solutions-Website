@@ -136,6 +136,7 @@ exports.Prisma.BrandingProductScalarFieldEnum = {
   category: 'category',
   categoryId: 'categoryId',
   imageUrl: 'imageUrl',
+  imageUrls: 'imageUrls',
   isFeatured: 'isFeatured',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -157,6 +158,7 @@ exports.Prisma.LogisticsVehicleScalarFieldEnum = {
   category: 'category',
   categoryId: 'categoryId',
   imageUrl: 'imageUrl',
+  imageUrls: 'imageUrls',
   features: 'features',
   isFeatured: 'isFeatured',
   createdAt: 'createdAt',

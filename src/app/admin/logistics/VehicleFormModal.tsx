@@ -39,6 +39,8 @@ import { upsertLogisticsVehicle } from '../actions';
 import { LogisticsVehicleSchema } from '../schemas';
 import type { LogisticsVehicle, LogisticsCategory } from '@/generated/client';
 
+import { LuPlus, LuTrash2 } from 'react-icons/lu';
+
 type VehicleFormValues = z.infer<typeof LogisticsVehicleSchema>;
 
 interface VehicleFormModalProps {
@@ -61,7 +63,7 @@ export default function VehicleFormModal({ vehicle, categories, trigger }: Vehic
       pricePerDay: vehicle.pricePerDay,
       category: vehicle.category,
       categoryId: vehicle.categoryId || '',
-      imageUrl: vehicle.imageUrl,
+      imageUrls: vehicle.imageUrls && vehicle.imageUrls.length > 0 ? vehicle.imageUrls : [vehicle.imageUrl],
       features: vehicle.features,
       isFeatured: !!vehicle.isFeatured,
     } : {
@@ -71,19 +73,54 @@ export default function VehicleFormModal({ vehicle, categories, trigger }: Vehic
       pricePerDay: 0,
       category: '',
       categoryId: '',
-      imageUrl: '',
+      imageUrls: [''],
       features: [],
       isFeatured: false,
     },
   });
 
+  const [imageUrls, setImageUrls] = useState<string[]>(
+    vehicle?.imageUrls && vehicle.imageUrls.length > 0 
+      ? vehicle.imageUrls 
+      : (vehicle?.imageUrl ? [vehicle.imageUrl] : [''])
+  );
+
+  const addImageField = () => setImageUrls([...imageUrls, '']);
+  const removeImageField = (index: number) => {
+    const newUrls = imageUrls.filter((_, i) => i !== index);
+    setImageUrls(newUrls.length ? newUrls : ['']);
+    form.setValue('imageUrls', newUrls.length ? newUrls : ['']);
+  };
+
+  const handleImageUrlChange = (index: number, value: string) => {
+    const newUrls = [...imageUrls];
+    newUrls[index] = value;
+    setImageUrls(newUrls);
+    form.setValue('imageUrls', newUrls);
+  };
+
   async function onSubmit(data: VehicleFormValues) {
     setLoading(true);
     try {
-      await upsertLogisticsVehicle(data);
+      const cleanedData = {
+        ...data,
+        imageUrls: imageUrls.filter(url => url.trim() !== '')
+      };
+
+      if (cleanedData.imageUrls.length === 0) {
+        toast.error('At least one valid image URL is required');
+        setLoading(false);
+        return;
+      }
+
+      await upsertLogisticsVehicle(cleanedData);
       toast.success(vehicle ? 'Vehicle updated successfully' : 'Vehicle created successfully');
       setOpen(false);
-      if (!vehicle) form.reset();
+      if (!vehicle) {
+        form.reset();
+        setImageUrls(['']);
+        setFeaturesString('');
+      }
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
       console.error(error);
@@ -96,7 +133,14 @@ export default function VehicleFormModal({ vehicle, categories, trigger }: Vehic
   const [featuresString, setFeaturesString] = useState(vehicle?.features.join(', ') || '');
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(val) => {
+      setOpen(val);
+      if (!val && !vehicle) {
+        form.reset();
+        setImageUrls(['']);
+        setFeaturesString('');
+      }
+    }}>
       <DialogTrigger 
         render={(props) => 
           trigger ? (
@@ -212,19 +256,40 @@ export default function VehicleFormModal({ vehicle, categories, trigger }: Vehic
                 )}
               />
             </div>
-            <FormField
-              control={form.control}
-              name="imageUrl"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Image URL</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://..." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            
+            <div className="space-y-3">
+              <FormLabel>Vehicle Gallery (URLs)</FormLabel>
+              {imageUrls.map((url, index) => (
+                <div key={index} className="flex gap-2">
+                  <Input 
+                    placeholder="https://..." 
+                    value={url}
+                    onChange={(e) => handleImageUrlChange(index, e.target.value)}
+                  />
+                  {imageUrls.length > 1 && (
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      size="icon" 
+                      className="shrink-0 text-destructive"
+                      onClick={() => removeImageField(index)}
+                    >
+                      <LuTrash2 className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+              ))}
+              <Button 
+                type="button" 
+                variant="outline" 
+                size="sm" 
+                className="w-full border-dashed"
+                onClick={addImageField}
+              >
+                + Add Another Image
+              </Button>
+            </div>
+
             <FormField
               control={form.control}
               name="features"
@@ -265,7 +330,7 @@ export default function VehicleFormModal({ vehicle, categories, trigger }: Vehic
               )}
             />
             <DialogFooter>
-              <Button type="submit" disabled={loading} className="w-full">
+              <Button type="submit" disabled={loading} className="w-full bg-brand-primary text-white hover:bg-brand-primary/90">
                 {loading ? 'Saving...' : vehicle ? 'Update Vehicle' : 'Create Vehicle'}
               </Button>
             </DialogFooter>

@@ -83,7 +83,7 @@ export default function BrandingTable({
             >
               <div className="flex gap-4">
                 <img 
-                  src={product.imageUrl} 
+                  src={product.imageUrls[0] || product.imageUrl} 
                   alt={product.name} 
                   className="h-20 w-20 rounded-[10px] object-cover flex-shrink-0" 
                 />
@@ -141,9 +141,6 @@ export default function BrandingTable({
                     </div>
                   </div>
                   <span className="text-xs text-brand-muted mt-1">{product.category}</span>
-                  <div className="mt-2 text-brand-primary font-bold">
-                    {formatCurrency(product.price)}
-                  </div>
                 </div>
               </div>
               {product.isFeatured && (
@@ -180,7 +177,7 @@ export default function BrandingTable({
                 <TableRow key={product.id}>
                   <TableCell className="px-4">
                     <img 
-                      src={product.imageUrl} 
+                      src={product.imageUrls[0] || product.imageUrl} 
                       alt={product.name} 
                       className="h-10 w-10 md:h-12 md:w-12 rounded-[10px] object-cover" 
                     />
@@ -197,7 +194,6 @@ export default function BrandingTable({
                     </div>
                   </TableCell>
                   <TableCell className="hidden sm:table-cell px-4">{product.category}</TableCell>
-                  <TableCell className="px-2 md:px-4 text-sm md:text-base">{formatCurrency(product.price)}</TableCell>
                   <TableCell className="text-right px-4">
                     <div className="flex justify-end gap-1.5 md:gap-2">
                       <ProductFormModal 

@@ -1,6 +1,6 @@
 "use client";
 
-import { type LogisticsVehicle } from "@prisma/client";
+import { type LogisticsVehicle } from "@/generated/client";
 import { VehicleCard } from "./VehicleCard";
 import { cn } from "@/lib/utils";
 

@@ -57,11 +57,18 @@ export async function upsertBrandingProduct(data: z.infer<typeof BrandingProduct
   if (id) {
     await prisma.brandingProduct.update({
       where: { id },
-      data: rest,
+      data: {
+        ...rest,
+        // Ensure imageUrl is set as the first image for backward compatibility if needed
+        imageUrl: rest.imageUrls[0] || "",
+      },
     });
   } else {
     await prisma.brandingProduct.create({
-      data: rest,
+      data: {
+        ...rest,
+        imageUrl: rest.imageUrls[0] || "",
+      },
     });
   }
 
@@ -132,11 +139,17 @@ export async function upsertLogisticsVehicle(data: z.infer<typeof LogisticsVehic
   if (id) {
     await prisma.logisticsVehicle.update({
       where: { id },
-      data: rest,
+      data: {
+        ...rest,
+        imageUrl: rest.imageUrls[0] || "",
+      },
     });
   } else {
     await prisma.logisticsVehicle.create({
-      data: rest,
+      data: {
+        ...rest,
+        imageUrl: rest.imageUrls[0] || "",
+      },
     });
   }
 

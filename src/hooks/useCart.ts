@@ -8,7 +8,7 @@ export type CartItemType = "branding" | "logistics";
 export interface CartItem {
   id: string;
   name: string;
-  price: number;
+  price?: number | null;
   quantity: number;
   type: CartItemType;
   image: string;
@@ -82,7 +82,7 @@ export const useCart = create<CartState>()(
       getTotalPrice: () => {
         const { items } = get();
         return items.reduce((total: number, item: CartItem) => {
-          // If Logistics, check if 'days' exists in metadata to multiply correctly
+          if (!item.price) return total;
           const multiplier = item.type === "logistics" ? (item.metadata?.days || 1) : 1;
           return total + item.price * item.quantity * multiplier;
         }, 0);

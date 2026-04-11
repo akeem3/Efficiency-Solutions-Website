@@ -36,6 +36,7 @@ import { Switch } from '@/components/ui/switch';
 import { upsertBrandingProduct } from '../actions';
 import { BrandingProductSchema } from '../schemas';
 import type { BrandingProduct, BrandingCategory } from '@/generated/client';
+import { LuPlus, LuTrash2 } from 'react-icons/lu';
 import { cn } from '@/lib/utils';
 
 type ProductFormValues = z.infer<typeof BrandingProductSchema>;
@@ -56,10 +57,10 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
       id: product.id,
       name: product.name,
       description: product.description,
-      price: product.price,
+      price: product.price || 0,
       category: product.category,
       categoryId: product.categoryId || '',
-      imageUrl: product.imageUrl,
+      imageUrls: product.imageUrls && product.imageUrls.length > 0 ? product.imageUrls : [product.imageUrl],
       isFeatured: !!product.isFeatured,
     } : {
       name: '',
@@ -67,18 +68,54 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
       price: 0,
       category: '',
       categoryId: '',
-      imageUrl: '',
+      imageUrls: [''],
       isFeatured: false,
     },
   });
 
+  const [imageUrls, setImageUrls] = useState<string[]>(
+    product?.imageUrls && product.imageUrls.length > 0 
+      ? product.imageUrls 
+      : (product?.imageUrl ? [product.imageUrl] : [''])
+  );
+
+  const addImageField = () => setImageUrls([...imageUrls, '']);
+  const removeImageField = (index: number) => {
+    const newUrls = imageUrls.filter((_, i) => i !== index);
+    setImageUrls(newUrls.length ? newUrls : ['']);
+    form.setValue('imageUrls', newUrls.length ? newUrls : ['']);
+  };
+
+  const handleImageUrlChange = (index: number, value: string) => {
+    const newUrls = [...imageUrls];
+    newUrls[index] = value;
+    setImageUrls(newUrls);
+    form.setValue('imageUrls', newUrls);
+  };
+
   async function onSubmit(data: ProductFormValues) {
     setLoading(true);
     try {
-      await upsertBrandingProduct(data);
+      // Clean up empty URLs
+      const cleanedData = {
+        ...data,
+        imageUrls: imageUrls.filter(url => url.trim() !== ''),
+        price: null // Force null for branding
+      };
+      
+      if (cleanedData.imageUrls.length === 0) {
+        toast.error('At least one valid image URL is required');
+        setLoading(false);
+        return;
+      }
+
+      await upsertBrandingProduct(cleanedData);
       toast.success(product ? 'Product updated successfully' : 'Product created successfully');
       setOpen(false);
-      if (!product) form.reset();
+      if (!product) {
+        form.reset();
+        setImageUrls(['']);
+      }
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
       console.error(error);
@@ -89,8 +126,11 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
 
   return (
     <Dialog open={open} onOpenChange={(val) => {
-      console.log('Dialog open state changing to:', val);
       setOpen(val);
+      if (!val && !product) {
+        form.reset();
+        setImageUrls(['']);
+      }
     }}>
       <DialogTrigger 
         render={(props) => 
@@ -106,7 +146,7 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
           )
         } 
       />
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{product ? 'Edit Product' : 'Add New Product'}</DialogTitle>
         </DialogHeader>
@@ -125,53 +165,35 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="categoryId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Category</FormLabel>
-                  <Select 
-                    onValueChange={(val) => {
-                      field.onChange(val);
-                      // Also sync the legacy 'category' string for display
-                      const catName = categories.find(c => c.id === val)?.name || '';
-                      form.setValue('category', catName);
-                    }} 
-                    value={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a category" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {categories.map((category) => (
-                        <SelectItem key={category.id} value={category.id}>
-                          {category.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
-                name="price"
+                name="categoryId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Price (₦)</FormLabel>
-                    <FormControl>
-                      <Input 
-                        type="number" 
-                        {...field} 
-                        value={field.value || ''}
-                        onChange={(e) => field.onChange(e.target.valueAsNumber || 0)} 
-                      />
-                    </FormControl>                    <FormMessage />
+                    <FormLabel>Category</FormLabel>
+                    <Select 
+                      onValueChange={(val) => {
+                        field.onChange(val);
+                        const catName = categories.find(c => c.id === val)?.name || '';
+                        form.setValue('category', catName);
+                      }} 
+                      value={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a category" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {categories.map((category) => (
+                          <SelectItem key={category.id} value={category.id}>
+                            {category.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -179,10 +201,8 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
                 control={form.control}
                 name="isFeatured"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-[10px] border p-3 shadow-sm">
-                    <div className="space-y-0.5">
-                      <FormLabel>Featured</FormLabel>
-                    </div>
+                  <FormItem className="flex flex-row items-center justify-between rounded-[10px] border p-3 shadow-sm h-10 mt-8">
+                    <FormLabel className="text-xs">Featured</FormLabel>
                     <FormControl>
                       <Switch
                         checked={field.value}
@@ -193,19 +213,40 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
                 )}
               />
             </div>
-            <FormField
-              control={form.control}
-              name="imageUrl"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Image URL</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://..." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+
+            <div className="space-y-3">
+              <FormLabel>Product Gallery (URLs)</FormLabel>
+              {imageUrls.map((url, index) => (
+                <div key={index} className="flex gap-2">
+                  <Input 
+                    placeholder="https://..." 
+                    value={url}
+                    onChange={(e) => handleImageUrlChange(index, e.target.value)}
+                  />
+                  {imageUrls.length > 1 && (
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      size="icon" 
+                      className="shrink-0 text-destructive"
+                      onClick={() => removeImageField(index)}
+                    >
+                      <LuTrash2 className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+              ))}
+              <Button 
+                type="button" 
+                variant="outline" 
+                size="sm" 
+                className="w-full border-dashed"
+                onClick={addImageField}
+              >
+                + Add Another Image
+              </Button>
+            </div>
+
             <FormField
               control={form.control}
               name="description"
@@ -215,7 +256,7 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
                   <FormControl>
                     <Textarea 
                       placeholder="Describe the product..." 
-                      className="resize-none" 
+                      className="resize-none h-24" 
                       {...field} 
                     />
                   </FormControl>
@@ -223,8 +264,8 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
                 </FormItem>
               )}
             />
-            <DialogFooter>
-              <Button type="submit" disabled={loading} className="w-full">
+            <DialogFooter className="pt-4 border-t">
+              <Button type="submit" disabled={loading} className="w-full bg-brand-primary text-white hover:bg-brand-primary/90">
                 {loading ? 'Saving...' : product ? 'Update Product' : 'Create Product'}
               </Button>
             </DialogFooter>
@@ -232,5 +273,6 @@ export default function ProductFormModal({ product, categories, trigger }: Produ
         </Form>
       </DialogContent>
     </Dialog>
+
   );
 }

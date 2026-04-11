@@ -21,11 +21,12 @@ model BrandingProduct {
   id          String            @id @default(uuid())
   name        String
   description String
-  price       Int
+  price       Int? // Optional for branding
   category    String // Keep for temporary migration reference
   categoryId  String? // New foreign key
   categoryRel BrandingCategory? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  imageUrl    String
+  imageUrl    String // Keep temporarily for migration
+  imageUrls   String[]          @default([]) // New multi-image field
   isFeatured  Boolean           @default(false)
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt
@@ -48,7 +49,8 @@ model LogisticsVehicle {
   category    String // Legacy string for migration
   categoryId  String? // New relational reference
   categoryRel LogisticsCategory? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  imageUrl    String
+  imageUrl    String // Keep temporarily for migration
+  imageUrls   String[]           @default([]) // New multi-image field
   features    String[]
   isFeatured  Boolean            @default(false)
   createdAt   DateTime           @default(now())

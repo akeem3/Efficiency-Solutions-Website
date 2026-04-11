@@ -16,6 +16,8 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 
+import { CustomOrderCTA } from "@/components/branding/CustomOrderCTA";
+
 export function BrandingClient({ 
   initialProducts, 
   categories 
@@ -25,7 +27,7 @@ export function BrandingClient({
 }) {
   const [activeCategory, setActiveCategory] = useState<string | undefined>(undefined);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState("featured");
+  const [sortBy, setSortBy] = useState("name");
   const [filteredProducts, setFilteredProducts] = useState<BrandingProduct[]>(initialProducts);
 
   // Filtering Logic (Introductory in Story 2.2, Finalized in 2.3)
@@ -44,10 +46,8 @@ export function BrandingClient({
     }
 
     // Sort
-    if (sortBy === "price-asc") {
-      result.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "price-desc") {
-      result.sort((a, b) => b.price - a.price);
+    if (sortBy === "name") {
+      result.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortBy === "featured") {
       result.sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0));
     }
@@ -62,7 +62,7 @@ export function BrandingClient({
         <Breadcrumbs />
 
         {/* Hero Section */}
-        <section className="relative mb-16 overflow-hidden rounded-[10px] bg-brand-primary/5 p-6 md:p-10 lg:p-16">
+        <section className="relative mb-8 overflow-hidden rounded-[10px] bg-brand-primary/5 p-6 md:p-10 lg:p-16">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div className="z-10">
               <h1 className="mb-6 text-4xl font-extrabold font-heading text-brand-primary leading-[1.1] md:text-5xl lg:text-6xl">
@@ -90,6 +90,9 @@ export function BrandingClient({
           {/* Decorative background element */}
           <div className="absolute top-0 right-0 -mr-24 -mt-24 h-96 w-96 rounded-full bg-brand-secondary/5 blur-[120px]" />
         </section>
+
+        {/* Custom Order CTA - New Feature */}
+        <CustomOrderCTA />
 
         {/* Horizontal Navigation (Mobile Only) */}
         <div className="flex lg:hidden overflow-x-auto pb-6 mb-8 no-scrollbar -mx-2 px-2 gap-3">
@@ -146,15 +149,14 @@ export function BrandingClient({
                 <div className="w-full sm:w-48">
                   <Select 
                     value={sortBy} 
-                    onValueChange={(val) => setSortBy(val ?? "featured")}
+                    onValueChange={(val) => setSortBy(val ?? "name")}
                   >
                     <SelectTrigger className="h-12 w-full rounded-[10px] border-none bg-brand-muted/5 font-bold font-heading text-xs text-brand-primary focus:ring-brand-secondary/50">
                       <SelectValue placeholder="Sort by" />
                     </SelectTrigger>
                     <SelectContent className="rounded-[10px] border-none shadow-xl min-w-[180px]">
                       <SelectItem value="featured" className="text-xs font-bold font-heading py-3">Featured First</SelectItem>
-                      <SelectItem value="price-asc" className="text-xs font-bold font-heading py-3">Price: Low to High</SelectItem>
-                      <SelectItem value="price-desc" className="text-xs font-bold font-heading py-3">Price: High to Low</SelectItem>
+                      <SelectItem value="name" className="text-xs font-bold font-heading py-3">Alphabetical</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
