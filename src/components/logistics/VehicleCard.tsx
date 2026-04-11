@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { type LogisticsVehicle } from "@/generated/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +31,11 @@ interface VehicleCardProps {
 export const VehicleCard = ({ vehicle }: VehicleCardProps) => {
   const cart = useCart();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const images = vehicle.imageUrls && vehicle.imageUrls.length > 0 
+    ? vehicle.imageUrls 
+    : [vehicle.imageUrl];
 
   const handleBook = () => {
     cart.addItem({
@@ -49,19 +54,22 @@ export const VehicleCard = ({ vehicle }: VehicleCardProps) => {
       description: "You can send your booking request via the cart.",
     });
   };
-  
-  const images = vehicle.imageUrls && vehicle.imageUrls.length > 0 
-    ? vehicle.imageUrls 
-    : [vehicle.imageUrl];
 
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setDirection(1);
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setDirection(-1);
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
   };
 
   return (
@@ -72,33 +80,61 @@ export const VehicleCard = ({ vehicle }: VehicleCardProps) => {
       className="group relative flex flex-col bg-white rounded-[15px] md:rounded-[20px] overflow-hidden border border-brand-primary/5 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-brand-primary/10 hover:-translate-y-2 h-full"
     >
       {/* Image Gallery Section */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-brand-primary/5">
-        <Image
-          src={images[currentImageIndex]}
-          alt={`${vehicle.name} ${vehicle.model}`}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+      <div className="relative aspect-[16/10] overflow-hidden bg-brand-primary/5 touch-pan-y">
+        <AnimatePresence initial={false} custom={direction} mode="popLayout">
+          <motion.div
+            key={currentImageIndex}
+            custom={direction}
+            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 }
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
+
+              if (swipe < -swipeConfidenceThreshold) {
+                nextImage();
+              } else if (swipe > swipeConfidenceThreshold) {
+                prevImage();
+              }
+            }}
+            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          >
+            <Image
+              src={images[currentImageIndex]}
+              alt={`${vehicle.name} ${vehicle.model}`}
+              fill
+              className="object-cover select-none"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              draggable={false}
+            />
+          </motion.div>
+        </AnimatePresence>
         
         {images.length > 1 && (
-          <div className="absolute inset-0 flex items-center justify-between px-3 md:px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute inset-0 flex items-center justify-between px-3 md:px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none">
             <button 
               onClick={prevImage}
-              className="p-1.5 md:p-2 rounded-full bg-white/90 text-brand-primary backdrop-blur-sm shadow-xl transition-all hover:bg-brand-secondary hover:text-white transform hover:scale-110"
+              className="p-1.5 md:p-2 rounded-full bg-white/90 text-brand-primary backdrop-blur-sm shadow-xl transition-all hover:bg-brand-secondary hover:text-white transform hover:scale-110 pointer-events-auto"
             >
               <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
             </button>
             <button 
               onClick={nextImage}
-              className="p-1.5 md:p-2 rounded-full bg-white/90 text-brand-primary backdrop-blur-sm shadow-xl transition-all hover:bg-brand-secondary hover:text-white transform hover:scale-110"
+              className="p-1.5 md:p-2 rounded-full bg-white/90 text-brand-primary backdrop-blur-sm shadow-xl transition-all hover:bg-brand-secondary hover:text-white transform hover:scale-110 pointer-events-auto"
             >
               <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
             </button>
           </div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none" />
         
         {vehicle.isFeatured && (
           <div className="absolute top-4 left-4 z-10">
