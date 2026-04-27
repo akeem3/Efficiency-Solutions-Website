@@ -82,7 +82,7 @@ export const Navbar = () => {
             }}
             className="flex items-center gap-2 group transition-transform duration-300 hover:scale-105"
           >
-            <Icons.Logo className="h-8 w-8 shrink-0" />
+            <Icons.Logo className="h-10 w-10 shrink-0" />
             <span className="hidden md:inline-flex text-xl font-bold font-heading whitespace-nowrap">
               <span className="text-brand-primary">Efficiency</span>{" "}
               <span className="text-brand-secondary">Solutions</span>
