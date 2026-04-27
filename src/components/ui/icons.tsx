@@ -12,6 +12,7 @@ import {
   Search,
   Scissors,
   Monitor,
+  MoveDown,
 } from "lucide-react";
 import {
   FaFacebook,
@@ -64,4 +65,5 @@ export const Icons = {
   Mail: MailIcon,
   Location: LocationIcon,
   Search: SearchIcon,
+  ArrowDown: MoveDown,
 };

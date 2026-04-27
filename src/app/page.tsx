@@ -86,7 +86,7 @@ export default function Home() {
             <Link href="#services">
               <Button size="lg" className="h-12 md:h-14 px-8 rounded-[10px] bg-brand-primary hover:bg-brand-primary/90 text-white font-bold font-heading group">
                 Explore Our Services
-                <Icons.ExternalLink className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <Icons.ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
               </Button>
             </Link>
             <Button variant="outline" size="lg" className="h-12 md:h-14 px-8 rounded-[10px] border-brand-primary/20 text-brand-primary font-bold font-heading hover:bg-brand-primary/5">
