@@ -182,8 +182,14 @@ export const CartDrawer = ({ children }: { children: React.ReactElement }) => {
                 </div>
               </Button>
               
-              <p className="text-[9px] md:text-[10px] text-center text-brand-muted tracking-tight font-medium uppercase opacity-60">
+              <p className="text-[9px] md:text-[10px] text-center text-brand-muted tracking-tight font-medium opacity-60">
                  {totalPrice > 0 ? "Fleet prices are estimates • Agent verification required" : "Agent verification required"}
+              </p>
+              <p className="text-[9px] md:text-[10px] text-center text-brand-muted tracking-tight opacity-50">
+                 By proceeding, you agree to our{" "}
+                 <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-primary">
+                   Terms & Conditions
+                 </a>
               </p>
             </SheetFooter>
           </>

@@ -15,7 +15,7 @@ const footerNavItems = {
   quickLinks: [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Careers", href: "/careers" },
+    { name: "Terms & Conditions", href: "/terms" },
     { name: "Contact", href: `https://wa.me/${env.NEXT_PUBLIC_WHATSAPP_NUMBER}` },
   ],
   contact: [
@@ -125,8 +125,10 @@ export const Footer = () => {
             </Link>
           ))}
         </div>
-        <p className="text-sm text-secondary/70">
+        <p className="text-sm text-secondary/70 flex flex-wrap items-center gap-x-2 gap-y-1 justify-center md:justify-end">
           © {currentYear} Efficiency Solutions. All rights reserved.
+          <span className="text-secondary/30">|</span>
+          <Link href="/terms" className="hover:text-white transition-colors duration-200">Terms & Conditions</Link>
         </p>
       </div>
     </footer>
