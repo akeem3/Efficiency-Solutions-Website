@@ -10,7 +10,7 @@ export function constructMetadata({
   title = "Efficiency Solutions",
   description = "A premium Nigerian agency providing Luxury Logistics, Branding, and Corporate Services.",
   image = "/og/default-hero.jpg",
-  icons = "/favicon.ico",
+  icons = "/gpt es logo.png",
   noIndex = false,
 }: {
   title?: string;

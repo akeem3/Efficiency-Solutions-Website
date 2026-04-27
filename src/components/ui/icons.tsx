@@ -21,7 +21,20 @@ import {
   FaCarSide,
 } from "react-icons/fa6";
 
-export const Logo = Asterisk;
+import Image from "next/image";
+
+export const Logo = ({ className }: { className?: string }) => (
+  <div className={className}>
+    <Image
+      src="/gpt es logo.png"
+      alt="Efficiency Solutions"
+      width={100}
+      height={100}
+      className="h-full w-auto object-contain"
+      priority
+    />
+  </div>
+);
 export const Facebook = FaFacebook;
 export const Instagram = FaInstagram;
 export const LinkedIn = FaLinkedin;

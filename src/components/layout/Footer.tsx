@@ -41,7 +41,7 @@ export const Footer = () => {
         {/* Column 1: Logo & Description */}
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <Icons.Logo className="h-10 w-10 text-brand-secondary" />
+            <Icons.Logo className="h-12 w-12 shrink-0" />
             <span className="text-2xl font-bold font-heading">
               <span className="text-white">Efficiency</span>{" "}
               <span className="text-brand-secondary">Solutions</span>
