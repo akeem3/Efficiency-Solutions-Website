@@ -4,6 +4,7 @@ import { env } from '@/env';
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
+    '/about',
     '/services/branding',
     '/services/logistics',
     '/services/accounting',
