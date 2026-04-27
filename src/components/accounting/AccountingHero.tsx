@@ -41,7 +41,7 @@ export const AccountingHero = ({ onConsult }: AccountingHeroProps) => {
             Financial Intelligence
           </div>
           
-          <h1 className="mb-8 text-4xl font-extrabold font-heading text-brand-primary leading-[1.05] md:text-5xl lg:text-7xl">
+          <h1 className="mb-8 text-3xl font-extrabold font-heading text-brand-primary leading-[1.1] md:text-4xl lg:text-5xl xl:text-6xl">
             Strategic <span className="text-brand-secondary">Wealth</span> & Business <br className="hidden lg:block" /> Integrity
           </h1>
           
