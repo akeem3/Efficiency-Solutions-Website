@@ -48,8 +48,7 @@ export const Footer = () => {
             </span>
           </div>
           <p className="text-sm text-secondary/80 leading-relaxed">
-            Premium Branding & Printing, Luxury Logistics, and Accounting Services. We drive your
-            business forward with unparalleled expertise and dedication.
+            We drive your business forward with unparalleled expertise and dedication.
           </p>
         </div>
 
