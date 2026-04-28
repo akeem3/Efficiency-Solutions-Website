@@ -12,22 +12,22 @@ const samples = [
   {
     id: 1,
     title: "Bespoke Agbada",
-    image: "https://images.unsplash.com/photo-1598414591143-8ca12173499f?q=80&w=600&auto=format&fit=crop",
+    image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Fashion%20Design/agbada.jpg",
   },
   {
     id: 2,
-    title: "Premium Suit",
-    image: "https://images.unsplash.com/photo-1594932224828-b4b057b69b82?q=80&w=600&auto=format&fit=crop",
+    title: "Men's Native Wear",
+    image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Fashion%20Design/ankara%20shirt%20and%20trousers%20men.jpg",
   },
   {
     id: 3,
-    title: "Bridal Couture",
-    image: "https://images.unsplash.com/photo-1594552072238-b489a0781bb0?q=80&w=600&auto=format&fit=crop",
+    title: "Bridal Corset Dress",
+    image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Fashion%20Design/corset%20dress.jpg",
   },
   {
     id: 4,
-    title: "Corporate Apparel",
-    image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=600&auto=format&fit=crop",
+    title: "Kids' Fashion",
+    image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Fashion%20Design/kids%20ankara.jpeg",
   },
 ];
 
@@ -157,7 +157,7 @@ export default function TailoringPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-video rounded-[10px] overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1551061713-94c3f86aa675?q=80&w=1200&auto=format&fit=crop"
+                src="https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Fashion%20Design/sewing%20image.jpg"
                 alt="Craftsmanship process"
                 fill
                 className="object-cover"

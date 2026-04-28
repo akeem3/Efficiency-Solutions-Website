@@ -3,7 +3,7 @@ import { constructMetadata } from "@/lib/metadata";
 export const metadata = constructMetadata({
   title: "Digital Product Development",
   description: "Enterprise-grade web and mobile applications, branding identity, and continuous digital product support.",
-  image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+  image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Digital%20Product%20Developement/Digital-Product-Development_Content-1024x639.jpg",
 });
 
 export default function DigitalLayout({

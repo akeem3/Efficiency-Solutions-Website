@@ -11,8 +11,8 @@ import { LuCheck, LuLayoutTemplate, LuSmartphone, LuGlobe, LuRocket } from "reac
 const samples = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+    title: "Web development",
+    image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Digital%20Product%20Developement/Discover%20Creative.jpg",
   },
   {
     id: 2,
@@ -21,13 +21,13 @@ const samples = [
   },
   {
     id: 3,
-    title: "Mobile App Design",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop",
+    title: "Mobile Apps",
+    image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Digital%20Product%20Developement/download.jpg",
   },
   {
     id: 4,
-    title: "Corporate UX",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=800&auto=format&fit=crop",
+    title: "Product Design",
+    image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Digital%20Product%20Developement/Digital-Product-Development_Content-1024x639.jpg",
   },
 ];
 
