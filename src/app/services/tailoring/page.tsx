@@ -85,7 +85,7 @@ export default function TailoringPage() {
               Excellence in Craftsmanship
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold font-heading text-brand-primary leading-[1.05] tracking-tight mb-8">
-              Premium Tailoring & <br/> 
+              Bespoke <br/> 
               <span className="text-orange-600">Fashion Design</span>
             </h1>
             <p className="text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed">

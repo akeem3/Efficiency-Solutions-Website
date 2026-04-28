@@ -150,7 +150,7 @@ export const Navbar = () => {
                           <Icons.Tailoring className="h-5 w-5" />
                         </div>
                         <div>
-                          <div className="font-bold font-heading text-brand-primary text-sm">Tailoring & Fashion</div>
+                          <div className="font-bold font-heading text-brand-primary text-sm">Fashion Design</div>
                           <div className="text-xs text-brand-muted mt-0.5">Bespoke couture & design</div>
                         </div>
                       </Link>
@@ -329,7 +329,7 @@ export const Navbar = () => {
                               <Icons.Tailoring className="h-4 w-4" />
                             </div>
                             <div>
-                              <div className="font-bold font-heading text-brand-primary text-[15px]">Tailoring & Fashion</div>
+                              <div className="font-bold font-heading text-brand-primary text-[15px]">Fashion Design</div>
                               <div className="text-[11px] text-brand-muted mt-0.5">Bespoke couture</div>
                             </div>
                           </Link>

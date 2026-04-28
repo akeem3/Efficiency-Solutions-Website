@@ -6,7 +6,7 @@ import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata = constructMetadata({
   title: "About Efficiency Solutions | Premium Agency in Lagos, Nigeria",
-  description: "Efficiency Solutions is a premier agency in Lagos, Nigeria offering Luxury Logistics, Premium Branding, Accounting, Tailoring, and Digital Product Development.",
+  description: "Efficiency Solutions is a premier agency in Lagos, Nigeria offering Luxury Logistics, Premium Branding, Accounting, Fashion Design, and Digital Product Development.",
 });
 
 export default function AboutPage() {
@@ -23,7 +23,7 @@ export default function AboutPage() {
       "addressLocality": "Lagos",
       "addressCountry": "NG"
     },
-    "description": "Premium Nigerian agency providing Luxury Logistics, Branding, Accounting, Tailoring, and Digital Services.",
+    "description": "Premium Nigerian agency providing Luxury Logistics, Branding, Accounting, Fashion Design, and Digital Services.",
     "serviceArea": {
       "@type": "GeoCircle",
       "geoMidpoint": {
@@ -138,12 +138,12 @@ export default function AboutPage() {
               <div className="h-12 w-12 rounded-lg bg-orange-600/10 text-orange-600 flex items-center justify-center mb-6">
                 <Icons.Tailoring className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-bold font-heading text-brand-primary mb-3">Tailoring & Fashion</h3>
+              <h3 className="text-xl font-bold font-heading text-brand-primary mb-3">Fashion Design</h3>
               <p className="text-brand-muted text-sm leading-relaxed mb-6">
                 Bespoke garment construction and fashion consultancy. We create elegant, custom-fitted attire tailored to your precise measurements and style preferences.
               </p>
               <Link href="/services/tailoring" className="text-brand-primary font-semibold text-sm hover:underline flex items-center gap-1">
-                Explore Tailoring <Icons.ExternalLink className="w-4 h-4" />
+                Explore Fashion Design <Icons.ExternalLink className="w-4 h-4" />
               </Link>
             </div>
 

@@ -10,7 +10,7 @@ const footerNavItems = {
     { name: "Premium Branding & Printing", href: "/services/branding" },
     { name: "Digital Development", href: "/services/digital" },
     { name: "Accounting Services", href: "/services/accounting" },
-    { name: "Tailoring & Fashion", href: "/services/tailoring" },
+    { name: "Fashion Design", href: "/services/tailoring" },
   ],
   quickLinks: [
     { name: "Home", href: "/" },

@@ -43,7 +43,7 @@ const services = [
   },
   {
     id: "tailoring",
-    title: "Tailoring & Fashion Design",
+    title: "Fashion Design",
     description: "Bespoke couture and premium garment construction for individual and corporate clients.",
     icon: Icons.Tailoring,
     href: "/services/tailoring",
