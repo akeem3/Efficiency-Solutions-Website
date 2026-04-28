@@ -31,25 +31,25 @@ export const CustomOrderCTA = () => {
             />
 
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6 md:space-y-8 text-white">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs md:text-sm font-bold uppercase tracking-widest backdrop-blur-md">
+              <div className="flex flex-col items-center lg:items-start space-y-6 md:space-y-8 text-white">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs md:text-sm font-bold uppercase tracking-widest backdrop-blur-md mx-auto lg:mx-0 w-fit">
                   <span className="h-2 w-2 rounded-full bg-brand-secondary animate-pulse" />
                   Custom Projects
                 </div>
                 
-                <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold font-heading leading-tight md:leading-[1.1]">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold font-heading leading-tight md:leading-[1.1] text-center lg:text-left">
                   Have a Unique <br/>
                   <span className="text-brand-secondary">Branding Need?</span>
                 </h2>
                 
-                <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-md">
+                <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-md mx-auto lg:mx-0 text-center lg:text-left">
                   From large-format installations to bespoke corporate gifts, we bring any vision to life. Let&apos;s discuss your specific requirements.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
                   <Button 
                     size="lg"
-                    className="h-14 md:h-16 rounded-[12px] md:rounded-[16px] bg-brand-secondary hover:bg-white hover:text-brand-primary text-brand-primary font-extrabold font-heading text-base md:text-lg group shadow-xl px-8"
+                    className="h-14 md:h-16 rounded-[12px] md:rounded-[16px] bg-brand-secondary hover:bg-white hover:text-brand-primary text-brand-primary font-extrabold font-heading text-base md:text-lg group shadow-xl px-8 w-full sm:w-auto"
                     onClick={() => window.open(whatsappLink, '_blank')}
                   >
                     Discuss Custom Order
