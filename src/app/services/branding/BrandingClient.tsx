@@ -75,9 +75,9 @@ export function BrandingClient({
               <div className="h-1.5 w-24 bg-brand-secondary" />
             </div>
             
-            <div className="relative h-[300px] lg:h-[400px]">
+            <div className="relative h-[400px] md:h-[500px] lg:h-[600px]">
               <Image
-                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=1200"
+                src="https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Premium%20Branding%20&%20Printing/KUKU.jpg"
                 alt="Branding Showcase"
                 fill
                 className="rounded-[10px] object-cover shadow-2xl"

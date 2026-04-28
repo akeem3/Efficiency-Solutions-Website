@@ -8,7 +8,7 @@ import { constructMetadata } from "@/lib/metadata";
 export const metadata = constructMetadata({
   title: "Premium Branding Catalog",
   description: "Browse our exclusive selection of premium branded products, from custom apparel to high-end accessories.",
-  image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200",
+  image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Premium%20Branding%20&%20Printing/KUKU.jpg",
 });
 
 export default async function BrandingPage() {

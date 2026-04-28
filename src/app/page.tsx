@@ -89,9 +89,11 @@ export default function Home() {
                 <Icons.ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
               </Button>
             </Link>
+            <Link href="/about">
             <Button variant="outline" size="lg" className="h-12 md:h-14 px-8 rounded-[10px] border-brand-primary/20 text-brand-primary font-bold font-heading hover:bg-brand-primary/5">
               Read Our Story
             </Button>
+            </Link>
           </div>
         </motion.div>
       </section>

@@ -8,7 +8,7 @@ import { constructMetadata } from "@/lib/metadata";
 export const metadata = constructMetadata({
   title: "Luxury Logistics & Escort",
   description: "Exclusive vehicle fleet and professional security services for the Nigerian market. From armored G-Wagons to luxury Lexuses.",
-  image: "https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&q=80&w=1200",
+  image: "https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Luxury%20Rides/prado%20jeep.jpg",
 });
 export default async function LogisticsPage() {
   const [vehicles, categories] = await Promise.all([

@@ -77,7 +77,7 @@ export const AccountingHero = ({ onConsult }: AccountingHeroProps) => {
           
           <div className="relative h-full w-full overflow-hidden rounded-xl shadow-[0_32px_64px_-16px_rgba(50,64,106,0.3)] border border-brand-primary/5">
             <Image
-              src="https://images.unsplash.com/photo-1554224154-26032fb68df8?auto=format&fit=crop&q=80&w=1200"
+              src="https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Accounting%20Services/Certified%20Public%20Accountant%20_%20How%20CPAs%20Simplify%20Tax%20&%20Financial%20Management%20for%20Businesses.jpg"
               alt="Accounting Services"
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.98] contrast-[1.02]"

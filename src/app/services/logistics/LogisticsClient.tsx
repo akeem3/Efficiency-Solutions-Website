@@ -93,7 +93,7 @@ export function LogisticsClient({
                transition={{ duration: 0.8, delay: 0.2 }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&q=80&w=1200"
+                src="https://rpeexaiwtuwhkllqzlgg.supabase.co/storage/v1/object/public/es-bucket/Luxury%20Rides/prado%20jeep.jpg"
                 alt="Fleet Showcase"
                 fill
                 className="rounded-[10px] object-cover shadow-2xl brightness-90 contrast-110"
