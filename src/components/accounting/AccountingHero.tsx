@@ -11,14 +11,14 @@ interface AccountingHeroProps {
 
 export const AccountingHero = ({ onConsult }: AccountingHeroProps) => {
   return (
-    <section className="relative mb-24 overflow-hidden rounded-[10px] bg-brand-primary/[0.02] p-8 md:p-12 lg:p-24 shadow-2xl ring-1 ring-black/5">
+    <section className="relative mb-24 overflow-hidden rounded-[10px] bg-brand-primary/2 p-8 md:p-12 lg:p-24 shadow-2xl ring-1 ring-black/5">
       {/* Dynamic Background Patterns */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-secondary/5 via-transparent to-transparent opacity-60" />
-      <div className="absolute top-0 right-0 -mr-16 -mt-16 h-96 w-96 rounded-full bg-brand-secondary/[0.03] blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 -ml-16 -mb-16 h-96 w-96 rounded-full bg-brand-primary/[0.03] blur-[100px] pointer-events-none" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-brand-secondary/5 via-transparent to-transparent opacity-60" />
+      <div className="absolute top-0 right-0 -mr-16 -mt-16 h-96 w-96 rounded-full bg-brand-secondary/3 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 -ml-16 -mb-16 h-96 w-96 rounded-full bg-brand-primary/3 blur-[100px] pointer-events-none" />
       
       {/* Structural Decoration Lines */}
-      <div className="absolute inset-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none">
+      <div className="absolute inset-0 opacity-10 mask-[radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none">
         <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
             <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -60,14 +60,14 @@ export const AccountingHero = ({ onConsult }: AccountingHeroProps) => {
               <Icons.ExternalLink className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-2" />
             </Button>
             
-            <div className="flex items-center gap-4 text-brand-primary/60 font-heading font-bold text-xs uppercase tracking-widest px-4 border-l border-brand-primary/10 hidden sm:flex">
+            <div className="flex items-center gap-4 text-brand-primary/60 font-heading font-bold text-xs uppercase tracking-widest px-4 border-l border-brand-primary/10 max-sm:hidden sm:flex">
                 <span className="text-brand-secondary underline underline-offset-4 decoration-2">Premium</span> Advisory
             </div>
           </div>
         </motion.div>
         
         <motion.div 
-          className="relative h-[400px] lg:h-[550px] w-full"
+          className="relative h-100 lg:h-[550px] w-full"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
@@ -83,7 +83,7 @@ export const AccountingHero = ({ onConsult }: AccountingHeroProps) => {
               className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.98] contrast-[1.02]"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/20 via-transparent to-brand-secondary/10" />
+            <div className="absolute inset-0 bg-linear-to-tr from-brand-primary/20 via-transparent to-brand-secondary/10" />
           </div>
           
           {/* Decorative floating element - Strategic Stats */}
